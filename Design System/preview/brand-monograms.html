@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Monograms — brand mark</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="_card.css">
+<style>
+  body { background: #fbfbf9; font-family: 'Geist', sans-serif; }
+  .card { padding: 22px 28px; gap: 12px; }
+  .row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; }
+  .item {
+    aspect-ratio: 5 / 3;
+    border-radius: 10px; border: 1px solid #ececec;
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+  }
+  .a { background: oklch(0.985 0.004 100); }
+  .b { background: oklch(0.985 0.002 85); }
+  .c { background: oklch(0.955 0.018 90); }
+  /* Modern: chip-style on color, plus wordmark */
+  .a .mark-row { display: flex; align-items: center; gap: 10px; }
+  .a .chip {
+    width: 44px; height: 44px;
+    background: oklch(0.16 0.012 145); color: oklch(0.985 0.004 100);
+    border-radius: 10px;
+    font-family: 'Geist', sans-serif; font-weight: 700;
+    font-size: 22px; letter-spacing: -0.06em;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .a .word {
+    font-family: 'Geist', sans-serif; font-weight: 700;
+    font-size: 22px; letter-spacing: -0.030em; color: oklch(0.16 0.012 145);
+  }
+  /* Technical */
+  .b .mark { font-family: 'Geist', sans-serif; font-weight: 600; font-size: 52px; letter-spacing: -0.05em; color: oklch(0.16 0.005 70); }
+  /* Studio */
+  .c .mark { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 600; font-variation-settings: "opsz" 96; font-size: 56px; letter-spacing: -0.04em; color: oklch(0.20 0.020 130); }
+  .tag { position: absolute; bottom: 10px; left: 12px; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: #888; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="label">Monogram — one per direction</div>
+    <div class="row">
+      <div class="item a">
+        <div class="mark-row">
+          <div class="chip">KK</div>
+          <div class="word">Karim Khalifeh</div>
+        </div>
+        <div class="tag">A · Modern</div>
+      </div>
+      <div class="item b"><div class="mark">KK</div><div class="tag">B · Technical</div></div>
+      <div class="item c"><div class="mark">KK</div><div class="tag">C · Studio</div></div>
+    </div>
+  </div>
+</body>
+</html>

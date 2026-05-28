@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Radii</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+  body { background: #fbfbf9; font-family: 'Geist', sans-serif; }
+  .card { padding: 22px 28px; gap: 14px; }
+  .grid { display: flex; gap: 24px; align-items: flex-end; }
+  .item { display: flex; flex-direction: column; gap: 8px; align-items: center; }
+  .box { width: 80px; height: 56px; background: #1a1a1a; }
+  .nm { font-family: 'Geist Mono', monospace; font-size: 11px; color: #888; }
+  .nm b { color: #1a1a1a; font-weight: 500; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="label">Border radius</div>
+    <div class="grid">
+      <div class="item"><div class="box" style="border-radius:0"></div><div class="nm"><b>none</b></div></div>
+      <div class="item"><div class="box" style="border-radius:6px"></div><div class="nm"><b>--radius-sm</b> · 6px</div></div>
+      <div class="item"><div class="box" style="border-radius:10px"></div><div class="nm"><b>--radius-md</b> · 10px</div></div>
+      <div class="item"><div class="box" style="border-radius:16px"></div><div class="nm"><b>--radius-lg</b> · 16px</div></div>
+      <div class="item"><div class="box" style="border-radius:9999px"></div><div class="nm"><b>--radius-pill</b></div></div>
+    </div>
+  </div>
+</body>
+</html>

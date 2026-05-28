@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Motion &amp; easing</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+  body { background: #fbfbf9; font-family: 'Geist', sans-serif; }
+  .card { padding: 22px 28px; gap: 14px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: center; }
+  svg { width: 100%; height: 80px; }
+  .curve-path { fill: none; stroke: oklch(0.45 0.13 30); stroke-width: 2; }
+  .grid-line { stroke: #e6e6e4; stroke-width: 1; stroke-dasharray: 2 4; }
+  .axis { stroke: #d3d3d1; stroke-width: 1; }
+  .durations { display: flex; flex-direction: column; gap: 8px; }
+  .dur-row { display: flex; align-items: center; gap: 10px; font-family: 'Geist Mono', monospace; font-size: 11px; color: #444; }
+  .dur-row b { color: #1a1a1a; }
+  .bar { height: 4px; background: #1a1a1a; border-radius: 2px; }
+  .formula { font-family: 'Geist Mono', monospace; font-size: 11px; color: #666; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="label">Motion — easing &amp; durations</div>
+    <div class="grid">
+      <div>
+        <svg viewBox="0 0 200 80" preserveAspectRatio="none">
+          <line class="grid-line" x1="0" y1="20" x2="200" y2="20" />
+          <line class="grid-line" x1="0" y1="40" x2="200" y2="40" />
+          <line class="grid-line" x1="0" y1="60" x2="200" y2="60" />
+          <line class="axis" x1="0" y1="70" x2="200" y2="70" />
+          <line class="axis" x1="10" y1="0" x2="10" y2="70" />
+          <!-- cubic-bezier(0.32, 0.72, 0, 1): from (10,70) to (190,10), c1=(64,52), c2=(10,10) -->
+          <path class="curve-path" d="M 10 70 C 64 52, 10 10, 190 10" />
+        </svg>
+        <div class="formula">cubic-bezier(0.32, 0.72, 0, 1)</div>
+      </div>
+      <div class="durations">
+        <div class="dur-row"><b>--dur-fast</b><span>150ms</span><div class="bar" style="width:30px"></div></div>
+        <div class="dur-row"><b>--dur</b><span>240ms</span><div class="bar" style="width:48px"></div></div>
+        <div class="dur-row"><b>--dur-slow</b><span>480ms</span><div class="bar" style="width:96px"></div></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

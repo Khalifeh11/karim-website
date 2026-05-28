@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Spacing scale</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+  body { background: #fbfbf9; font-family: 'Geist', sans-serif; }
+  .card { padding: 22px 28px; gap: 14px; }
+  .bars { display: flex; flex-direction: column; gap: 6px; }
+  .row { display: flex; align-items: center; gap: 14px; }
+  .nm { width: 64px; font-family: 'Geist Mono', monospace; font-size: 11px; color: #888; }
+  .px { width: 52px; font-family: 'Geist Mono', monospace; font-size: 11px; color: #1a1a1a; }
+  .bar { height: 10px; background: oklch(0.45 0.13 30); border-radius: 2px; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="label">Spacing scale — 8px base</div>
+    <div class="bars">
+      <div class="row"><div class="nm">--s-1</div><div class="px">4</div><div class="bar" style="width:4px"></div></div>
+      <div class="row"><div class="nm">--s-2</div><div class="px">8</div><div class="bar" style="width:8px"></div></div>
+      <div class="row"><div class="nm">--s-3</div><div class="px">12</div><div class="bar" style="width:12px"></div></div>
+      <div class="row"><div class="nm">--s-4</div><div class="px">16</div><div class="bar" style="width:16px"></div></div>
+      <div class="row"><div class="nm">--s-5</div><div class="px">24</div><div class="bar" style="width:24px"></div></div>
+      <div class="row"><div class="nm">--s-6</div><div class="px">32</div><div class="bar" style="width:32px"></div></div>
+      <div class="row"><div class="nm">--s-7</div><div class="px">48</div><div class="bar" style="width:48px"></div></div>
+      <div class="row"><div class="nm">--s-8</div><div class="px">64</div><div class="bar" style="width:64px"></div></div>
+      <div class="row"><div class="nm">--s-9</div><div class="px">96</div><div class="bar" style="width:96px"></div></div>
+      <div class="row"><div class="nm">--s-10</div><div class="px">128</div><div class="bar" style="width:128px"></div></div>
+      <div class="row"><div class="nm">--s-11</div><div class="px">160</div><div class="bar" style="width:160px"></div></div>
+    </div>
+  </div>
+</body>
+</html>

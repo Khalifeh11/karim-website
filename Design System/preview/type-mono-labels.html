@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Mono &amp; labels</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="_card.css">
+<style>
+  body { background: #fbfbf9; }
+  .card { padding: 22px 28px; gap: 14px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .block { display: flex; flex-direction: column; gap: 6px; }
+  .head { font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: #888; font-family: 'Geist', sans-serif; }
+  .mono { font-family: 'Geist Mono', monospace; font-size: 13px; color: #1a1a1a; }
+  .stack { display: flex; flex-wrap: wrap; gap: 6px; }
+  .chip { font-family: 'Geist Mono', monospace; font-size: 11px; padding: 4px 10px; border: 1px solid #e2e2e0; border-radius: 9999px; color: #444; }
+  .lbl { font-family: 'Geist', sans-serif; font-size: 11px; letter-spacing: 0.10em; text-transform: uppercase; font-weight: 500; color: #666; }
+  .meta-line { font-family: 'Geist', sans-serif; font-size: 12px; color: #666; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="label">Mono &amp; metadata labels</div>
+    <div class="grid">
+      <div class="block">
+        <div class="head">Mono — code, stack chips, metadata numbers</div>
+        <div class="mono">const stack = ['Next.js', 'Postgres']</div>
+        <div class="stack">
+          <span class="chip">Next.js</span>
+          <span class="chip">Postgres</span>
+          <span class="chip">Stripe</span>
+          <span class="chip">Vercel</span>
+        </div>
+      </div>
+      <div class="block">
+        <div class="head">Labels — uppercase, 0.08em tracking</div>
+        <div class="lbl">Role · Lead developer</div>
+        <div class="lbl">Year · 2025</div>
+        <div class="meta-line">2025 · Beirut · 6 weeks</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

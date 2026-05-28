@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Terminal motif</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="_card.css">
+<style>
+  html, body { background: oklch(0.155 0.008 150); color: oklch(0.97 0.012 95); }
+  body { font-family: 'Geist', sans-serif; }
+  .card { padding: 22px 28px; gap: 12px; text-transform: lowercase; }
+  .label { color: oklch(0.55 0.012 115); }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .item { display: flex; flex-direction: column; gap: 10px; }
+  .item .head {
+    font-family: 'Geist Mono', monospace; font-size: 11px;
+    color: oklch(0.55 0.012 115);
+  }
+  .brand {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: 'Geist Mono', monospace; font-size: 14px;
+  }
+  .brand .prompt { color: oklch(0.80 0.11 148); font-weight: 500; }
+  .brand .who { color: oklch(0.97 0.012 95); font-weight: 500; }
+
+  .nav { display: flex; gap: 4px; font-family: 'Geist Mono', monospace; font-size: 13px; }
+  .nav a {
+    padding: 6px 12px; border-radius: 9999px;
+    color: oklch(0.74 0.010 100);
+    display: inline-flex; gap: 6px; align-items: baseline;
+  }
+  .nav a .num { color: oklch(0.55 0.012 115); }
+  .nav a.active { background: oklch(0.40 0.07 148); color: oklch(0.80 0.11 148); }
+  .nav a.active .num { color: oklch(0.80 0.11 148); }
+
+  .term {
+    display: inline-flex; align-items: center; gap: 12px;
+    font-family: 'Geist Mono', monospace; font-size: 13px;
+    color: oklch(0.55 0.012 115);
+    padding: 8px 14px;
+    border: 1px solid oklch(0.27 0.012 145);
+    border-radius: 9999px;
+    background: oklch(0.19 0.010 148);
+    white-space: nowrap;
+  }
+  .term .dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: oklch(0.80 0.11 148);
+    box-shadow: 0 0 0 4px oklch(0.80 0.11 148 / 0.2);
+  }
+  .term .prompt { color: oklch(0.80 0.11 148); font-weight: 500; }
+  .term .cur {
+    display: inline-block;
+    animation: blink 1.05s steps(1) infinite;
+    color: oklch(0.80 0.11 148);
+  }
+  @keyframes blink { 0%,50% { opacity: 1; } 50.01%,100% { opacity: 0; } }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="label">terminal motif — brand, nav, status pill</div>
+    <div class="grid">
+      <div class="item">
+        <div class="head">brand · numbered nav</div>
+        <div class="brand"><span class="prompt">&gt;_</span><span class="who">karim_khalifeh</span></div>
+        <div class="nav">
+          <a class="active"><span class="num">01</span><span>work</span></a>
+          <a><span class="num">02</span><span>about</span></a>
+          <a><span class="num">03</span><span>contact</span></a>
+        </div>
+      </div>
+      <div class="item">
+        <div class="head">status pill · with blinking cursor</div>
+        <div class="term">
+          <span class="dot"></span>
+          <span><span class="prompt">&gt;_</span> available for new projects — april 2026<span class="cur">_</span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

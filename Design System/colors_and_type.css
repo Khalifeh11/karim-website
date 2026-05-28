@@ -1,0 +1,357 @@
+/* =========================================================================
+   Karim Khalifeh — Design Tokens
+   Three directions: .dir-editorial, .dir-technical, .dir-studio
+   Apply the class to <html> or to any container; tokens cascade.
+   Dark mode: add .dark to the same element.
+   ========================================================================= */
+
+/* ----- Web fonts (Google Fonts) -------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* =========================================================================
+   GLOBAL — applies to all directions
+   ========================================================================= */
+:root {
+  /* Spacing scale (8px base) */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 24px;
+  --s-6: 32px;
+  --s-7: 48px;
+  --s-8: 64px;
+  --s-9: 96px;
+  --s-10: 128px;
+  --s-11: 160px;
+
+  /* Radii */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-pill: 9999px;
+
+  /* Shadows */
+  --shadow-1: 0 1px 2px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.06);
+  --shadow-2: 0 2px 6px rgba(0,0,0,0.06), 0 12px 32px rgba(0,0,0,0.10);
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.32, 0.72, 0, 1);
+  --dur-fast: 150ms;
+  --dur: 240ms;
+  --dur-slow: 480ms;
+
+  /* Layout */
+  --page-max: 1280px;
+  --page-pad: 32px;
+  --grid-gap: 24px;
+
+  /* Base type scale (modular 1.25) — direction may override family/weight */
+  --t-display-xl: clamp(56px, 9vw, 120px);
+  --t-display-lg: clamp(44px, 6vw, 80px);
+  --t-display: clamp(36px, 4.5vw, 64px);
+  --t-h1: clamp(32px, 3.6vw, 48px);
+  --t-h2: clamp(24px, 2.6vw, 36px);
+  --t-h3: 22px;
+  --t-h4: 18px;
+  --t-body-lg: 19px;
+  --t-body: 17px;
+  --t-body-sm: 15px;
+  --t-caption: 13px;
+  --t-mono-sm: 13px;
+
+  /* Line-heights */
+  --lh-display: 1.02;
+  --lh-h1: 1.08;
+  --lh-h2: 1.15;
+  --lh-body: 1.6;
+  --lh-tight: 1.3;
+
+  /* Letter spacing */
+  --ls-display: -0.025em;
+  --ls-h: -0.015em;
+  --ls-label: 0.08em;
+  --ls-mono: -0.005em;
+}
+
+/* =========================================================================
+   DIRECTION A — Modern
+   Geist heavy display, deep forest accent.
+   Dark by default; light variant available.
+   ========================================================================= */
+.dir-modern {
+  /* Families */
+  --font-display: 'Geist', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Geist', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'Geist Mono', 'JetBrains Mono', ui-monospace, monospace;
+
+  --display-style: normal;
+  --display-weight: 700;
+
+  /* DARK (default) */
+  --bg: oklch(0.155 0.008 150);
+  --bg-elev: oklch(0.19 0.010 148);
+  --surface-2: oklch(0.235 0.012 148);
+  --fg: oklch(0.97 0.012 95);
+  --fg-2: oklch(0.74 0.010 100);
+  --fg-3: oklch(0.55 0.012 115);
+  --border: oklch(0.27 0.012 145);
+  --border-strong: oklch(0.38 0.014 145);
+
+  --accent: oklch(0.80 0.11 148);
+  --accent-hover: oklch(0.86 0.11 148);
+  --accent-fg: oklch(0.13 0.010 150);
+  --accent-soft: oklch(0.40 0.07 148);
+  --focus: oklch(0.80 0.11 148 / 0.35);
+
+  --grid-line: oklch(0.22 0.010 148);
+}
+.dir-modern.light {
+  --bg: oklch(0.985 0.004 100);
+  --bg-elev: oklch(1 0 0);
+  --surface-2: oklch(0.955 0.006 100);
+  --fg: oklch(0.16 0.012 145);
+  --fg-2: oklch(0.42 0.010 140);
+  --fg-3: oklch(0.58 0.008 130);
+  --border: oklch(0.91 0.006 130);
+  --border-strong: oklch(0.80 0.008 130);
+  --accent: oklch(0.34 0.060 145);
+  --accent-hover: oklch(0.28 0.065 145);
+  --accent-fg: oklch(0.97 0.015 95);
+  --accent-soft: oklch(0.62 0.07 148);
+  --focus: oklch(0.34 0.060 145 / 0.35);
+  --grid-line: oklch(0.93 0.006 130);
+}
+
+/* =========================================================================
+   DIRECTION A — Editorial (LEGACY — kept for reference; can be deleted)
+   Instrument Serif display, Geist body, warm paper + ink + oxblood
+   ========================================================================= */
+.dir-editorial {
+  /* Families */
+  --font-display: 'Instrument Serif', 'Source Serif 4', Georgia, serif;
+  --font-body: 'Geist', 'Söhne', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'Geist Mono', 'JetBrains Mono', ui-monospace, monospace;
+
+  /* Tone of voice for type */
+  --display-style: italic; /* Instrument Serif italic is gorgeous for hero */
+  --display-weight: 400;
+
+  /* Colors — light */
+  --bg: oklch(0.975 0.008 85);             /* warm paper */
+  --bg-elev: oklch(0.99 0.005 85);          /* card */
+  --surface-2: oklch(0.945 0.010 85);       /* card hover */
+  --fg: oklch(0.18 0.010 60);               /* warm ink */
+  --fg-2: oklch(0.38 0.010 60);             /* secondary text */
+  --fg-3: oklch(0.55 0.008 60);             /* tertiary, metadata */
+  --border: oklch(0.90 0.012 80);
+  --border-strong: oklch(0.80 0.015 70);
+
+  --accent: oklch(0.45 0.13 30);            /* oxblood */
+  --accent-hover: oklch(0.40 0.14 30);
+  --accent-fg: oklch(0.98 0.005 80);
+  --focus: oklch(0.45 0.13 30 / 0.4);
+}
+.dir-editorial.dark {
+  --bg: oklch(0.16 0.008 60);
+  --bg-elev: oklch(0.20 0.008 60);
+  --surface-2: oklch(0.24 0.008 60);
+  --fg: oklch(0.96 0.008 85);
+  --fg-2: oklch(0.78 0.008 75);
+  --fg-3: oklch(0.60 0.008 70);
+  --border: oklch(0.28 0.010 60);
+  --border-strong: oklch(0.40 0.012 60);
+  --accent: oklch(0.72 0.13 35);            /* lighter oxblood on dark */
+  --accent-hover: oklch(0.78 0.13 35);
+  --accent-fg: oklch(0.14 0.008 60);
+}
+
+/* =========================================================================
+   DIRECTION B — Technical
+   Geist throughout. Near-white / near-black. Electric accent.
+   ========================================================================= */
+.dir-technical {
+  --font-display: 'Geist', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Geist', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'Geist Mono', 'JetBrains Mono', ui-monospace, monospace;
+
+  --display-style: normal;
+  --display-weight: 500;
+
+  /* Colors — light */
+  --bg: oklch(0.985 0.002 85);              /* near-white, faint warm */
+  --bg-elev: oklch(1 0 0);
+  --surface-2: oklch(0.96 0.003 85);
+  --fg: oklch(0.16 0.005 70);               /* near-black, faint warm */
+  --fg-2: oklch(0.42 0.005 70);
+  --fg-3: oklch(0.58 0.004 70);
+  --border: oklch(0.92 0.003 80);
+  --border-strong: oklch(0.82 0.004 80);
+
+  --accent: oklch(0.62 0.20 248);           /* electric blue */
+  --accent-hover: oklch(0.56 0.21 248);
+  --accent-fg: oklch(0.99 0 0);
+  --focus: oklch(0.62 0.20 248 / 0.4);
+}
+.dir-technical.dark {
+  --bg: oklch(0.14 0.003 70);
+  --bg-elev: oklch(0.18 0.003 70);
+  --surface-2: oklch(0.22 0.003 70);
+  --fg: oklch(0.97 0.003 80);
+  --fg-2: oklch(0.74 0.003 75);
+  --fg-3: oklch(0.56 0.003 70);
+  --border: oklch(0.26 0.004 70);
+  --border-strong: oklch(0.38 0.005 70);
+  --accent: oklch(0.72 0.20 248);
+  --accent-hover: oklch(0.78 0.18 248);
+  --accent-fg: oklch(0.14 0.003 70);
+}
+
+/* =========================================================================
+   DIRECTION C — Studio
+   Bricolage Grotesque display + Geist body + JetBrains Mono.
+   Bone background + deep forest accent.
+   ========================================================================= */
+.dir-studio {
+  --font-display: 'Bricolage Grotesque', 'Geist', sans-serif;
+  --font-body: 'Geist', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  --display-style: normal;
+  --display-weight: 500;
+
+  --bg: oklch(0.955 0.018 90);              /* bone */
+  --bg-elev: oklch(0.98 0.012 90);
+  --surface-2: oklch(0.925 0.020 90);
+  --fg: oklch(0.20 0.020 130);              /* dark forest-tinted ink */
+  --fg-2: oklch(0.40 0.018 130);
+  --fg-3: oklch(0.55 0.015 110);
+  --border: oklch(0.88 0.018 95);
+  --border-strong: oklch(0.78 0.020 100);
+
+  --accent: oklch(0.34 0.060 145);          /* deep forest */
+  --accent-hover: oklch(0.28 0.065 145);
+  --accent-fg: oklch(0.96 0.015 90);
+  --focus: oklch(0.34 0.060 145 / 0.4);
+}
+.dir-studio.dark {
+  --bg: oklch(0.17 0.012 130);
+  --bg-elev: oklch(0.21 0.012 130);
+  --surface-2: oklch(0.25 0.014 130);
+  --fg: oklch(0.96 0.018 90);
+  --fg-2: oklch(0.78 0.015 95);
+  --fg-3: oklch(0.60 0.012 100);
+  --border: oklch(0.29 0.012 130);
+  --border-strong: oklch(0.42 0.014 130);
+  --accent: oklch(0.78 0.10 145);
+  --accent-hover: oklch(0.84 0.10 145);
+  --accent-fg: oklch(0.17 0.012 130);
+}
+
+/* =========================================================================
+   SEMANTIC TYPE — applies the family + size + lh + style atomically.
+   Use as classes (.t-display-xl) or extend via @apply-style patterns.
+   ========================================================================= */
+.t-display-xl, .t-display-lg, .t-display, h1.t-display, .t-h1 {
+  font-family: var(--font-display);
+}
+.t-display-xl {
+  font-family: var(--font-display);
+  font-size: var(--t-display-xl);
+  line-height: var(--lh-display);
+  letter-spacing: var(--ls-display);
+  font-weight: var(--display-weight);
+  font-style: var(--display-style);
+}
+.t-display-lg {
+  font-family: var(--font-display);
+  font-size: var(--t-display-lg);
+  line-height: var(--lh-display);
+  letter-spacing: var(--ls-display);
+  font-weight: var(--display-weight);
+  font-style: var(--display-style);
+}
+.t-display {
+  font-family: var(--font-display);
+  font-size: var(--t-display);
+  line-height: var(--lh-display);
+  letter-spacing: var(--ls-display);
+  font-weight: var(--display-weight);
+  font-style: var(--display-style);
+}
+.t-h1 {
+  font-family: var(--font-display);
+  font-size: var(--t-h1);
+  line-height: var(--lh-h1);
+  letter-spacing: var(--ls-h);
+  font-weight: var(--display-weight);
+}
+.t-h2 {
+  font-family: var(--font-body);
+  font-size: var(--t-h2);
+  line-height: var(--lh-h2);
+  letter-spacing: var(--ls-h);
+  font-weight: 500;
+}
+.t-h3 {
+  font-family: var(--font-body);
+  font-size: var(--t-h3);
+  line-height: var(--lh-tight);
+  font-weight: 500;
+}
+.t-h4 {
+  font-family: var(--font-body);
+  font-size: var(--t-h4);
+  line-height: var(--lh-tight);
+  font-weight: 500;
+}
+.t-body-lg {
+  font-family: var(--font-body);
+  font-size: var(--t-body-lg);
+  line-height: var(--lh-body);
+  font-weight: 400;
+}
+.t-body {
+  font-family: var(--font-body);
+  font-size: var(--t-body);
+  line-height: var(--lh-body);
+  font-weight: 400;
+}
+.t-body-sm {
+  font-family: var(--font-body);
+  font-size: var(--t-body-sm);
+  line-height: 1.55;
+  font-weight: 400;
+}
+.t-caption {
+  font-family: var(--font-body);
+  font-size: var(--t-caption);
+  line-height: 1.5;
+  color: var(--fg-2);
+}
+.t-label {
+  font-family: var(--font-body);
+  font-size: var(--t-caption);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--fg-3);
+}
+.t-mono {
+  font-family: var(--font-mono);
+  font-size: var(--t-mono-sm);
+  letter-spacing: var(--ls-mono);
+}
+
+/* =========================================================================
+   PRIMITIVES — these are utility resets, not components.
+   ========================================================================= */
+.surface {
+  background: var(--bg);
+  color: var(--fg);
+}
+hr.divider {
+  border: 0;
+  border-top: 1px solid var(--border);
+  margin: 0;
+}

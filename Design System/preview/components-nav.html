@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Header / nav</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="_card.css">
+<style>
+  body { background: #fbfbf9; font-family: 'Geist', sans-serif; }
+  .card { padding: 22px 28px; gap: 14px; }
+  .nav {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 12px 20px; border: 1px solid #ececec; border-radius: 10px; background: #fff;
+  }
+  .left { display: flex; align-items: center; gap: 8px; }
+  .mark { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 22px; color: #1a1a1a; }
+  .mark-b { font-family: 'Geist', sans-serif; font-weight: 600; font-size: 17px; letter-spacing: -0.02em; }
+  .mark-c { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 600; font-size: 19px; letter-spacing: -0.02em; }
+  .links { display: flex; gap: 22px; }
+  .links a { font-size: 13px; color: #1a1a1a; text-decoration: none; }
+  .links a.active { text-decoration: underline; text-underline-offset: 4px; }
+  .right { display: flex; align-items: center; gap: 10px; }
+  .pill {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 5px 10px; border-radius: 9999px;
+    border: 1px solid #ececec; background: #fafaf8;
+    font-size: 11px; color: #444;
+  }
+  .cta {
+    padding: 7px 12px; border-radius: 6px;
+    background: oklch(0.45 0.13 30); color: #fff;
+    font-size: 12px; font-weight: 500;
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="label">Header — sticky, blurred backdrop, hairline after scroll</div>
+    <div class="nav">
+      <div class="left">
+        <div class="mark">KK</div>
+      </div>
+      <div class="links">
+        <a href="#" class="active">work</a>
+        <a href="#">about</a>
+        <a href="#">contact</a>
+      </div>
+      <div class="right">
+        <div class="pill">◐ light</div>
+        <div class="cta">book a call →</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

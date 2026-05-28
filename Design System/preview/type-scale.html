@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Type scale</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="_card.css">
+<style>
+  body { background: #fbfbf9; font-family: 'Geist', sans-serif; }
+  .card { padding: 22px 28px; gap: 0; }
+  .row-item { display: flex; align-items: baseline; gap: 18px; border-bottom: 1px solid #ececec; padding: 8px 0; }
+  .row-item:last-child { border-bottom: 0; }
+  .name { width: 100px; font-size: 11px; letter-spacing: 0.04em; color: #888; font-family: 'Geist Mono', monospace; }
+  .px { width: 64px; font-size: 11px; color: #888; font-family: 'Geist Mono', monospace; }
+  .spec { color: #1a1a1a; }
+  .display { font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; letter-spacing: -0.02em; }
+  .h { font-family: 'Geist', sans-serif; font-weight: 500; letter-spacing: -0.01em; }
+  .b { font-family: 'Geist', sans-serif; font-weight: 400; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="label">Type scale (1.25 modular)</div>
+    <div class="row-item"><div class="name">display-xl</div><div class="px">120px</div><div class="spec display" style="font-size:34px;line-height:1">Aa</div></div>
+    <div class="row-item"><div class="name">display</div><div class="px">64px</div><div class="spec display" style="font-size:28px;line-height:1">Aa</div></div>
+    <div class="row-item"><div class="name">h1</div><div class="px">48px</div><div class="spec h" style="font-size:22px">Heading 1</div></div>
+    <div class="row-item"><div class="name">h2</div><div class="px">36px</div><div class="spec h" style="font-size:18px">Heading 2</div></div>
+    <div class="row-item"><div class="name">body-lg</div><div class="px">19px</div><div class="spec b" style="font-size:14px">Body large for lede paragraphs.</div></div>
+    <div class="row-item"><div class="name">body</div><div class="px">17px</div><div class="spec b" style="font-size:13px">Default running text.</div></div>
+    <div class="row-item"><div class="name">caption</div><div class="px">13px</div><div class="spec b" style="font-size:11px;color:#888">Metadata, captions, footnotes.</div></div>
+  </div>
+</body>
+</html>

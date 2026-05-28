@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Body type — all three directions</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="_card.css">
+<style>
+  body { background: #fbfbf9; }
+  .card { padding: 22px 28px; gap: 14px; }
+  .row3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+  .col-block { display: flex; flex-direction: column; gap: 4px; }
+  .tag { font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: #888; font-family: 'Geist', sans-serif; }
+  .specimen { font-size: 14px; line-height: 1.55; color: #1a1a1a; }
+  .ed { font-family: 'Geist', sans-serif; }
+  .tech { font-family: 'Geist', sans-serif; }
+  .studio { font-family: 'Geist', sans-serif; }
+  .fam { font-size: 10px; color: #888; font-family: 'Geist Mono', monospace; margin-top: 2px; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="label">Body — same family across directions</div>
+    <div class="row3">
+      <div class="col-block">
+        <div class="tag">A · Editorial</div>
+        <div class="specimen ed">I build fast, well&#8209;engineered websites for businesses around the world.</div>
+        <div class="fam">Geist 400 · 17/1.6</div>
+      </div>
+      <div class="col-block">
+        <div class="tag">B · Technical</div>
+        <div class="specimen tech">I build fast, well&#8209;engineered websites for businesses around the world.</div>
+        <div class="fam">Geist 400 · 17/1.6</div>
+      </div>
+      <div class="col-block">
+        <div class="tag">C · Studio</div>
+        <div class="specimen studio">I build fast, well&#8209;engineered websites for businesses around the world.</div>
+        <div class="fam">Geist 400 · 17/1.6</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

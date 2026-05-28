@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Buttons</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="_card.css">
+<style>
+  body { background: #fbfbf9; font-family: 'Geist', sans-serif; }
+  .card { padding: 22px 28px; gap: 14px; }
+  .row3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; }
+  .col-block { display: flex; flex-direction: column; gap: 8px; }
+  .tag { font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: #888; }
+  .btn-row { display: flex; gap: 8px; align-items: center; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: 'Geist', sans-serif; font-weight: 500; font-size: 13px;
+    padding: 9px 14px; border-radius: 6px; border: 1px solid transparent;
+    cursor: pointer; transition: all 150ms cubic-bezier(0.32, 0.72, 0, 1);
+  }
+  .btn .arr { font-family: 'Geist Mono', monospace; font-weight: 400; }
+  /* A */
+  .btn-pri-A { background: oklch(0.45 0.13 30); color: #fff; }
+  .btn-sec-A { background: transparent; color: oklch(0.18 0.010 60); border-color: oklch(0.80 0.015 70); }
+  /* B */
+  .btn-pri-B { background: oklch(0.16 0.005 70); color: #fff; }
+  .btn-sec-B { background: transparent; color: oklch(0.16 0.005 70); border-color: oklch(0.82 0.004 80); }
+  /* C */
+  .btn-pri-C { background: oklch(0.34 0.060 145); color: oklch(0.96 0.015 90); }
+  .btn-sec-C { background: transparent; color: oklch(0.20 0.020 130); border-color: oklch(0.78 0.020 100); }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="label">Buttons — primary &amp; secondary, one per direction</div>
+    <div class="row3">
+      <div class="col-block">
+        <div class="tag">A · Editorial</div>
+        <div class="btn-row">
+          <button class="btn btn-pri-A">Book a call <span class="arr">→</span></button>
+          <button class="btn btn-sec-A">View work</button>
+        </div>
+      </div>
+      <div class="col-block">
+        <div class="tag">B · Technical</div>
+        <div class="btn-row">
+          <button class="btn btn-pri-B">Book a call <span class="arr">→</span></button>
+          <button class="btn btn-sec-B">View work</button>
+        </div>
+      </div>
+      <div class="col-block">
+        <div class="tag">C · Studio</div>
+        <div class="btn-row">
+          <button class="btn btn-pri-C">Book a call <span class="arr">→</span></button>
+          <button class="btn btn-sec-C">View work</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

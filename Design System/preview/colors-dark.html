@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Dark mode swatches</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="_card.css">
+<style>
+  body { background: #fbfbf9; font-family: 'Geist', sans-serif; }
+  .card { padding: 22px 28px; gap: 12px; }
+  .row3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+  .dark-panel { border-radius: 10px; padding: 14px; display: flex; flex-direction: column; gap: 10px; border: 1px solid #1d1d1d; }
+  .ed { background: oklch(0.16 0.008 60); }
+  .tech { background: oklch(0.14 0.003 70); }
+  .studio { background: oklch(0.17 0.012 130); }
+  .tag { font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.6); }
+  .swatches { display: flex; gap: 6px; }
+  .chip { width: 28px; height: 28px; border-radius: 5px; border: 1px solid rgba(255,255,255,0.07); }
+  .sample { font-size: 13px; line-height: 1.4; }
+  .ed .sample { color: oklch(0.96 0.008 85); font-family: 'Instrument Serif', serif; font-style: italic; font-size: 18px; }
+  .tech .sample { color: oklch(0.97 0.003 80); font-family: 'Geist', sans-serif; font-weight: 500; }
+  .studio .sample { color: oklch(0.96 0.018 90); font-family: 'Bricolage Grotesque', sans-serif; font-weight: 500; }
+  .acc-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; vertical-align: middle; margin-right: 6px; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="label">Dark mode — all three directions</div>
+    <div class="row3">
+      <div class="dark-panel ed">
+        <div class="tag">A · Editorial</div>
+        <div class="sample">Quietly confident.</div>
+        <div class="swatches">
+          <div class="chip" style="background:oklch(0.16 0.008 60)"></div>
+          <div class="chip" style="background:oklch(0.24 0.008 60)"></div>
+          <div class="chip" style="background:oklch(0.72 0.13 35)"></div>
+        </div>
+      </div>
+      <div class="dark-panel tech">
+        <div class="tag">B · Technical</div>
+        <div class="sample">Built for speed.</div>
+        <div class="swatches">
+          <div class="chip" style="background:oklch(0.14 0.003 70)"></div>
+          <div class="chip" style="background:oklch(0.22 0.003 70)"></div>
+          <div class="chip" style="background:oklch(0.72 0.20 248)"></div>
+        </div>
+      </div>
+      <div class="dark-panel studio">
+        <div class="tag">C · Studio</div>
+        <div class="sample">Studio of one.</div>
+        <div class="swatches">
+          <div class="chip" style="background:oklch(0.17 0.012 130)"></div>
+          <div class="chip" style="background:oklch(0.25 0.014 130)"></div>
+          <div class="chip" style="background:oklch(0.78 0.10 145)"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

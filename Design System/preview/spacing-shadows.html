@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Shadows &amp; elevation</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+  body { background: #fbfbf9; font-family: 'Geist', sans-serif; }
+  .card { padding: 24px 28px; gap: 18px; }
+  .grid { display: flex; gap: 24px; }
+  .item { display: flex; flex-direction: column; gap: 12px; align-items: center; flex: 1; }
+  .box { width: 100%; height: 56px; background: #fff; border-radius: 10px; }
+  .b1 { box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.06); }
+  .b2 { box-shadow: 0 2px 6px rgba(0,0,0,0.06), 0 12px 32px rgba(0,0,0,0.10); }
+  .b0 { border: 1px solid #ececec; }
+  .nm { font-family: 'Geist Mono', monospace; font-size: 10px; color: #888; text-align: center; }
+  .nm b { color: #1a1a1a; font-weight: 500; }
+  .desc { font-size: 11px; color: #777; text-align: center; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="label">Elevation — flat by default; shadows reserved for floating UI</div>
+    <div class="grid">
+      <div class="item">
+        <div class="box b0"></div>
+        <div class="nm"><b>flat</b></div>
+        <div class="desc">Cards. Use border for separation.</div>
+      </div>
+      <div class="item">
+        <div class="box b1"></div>
+        <div class="nm"><b>--shadow-1</b></div>
+        <div class="desc">Dropdowns, toasts, the dark-mode pill.</div>
+      </div>
+      <div class="item">
+        <div class="box b2"></div>
+        <div class="nm"><b>--shadow-2</b></div>
+        <div class="desc">Modals only.</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

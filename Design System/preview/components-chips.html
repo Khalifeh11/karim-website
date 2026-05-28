@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Tags &amp; chips</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="_card.css">
+<style>
+  body { background: #fbfbf9; font-family: 'Geist', sans-serif; }
+  .card { padding: 22px 28px; gap: 14px; }
+  .row { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  .col-block { display: flex; flex-direction: column; gap: 8px; }
+  .tag { font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: #888; }
+  .chip {
+    padding: 4px 10px; border-radius: 9999px;
+    font-family: 'Geist Mono', monospace; font-size: 11px;
+    border: 1px solid #e2e2e0; color: #444; background: #fff;
+  }
+  .chip-solid { background: #1a1a1a; color: #fff; border-color: #1a1a1a; }
+  .chip-accent { background: oklch(0.45 0.13 30 / 0.10); color: oklch(0.40 0.14 30); border-color: oklch(0.45 0.13 30 / 0.25); }
+  .lbl-inline {
+    font-family: 'Geist', sans-serif; font-size: 10px; font-weight: 500;
+    letter-spacing: 0.10em; text-transform: uppercase; color: #666;
+  }
+  .status { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; color: #444; }
+  .dot { width: 7px; height: 7px; border-radius: 50%; }
+  .dot.live { background: oklch(0.62 0.16 145); }
+  .dot.case { background: oklch(0.45 0.13 30); }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="label">Chips, status, inline labels</div>
+    <div class="col-block">
+      <div class="tag">Tech stack — mono chips</div>
+      <div class="row">
+        <span class="chip">Next.js</span>
+        <span class="chip">TypeScript</span>
+        <span class="chip">Postgres</span>
+        <span class="chip">Stripe</span>
+        <span class="chip">Tailwind</span>
+        <span class="chip">Vercel</span>
+      </div>
+    </div>
+    <div class="col-block">
+      <div class="tag">Variants</div>
+      <div class="row">
+        <span class="chip chip-solid">Featured</span>
+        <span class="chip chip-accent">Available · April</span>
+        <span class="status"><span class="dot live"></span> Live</span>
+        <span class="status"><span class="dot case"></span> Case study</span>
+        <span class="lbl-inline">Role · Lead developer</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

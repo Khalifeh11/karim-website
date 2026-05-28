@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Voice &amp; tone</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="_card.css">
+<style>
+  body { background: #fbfbf9; font-family: 'Geist', sans-serif; }
+  .card { padding: 22px 28px; gap: 12px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .col-block { display: flex; flex-direction: column; gap: 6px; }
+  .head {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 500;
+  }
+  .dot { width: 7px; height: 7px; border-radius: 50%; }
+  .good .dot { background: oklch(0.55 0.13 145); } .good .head { color: oklch(0.40 0.13 145); }
+  .bad .dot { background: oklch(0.55 0.15 25); } .bad .head { color: oklch(0.45 0.14 25); }
+  .quote {
+    font-size: 14px; line-height: 1.5; color: #1a1a1a;
+    padding: 10px 12px; border-left: 2px solid #1a1a1a; background: rgba(0,0,0,0.02);
+    border-radius: 0 6px 6px 0;
+  }
+  .bad .quote { border-left-color: oklch(0.55 0.15 25); text-decoration: line-through; text-decoration-color: oklch(0.55 0.15 25 / 0.5); color: #555; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="label">Voice &amp; tone — first person, lowercase confidence, no marketing slop</div>
+    <div class="grid">
+      <div class="col-block good">
+        <div class="head"><span class="dot"></span>do</div>
+        <div class="quote">"I rebuilt their checkout in 6 weeks. Conversion went from 1.8% to 3.1%."</div>
+      </div>
+      <div class="col-block bad">
+        <div class="head"><span class="dot"></span>don't</div>
+        <div class="quote">"We leverage cutting-edge tech to craft transformative digital experiences."</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

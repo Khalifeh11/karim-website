@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Modern — display specimen</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="_card.css">
+<style>
+  html, body { background: oklch(0.155 0.008 150); color: oklch(0.97 0.012 95); }
+  body { font-family: 'Geist', sans-serif; }
+  .card { padding: 22px 28px; gap: 6px; text-transform: lowercase; }
+  .label { color: oklch(0.55 0.012 115); }
+  .specimen {
+    font-family: 'Geist', sans-serif;
+    font-weight: 700;
+    font-size: 80px;
+    line-height: 0.95;
+    letter-spacing: -0.045em;
+    color: oklch(0.97 0.012 95);
+    font-feature-settings: "ss01", "cv11";
+  }
+  .specimen .accent { color: oklch(0.80 0.11 148); }
+  .meta {
+    display: flex; gap: 18px;
+    font-family: 'Geist Mono', monospace;
+    font-size: 11px;
+    color: oklch(0.55 0.012 115);
+    margin-top: 6px;
+  }
+  .meta b { color: oklch(0.97 0.012 95); font-weight: 500; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="label">a · modern — display</div>
+    <div class="specimen">fast, careful <span class="accent">web work.</span></div>
+    <div class="meta"><span><b>geist</b></span><span>700</span><span>−0.045em</span><span>0.95 lh</span></div>
+  </div>
+</body>
+</html>

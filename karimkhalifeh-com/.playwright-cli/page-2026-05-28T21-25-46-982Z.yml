@@ -1,0 +1,38 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link ">_ karim_khalifeh" [ref=e4] [cursor=pointer]:
+        - /url: "#"
+        - generic [ref=e5]: ">_"
+        - generic [ref=e6]: karim_khalifeh
+      - navigation [ref=e7]:
+        - link "01 work" [ref=e8] [cursor=pointer]:
+          - /url: "#"
+          - generic [ref=e9]: "01"
+          - generic [ref=e10]: work
+        - link "02 about" [ref=e11] [cursor=pointer]:
+          - /url: "#"
+          - generic [ref=e12]: "02"
+          - generic [ref=e13]: about
+        - link "03 contact" [ref=e14] [cursor=pointer]:
+          - /url: "#"
+          - generic [ref=e15]: "03"
+          - generic [ref=e16]: contact
+      - button "Toggle theme" [ref=e18] [cursor=pointer]:
+        - img [ref=e19]
+        - generic [ref=e25]: dark
+  - main [ref=e26]:
+    - generic [ref=e28]:
+      - paragraph [ref=e29]:
+        - generic [ref=e31]: available for new projects — april 2026
+      - heading "fast, careful web work for serious businesses." [level=1] [ref=e32]
+      - paragraph [ref=e33]: i'm karim — a freelance full-stack developer based in beirut. i build production-grade websites and web apps for startups and small businesses, locally and abroad.
+      - generic [ref=e34]:
+        - link "book a call →" [ref=e35] [cursor=pointer]:
+          - /url: "#"
+          - text: book a call
+          - generic [ref=e36]: →
+        - link "see selected work" [ref=e37] [cursor=pointer]:
+          - /url: "#"
+  - button "Open Next.js Dev Tools" [ref=e43] [cursor=pointer]:
+    - img [ref=e44]

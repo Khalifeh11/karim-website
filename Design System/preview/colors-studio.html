@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Studio — palette</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="_card.css">
+<style>
+  body { background: #fbfbf9; font-family: 'Geist', sans-serif; }
+  .card { padding: 22px 28px; gap: 14px; }
+  .swatches { display: grid; grid-template-columns: repeat(8, 1fr); gap: 10px; }
+  .sw { display: flex; flex-direction: column; gap: 6px; }
+  .chip { aspect-ratio: 1.4 / 1; border-radius: 6px; border: 1px solid rgba(0,0,0,0.06); }
+  .nm { font-size: 10px; color: #666; font-family: 'Geist Mono', monospace; }
+  .head { display: flex; gap: 18px; align-items: baseline; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="head">
+      <div class="label" style="color:#1a221c;font-weight:500">C · Studio</div>
+      <div class="label">bone · forest-ink · deep forest</div>
+    </div>
+    <div class="swatches">
+      <div class="sw"><div class="chip" style="background:oklch(0.955 0.018 90)"></div><div class="nm">bg</div></div>
+      <div class="sw"><div class="chip" style="background:oklch(0.925 0.020 90)"></div><div class="nm">surface-2</div></div>
+      <div class="sw"><div class="chip" style="background:oklch(0.88 0.018 95)"></div><div class="nm">border</div></div>
+      <div class="sw"><div class="chip" style="background:oklch(0.55 0.015 110)"></div><div class="nm">fg-3</div></div>
+      <div class="sw"><div class="chip" style="background:oklch(0.40 0.018 130)"></div><div class="nm">fg-2</div></div>
+      <div class="sw"><div class="chip" style="background:oklch(0.20 0.020 130)"></div><div class="nm">fg</div></div>
+      <div class="sw"><div class="chip" style="background:oklch(0.34 0.060 145)"></div><div class="nm">accent</div></div>
+      <div class="sw"><div class="chip" style="background:oklch(0.28 0.065 145)"></div><div class="nm">accent-hover</div></div>
+    </div>
+  </div>
+</body>
+</html>

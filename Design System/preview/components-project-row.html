@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Project card — Modern</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="_card.css">
+<style>
+  html, body { background: oklch(0.155 0.008 150); color: oklch(0.97 0.012 95); }
+  body { font-family: 'Geist', sans-serif; }
+  .card { padding: 22px 28px; gap: 14px; text-transform: lowercase; }
+  .label { color: oklch(0.55 0.012 115); }
+  .pc-meta-top {
+    display: flex; align-items: baseline; justify-content: space-between;
+    gap: 12px; margin-bottom: 8px;
+  }
+  .pc-id {
+    font-family: 'Geist Mono', monospace; font-size: 12px;
+    color: oklch(0.55 0.012 115);
+  }
+  .pc-id .num { color: oklch(0.80 0.11 148); margin-right: 6px; }
+  .pc-id .title { color: oklch(0.97 0.012 95); font-family: 'Geist', sans-serif; font-size: 13px; margin-left: 4px; }
+  .pc-year { font-family: 'Geist Mono', monospace; font-size: 12px; color: oklch(0.55 0.012 115); }
+  .pc-mockup {
+    aspect-ratio: 16/8;
+    border-radius: 8px;
+    border: 1px solid oklch(0.27 0.012 145);
+    background: linear-gradient(135deg, oklch(0.36 0.06 140), oklch(0.22 0.05 145));
+    position: relative; overflow: hidden;
+  }
+  .pc-chrome {
+    position: absolute; left: 0; right: 0; top: 0; height: 22px;
+    background: oklch(0.22 0.010 148);
+    border-bottom: 1px solid oklch(0.30 0.012 148);
+    display: flex; align-items: center; padding: 0 10px;
+    gap: 5px;
+  }
+  .pc-chrome .dot { width: 6px; height: 6px; border-radius: 50%; background: oklch(0.45 0.012 148); }
+  .pc-chrome .url {
+    margin-left: 8px;
+    font-family: 'Geist Mono', monospace; font-size: 9px;
+    color: oklch(0.55 0.012 115);
+    padding: 2px 8px;
+    background: rgba(0,0,0,0.20);
+    border-radius: 9999px;
+  }
+  .pc-bottom {
+    display: flex; justify-content: space-between; align-items: center;
+    gap: 16px; margin-top: 6px;
+  }
+  .pc-sub { font-size: 12px; color: oklch(0.97 0.012 95); }
+  .pc-stack { display: flex; gap: 5px; }
+  .chip {
+    font-family: 'Geist Mono', monospace; font-size: 10px;
+    padding: 3px 8px; border-radius: 9999px;
+    border: 1px solid oklch(0.27 0.012 145);
+    color: oklch(0.74 0.010 100);
+    text-transform: none;
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="label">project card — large mockup as centerpiece</div>
+    <div class="pc-meta-top">
+      <div class="pc-id">
+        <span class="num">01 /</span><span>halab books</span><span class="title">— Halab Books</span>
+      </div>
+      <div class="pc-year">2025</div>
+    </div>
+    <div class="pc-mockup">
+      <div class="pc-chrome">
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        <span class="url">halabbooks.com</span>
+      </div>
+    </div>
+    <div class="pc-bottom">
+      <div class="pc-sub">rare-book commerce, rebuilt.</div>
+      <div class="pc-stack">
+        <span class="chip">Next.js</span>
+        <span class="chip">Postgres</span>
+        <span class="chip">Stripe</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

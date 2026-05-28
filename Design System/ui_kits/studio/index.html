@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en" class="dir-studio">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Karim Khalifeh — studio of one, Beirut</title>
+<link rel="stylesheet" href="../../colors_and_type.css">
+<link rel="stylesheet" href="styles.css">
+<script type="application/json" id="projects-data">
+[
+  {
+    "slug": "halab-books",
+    "title": "Halab Books",
+    "subtitle": "Rare-book commerce, rebuilt.",
+    "client": "Halab Books",
+    "year": "2025",
+    "duration": "8 weeks",
+    "role": "Lead developer",
+    "stack": ["Next.js", "TypeScript", "Postgres", "Stripe", "Algolia", "Vercel"],
+    "image": "linear-gradient(135deg, oklch(0.65 0.09 70) 0%, oklch(0.35 0.07 60) 100%)",
+    "problem": "Halab Books sells rare Arabic-language books to collectors worldwide. Their Shopify store couldn't handle one-of-one inventory with provenance, condition, and translation notes. Search broke past 200 titles, and a third of international orders failed at checkout.",
+    "built": "A custom storefront on Next.js with a Postgres-backed catalogue, Algolia search, and Stripe Connect for consignment payouts. The CMS lets the team list a book in four minutes with OCR'd provenance. Checkout supports 14 currencies and a Lebanese-bank-friendly path.",
+    "results": [["+72%", "online revenue Q1 2025 vs Q1 2024"], ["0.6s", "median page load (was 4.1s)"], ["94%", "intl checkout success (was 67%)"], ["4 min", "to list a new book (was 22 min)"]]
+  },
+  {
+    "slug": "postmark-console",
+    "title": "Postmark Console",
+    "subtitle": "Spreadsheets replaced with software.",
+    "client": "Postmark Logistics",
+    "year": "2025",
+    "duration": "6 weeks",
+    "role": "Sole developer",
+    "stack": ["Remix", "TypeScript", "Postgres", "Redis", "Fly.io"],
+    "image": "linear-gradient(135deg, oklch(0.34 0.060 145) 0%, oklch(0.22 0.05 145) 100%)",
+    "problem": "A logistics operator was running dispatch out of three fragile Google Sheets. Eight people stepped on each other's edits daily. They wanted software that worked like their spreadsheets — fast, keyboard-driven — without the bugs.",
+    "built": "An internal console with the spreadsheet's keyboard-driven feel: shortcuts everywhere, URL-filterable lists, live sync. Dispatch, billing, driver payouts in one app on Remix + Postgres + Redis. Deployed to Fly.io.",
+    "results": [["8 / 8", "ops team migrated in 2 weeks"], ["−40%", "time to dispatch a job"], ["0", "double-booked drivers since launch"], ["12k", "jobs in first quarter"]]
+  },
+  {
+    "slug": "saifi-studio",
+    "title": "Saifi Studio",
+    "subtitle": "Architecture, photographed and shipped.",
+    "client": "Saifi Architecture Studio",
+    "year": "2024",
+    "duration": "4 weeks",
+    "role": "Designer + developer",
+    "stack": ["Astro", "TypeScript", "Cloudinary", "Vercel"],
+    "image": "linear-gradient(135deg, oklch(0.78 0.04 95) 0%, oklch(0.50 0.04 90) 100%)",
+    "problem": "A small Beirut architecture practice with twenty-five years of beautiful built work and no website worth the projects. Brief: a portfolio that feels like a monograph. Had to be fast on 3G — many inquiries come from regions with slow internet.",
+    "built": "A static Astro site with full-bleed photography, Cloudinary handling responsive images, hand-rolled lightbox with keyboard and touch support. No JS framework runtime in production — homepage is 38kb gzipped.",
+    "results": [["0.7s", "LCP on throttled 3G"], ["38 kb", "homepage gzipped"], ["+220%", "inbound inquiries (6 mo)"], ["1", "regional design award (MENA 2024)"]]
+  },
+  {
+    "slug": "khoury-capital",
+    "title": "Khoury Capital",
+    "subtitle": "An LP portal that doesn't feel like a bank's.",
+    "client": "Khoury Capital",
+    "year": "2024",
+    "duration": "10 weeks",
+    "role": "Lead developer",
+    "stack": ["Next.js", "Postgres", "Auth.js", "S3", "Resend"],
+    "image": "linear-gradient(135deg, oklch(0.40 0.04 240) 0%, oklch(0.22 0.04 240) 100%)",
+    "problem": "A small fund needed to give LPs access to quarterly reports, K-1s, and capital-call docs without sending encrypted emails. Security airtight; experience calm — sophisticated clients but not full-time software users.",
+    "built": "A Next.js portal with magic-link auth, role-scoped document access, audit logs on every file view. Documents stream from S3 via signed-URL proxy. Capital-call notifications via Resend with one-click acknowledgement. A single column, generous type, no dashboards.",
+    "results": [["100%", "LPs onboarded in 3 weeks"], ["−85%", "support tickets re: access"], ["NDA", "on LP conversion lift"], ["0", "security incidents since launch"]]
+  }
+]
+</script>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel" src="components.jsx"></script>
+<script type="text/babel" src="pages.jsx"></script>
+<script type="text/babel" src="main.jsx"></script>
+</body>
+</html>

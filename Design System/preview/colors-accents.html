@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Accents — side by side</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+  body { background: #fbfbf9; font-family: 'Geist', sans-serif; }
+  .card { padding: 22px 28px; }
+  .accents { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; }
+  .a {
+    display: flex; flex-direction: column; gap: 10px;
+    padding: 14px 16px; border-radius: 10px; border: 1px solid #ececec;
+    background: #fff;
+  }
+  .swatch { height: 56px; border-radius: 6px; }
+  .meta { display: flex; flex-direction: column; gap: 2px; }
+  .nm { font-size: 12px; font-weight: 500; color: #1a1a1a; }
+  .hex { font-family: 'Geist Mono', monospace; font-size: 10px; color: #888; }
+  .desc { font-size: 11px; color: #777; margin-top: 2px; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="label">Accent colors — one per direction</div>
+    <div class="accents">
+      <div class="a">
+        <div class="swatch" style="background:oklch(0.45 0.13 30)"></div>
+        <div class="meta">
+          <div class="nm">A · Oxblood</div>
+          <div class="hex">oklch(0.45 0.13 30)</div>
+          <div class="desc">Magazine red. Links, primary CTA.</div>
+        </div>
+      </div>
+      <div class="a">
+        <div class="swatch" style="background:oklch(0.62 0.20 248)"></div>
+        <div class="meta">
+          <div class="nm">B · Electric Blue</div>
+          <div class="hex">oklch(0.62 0.20 248)</div>
+          <div class="desc">Software blue. Operator energy.</div>
+        </div>
+      </div>
+      <div class="a">
+        <div class="swatch" style="background:oklch(0.34 0.060 145)"></div>
+        <div class="meta">
+          <div class="nm">C · Deep Forest</div>
+          <div class="hex">oklch(0.34 0.06 145)</div>
+          <div class="desc">Quiet, grown-up green.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
