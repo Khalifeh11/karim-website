@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import DeviceRig from "./DeviceRig";
 import { SectionLabel } from "./Reveal";
 import { projects } from "../data/projects";
@@ -40,6 +40,18 @@ export default function ProjectCarousel() {
     return () => mq.removeEventListener("change", sync);
   }, []);
 
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key !== "ArrowLeft" && e.key !== "ArrowRight") return;
+      const tag = (document.activeElement as HTMLElement)?.tagName;
+      if (tag === "INPUT" || tag === "TEXTAREA") return;
+      e.preventDefault();
+      goTo(indexRef.current + (e.key === "ArrowRight" ? 1 : -1));
+    };
+    document.addEventListener("keydown", handleKey);
+    return () => document.removeEventListener("keydown", handleKey);
+  }, [goTo]);
+
   // Timing loop: fills the active progress bar via transform (no re-renders)
   // and advances when full. Holds while hovered/focused, when the tab is
   // hidden, or under prefers-reduced-motion (then it never auto-advances).
@@ -76,6 +88,7 @@ export default function ProjectCarousel() {
     <section
       id="work"
       className={`carousel page ${paused && !reduceMotion ? "is-paused" : ""}`}
+      style={{ '--scene-hue': projects[index].themeHue } as React.CSSProperties}
       aria-roledescription="carousel"
       aria-label="featured projects"
       // Pause for keyboard focus only — a mouse click parks focus on the
