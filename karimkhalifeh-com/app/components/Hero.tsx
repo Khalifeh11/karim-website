@@ -19,7 +19,7 @@ const item = {
   show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: EASE } },
 };
 
-const MAX_PX = 90;
+const MAX_PX = 80;
 const EASE_GLOW = 0.085;
 
 export default function Hero() {
