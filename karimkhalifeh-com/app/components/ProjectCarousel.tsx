@@ -9,10 +9,9 @@ const SLIDE_MS = 7000;
 
 export default function ProjectCarousel() {
   const [index, setIndex] = useState(0);
-  const [hovered, setHovered] = useState(false);
   const [focused, setFocused] = useState(false);
   const [reduceMotion, setReduceMotion] = useState(false);
-  const paused = hovered || focused;
+  const paused = focused;
 
   const indexRef = useRef(0);
   const barRefs = useRef<(HTMLSpanElement | null)[]>([]);
@@ -124,10 +123,6 @@ export default function ProjectCarousel() {
 
       <div
         className="carousel-stage"
-        // Hover-pause is scoped to the slides — hovering the section header,
-        // arrows, or progress bars shouldn't silently freeze the timer.
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
       >
         {projects.map((p, i) => (
           <article
