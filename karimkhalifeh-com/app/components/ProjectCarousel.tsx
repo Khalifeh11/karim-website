@@ -147,7 +147,7 @@ export default function ProjectCarousel() {
             <div className="slide-visual">
               <DeviceRig
                 preload={i === 0}
-                url={`${p.slug}.com`}
+                url={p.url}
                 desktop={{
                   src: p.desktop,
                   alt: `${p.name} — desktop view`,

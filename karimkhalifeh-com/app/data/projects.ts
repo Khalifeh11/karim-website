@@ -7,6 +7,8 @@ export type Project = {
   tags: string[];
   desktop: string;
   mobile: string;
+  /** Shown in the browser-frame address bar of the device rig. */
+  url: string;
   caseStudy: boolean;
 };
 
@@ -20,8 +22,9 @@ export const projects: Project[] = [
     blurb:
       "a next.js real-estate platform with cloudflare r2 image storage.",
     tags: ["next.js", "cloudflare r2"],
-    desktop: "/placeholders/golden-land-desktop.svg",
-    mobile: "/placeholders/golden-land-mobile.svg",
+    desktop: "/projects/goldenland.png",
+    mobile: "/projects/goldenland-mobile.png",
+    url: "goldenlandrealestate.net",
     caseStudy: true,
   },
   {
@@ -31,8 +34,9 @@ export const projects: Project[] = [
     blurb:
       "a laravel / inertia / react saas for book marketing — openai function-calling integration and multi-tenant provisioning.",
     tags: ["laravel", "inertia", "react", "openai"],
-    desktop: "/placeholders/storiad-desktop.svg",
-    mobile: "/placeholders/storiad-mobile.svg",
+    desktop: "/projects/storiad.png",
+    mobile: "/projects/storiad-mobile.png",
+    url: "app.storiad.com",
     caseStudy: false,
   },
   {
@@ -42,8 +46,9 @@ export const projects: Project[] = [
     blurb:
       "a consultancy redesign, featuring a dark-themed svg insights discovery wheel.",
     tags: ["redesign", "svg"],
-    desktop: "/placeholders/worktales-desktop.svg",
-    mobile: "/placeholders/worktales-mobile.svg",
+    desktop: "/projects/worktales.png",
+    mobile: "/projects/worktales-mobile.png",
+    url: "work-tales.pages.dev",
     caseStudy: false,
   },
   {
@@ -52,8 +57,9 @@ export const projects: Project[] = [
     displayName: "trublu",
     blurb: "case study in progress.",
     tags: [],
-    desktop: "/placeholders/trublu-desktop.svg",
-    mobile: "/placeholders/trublu-mobile.svg",
+    desktop: "/projects/trublu.png",
+    mobile: "/projects/trublu-mobile.png",
+    url: "trublutechnical.com",
     caseStudy: false,
   },
 ];
