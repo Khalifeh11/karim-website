@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import { EASE } from "./Reveal";
 
 const navItems = [
   { id: "work", num: "01", label: "work" },
@@ -19,7 +21,12 @@ export default function Header() {
   }, []);
 
   return (
-    <header className={`header ${scrolled ? "scrolled" : ""}`}>
+    <motion.header
+      className={`header ${scrolled ? "scrolled" : ""}`}
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.55, ease: EASE }}
+    >
       <div className="header-inner">
         <a className="brand-mark" href="#">
           <span className="prompt">{">_"}</span>
@@ -28,7 +35,7 @@ export default function Header() {
 
         <nav className="nav-numbered">
           {navItems.map((item) => (
-            <a key={item.id} href="#">
+            <a key={item.id} href={`#${item.id}`}>
               <span className="num">{item.num}</span>
               <span>{item.label}</span>
             </a>
@@ -42,7 +49,7 @@ export default function Header() {
           </button>
         </div>
       </div>
-    </header>
+    </motion.header>
   );
 }
 

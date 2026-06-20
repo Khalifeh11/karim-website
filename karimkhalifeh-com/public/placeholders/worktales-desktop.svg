@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+  <rect width="1600" height="1000" fill="#171b18"/>
+  <rect x="64" y="64" width="520" height="40" rx="8" fill="#242a25"/>
+  <rect x="64" y="140" width="900" height="88" rx="10" fill="#2b332c"/>
+  <rect x="64" y="252" width="700" height="88" rx="10" fill="#242a25"/>
+  <rect x="64" y="396" width="180" height="52" rx="26" fill="#5BAE78"/>
+  <rect x="64" y="540" width="1472" height="1" fill="#2b332c"/>
+  <rect x="64" y="600" width="448" height="320" rx="14" fill="#20251f"/>
+  <rect x="576" y="600" width="448" height="320" rx="14" fill="#20251f"/>
+  <rect x="1088" y="600" width="448" height="320" rx="14" fill="#20251f"/>
+  <text x="800" y="510" text-anchor="middle" font-family="monospace" font-size="40" fill="#5BAE78">worktales — desktop placeholder</text>
+</svg>

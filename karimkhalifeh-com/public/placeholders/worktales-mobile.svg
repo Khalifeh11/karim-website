@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="844" viewBox="0 0 390 844">
+  <rect width="390" height="844" fill="#171b18"/>
+  <rect x="24" y="84" width="240" height="28" rx="6" fill="#242a25"/>
+  <rect x="24" y="140" width="342" height="56" rx="8" fill="#2b332c"/>
+  <rect x="24" y="212" width="290" height="56" rx="8" fill="#242a25"/>
+  <rect x="24" y="308" width="140" height="44" rx="22" fill="#5BAE78"/>
+  <rect x="24" y="420" width="342" height="180" rx="12" fill="#20251f"/>
+  <rect x="24" y="624" width="342" height="180" rx="12" fill="#20251f"/>
+  <text x="195" y="395" text-anchor="middle" font-family="monospace" font-size="17" fill="#5BAE78">worktales — mobile</text>
+</svg>
