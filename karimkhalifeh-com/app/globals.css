@@ -834,7 +834,7 @@ a.work-row:hover .work-go {
 }
 
 .case-hero-grid .case-headline {
-  font-size: clamp(32px, 3.8vw, 58px);
+  font-size: clamp(40px, 5vw, 72px);
   margin-top: var(--s-4);
   margin-bottom: var(--s-5);
 }
@@ -851,11 +851,24 @@ a.work-row:hover .work-go {
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+}
+
+.case-hero-img::before {
+  content: '';
+  position: absolute;
+  inset: -25%;
+  background: radial-gradient(ellipse at 50% 55%, oklch(0.62 0.17 var(--scene-hue) / 0.2) 0%, transparent 65%);
+  filter: blur(52px);
+  pointer-events: none;
+  z-index: 0;
 }
 
 .case-hero-screenshot {
   width: 100%;
   height: auto;
+  position: relative;
+  z-index: 1;
 }
 
 @media (max-width: 768px) {
