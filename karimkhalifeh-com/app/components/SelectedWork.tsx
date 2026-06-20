@@ -6,9 +6,6 @@ export default function SelectedWork() {
     <section id="selected-work" className="selected page">
       <header className="section-head">
         <SectionLabel num="02">all projects</SectionLabel>
-        <a className="section-aside" href="/work">
-          view the work page <span className="arrow">→</span>
-        </a>
       </header>
 
       <ul className="work-index">

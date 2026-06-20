@@ -28,7 +28,7 @@ export default function Header() {
       transition={{ duration: 0.55, ease: EASE }}
     >
       <div className="header-inner">
-        <a className="brand-mark" href="#">
+        <a className="brand-mark" href="/">
           <span className="prompt">{">_"}</span>
           <span className="who preserve-case">karim_khalifeh</span>
         </a>

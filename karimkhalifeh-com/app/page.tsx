@@ -1,5 +1,5 @@
 import Header from "./components/Header";
-import Hero from "./components/Hero";
+import AetherFlowHero from "./components/AetherFlowHero";
 import ProjectCarousel from "./components/ProjectCarousel";
 import SelectedWork from "./components/SelectedWork";
 import ContactCta from "./components/ContactCta";
@@ -10,7 +10,7 @@ export default function Home() {
     <>
       <Header />
       <main>
-        <Hero />
+        <AetherFlowHero />
         <ProjectCarousel />
         <SelectedWork />
         <ContactCta />
