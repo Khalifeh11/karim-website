@@ -709,7 +709,7 @@ button {
 .device-rig {
   position: relative;
   /* room for the phone hanging off the bottom-left edge */
-  padding: 0 0 9% 7%;
+  padding: 0 0 14% 9%;
 }
 .rig-browser {
   border: 1px solid var(--border);
@@ -754,20 +754,20 @@ button {
   position: absolute;
   left: 0;
   bottom: 0;
-  width: 24%;
-  min-width: 96px;
+  width: 32%;
+  min-width: 110px;
   border: 1px solid var(--border-strong);
-  border-radius: clamp(18px, 2.6vw, 30px);
+  border-radius: clamp(20px, 3vw, 38px);
   background: var(--bg-elev);
-  padding: 4%;
-  padding-top: 7%;
-  padding-bottom: 7%;
+  padding: 1.2%;
+  padding-top: 2.5%;
+  padding-bottom: 2.5%;
   box-shadow: 0 20px 48px rgba(0, 0, 0, 0.55);
 }
 .rig-phone-screen {
   position: relative;
-  aspect-ratio: 390 / 700;
-  border-radius: clamp(10px, 1.4vw, 16px);
+  aspect-ratio: 390 / 844;
+  border-radius: clamp(14px, 2vw, 28px);
   overflow: hidden;
 }
 .rig-phone-screen img {
@@ -776,11 +776,11 @@ button {
 }
 .rig-phone-notch {
   position: absolute;
-  top: 3.2%;
+  top: 1.2%;
   left: 50%;
   transform: translateX(-50%);
-  width: 34%;
-  height: 6px;
+  width: 28%;
+  height: 5px;
   border-radius: var(--radius-pill);
   background: var(--surface-2);
 }
