@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import type { CSSProperties } from "react";
-import Image from "next/image";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import { Reveal, SectionLabel } from "@/app/components/Reveal";
+import GoldenLandHero from "./GoldenLandHero";
 
 export const metadata: Metadata = {
   title: "golden land real estate — karim khalifeh",
@@ -42,66 +42,7 @@ export default function GoldenLandPage() {
       <Header />
       <main style={{ "--scene-hue": 80 } as CSSProperties}>
         {/* ── Hero ─────────────────────────────────────────── */}
-        <section className="case-hero page">
-          <div className="case-hero-grid">
-            <div className="case-hero-text">
-              <SectionLabel num="01" as="p">
-                case study
-              </SectionLabel>
-
-              <Reveal delay={0.1}>
-                <h1 className="case-headline">
-                  golden land
-                  <br />
-                  real estate
-                </h1>
-              </Reveal>
-
-              <Reveal delay={0.18}>
-                <p className="case-sub">
-                  built the full platform from scratch — property listings, agent
-                  dashboards, and media uploads backed by cloudflare r2. listings
-                  go from draft to live without touching a server.
-                </p>
-              </Reveal>
-
-              <Reveal delay={0.26}>
-                <div className="case-meta">
-                  <div className="case-meta-item">
-                    <span className="case-meta-label">year</span>
-                    <span className="case-meta-value">2024</span>
-                  </div>
-                  <div className="case-meta-item">
-                    <span className="case-meta-label">stack</span>
-                    <span className="case-meta-value">next.js · cloudflare r2</span>
-                  </div>
-                  <div className="case-meta-item">
-                    <span className="case-meta-label">live</span>
-                    <a
-                      className="case-meta-link preserve-case"
-                      href="https://goldenlandrealestate.net"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      goldenlandrealestate.net →
-                    </a>
-                  </div>
-                </div>
-              </Reveal>
-            </div>
-
-            <Reveal delay={0.2} className="case-hero-img">
-              <Image
-                src="/projects/goldenland_devices_transparent.png"
-                alt="golden land real estate — project preview"
-                width={680}
-                height={500}
-                priority
-                className="case-hero-screenshot"
-              />
-            </Reveal>
-          </div>
-        </section>
+        <GoldenLandHero />
 
         {/* ── Overview ─────────────────────────────────────── */}
         <section className="case-section page">
