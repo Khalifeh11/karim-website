@@ -16,9 +16,9 @@ export default function ContactCta() {
         <div className="hero-actions">
           <a
             className="btn btn-primary preserve-case"
-            href="mailto:karim@storiad.com"
+            href="mailto:karim.ah.khalifeh@gmail.com"
           >
-            karim@storiad.com
+            karim.ah.khalifeh@gmail.com
             <span className="arrow">→</span>
           </a>
         </div>
