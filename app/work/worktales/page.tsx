@@ -4,46 +4,46 @@ import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import { Reveal, SectionLabel } from "@/app/components/Reveal";
-import GoldenLandHero from "./GoldenLandHero";
+import WorktalesHero from "./WorktalesHero";
 
 export const metadata: Metadata = {
-  title: "golden land real estate — karim khalifeh",
+  title: "worktales — karim khalifeh",
   description:
-    "full platform built from scratch — property listings, agent dashboards, and media uploads backed by cloudflare r2.",
+    "a ground-up redesign for a repositioning consultancy — a dark-themed, motion-driven web presence built to communicate focus and authority.",
 };
 
 const FEATURES = [
   {
     num: "01",
-    title: "property listings",
-    desc: "a complete browsable catalogue with filtering — buyers find the right property without friction.",
+    title: "ground-up redesign",
+    desc: "rebuilt the web presence from scratch to match the consultancy's new direction — the old site no longer reflected who they were.",
   },
   {
     num: "02",
-    title: "agent dashboards",
-    desc: "each agent gets a dedicated workspace to manage their listings, track status, and publish updates.",
+    title: "dark, focused identity",
+    desc: "a dark-themed layout sets a confident, premium tone that communicates focus and authority at a glance.",
   },
   {
     num: "03",
-    title: "media pipeline",
-    desc: "images upload directly to cloudflare r2, bypassing the server entirely. no storage limits, no redeployment.",
+    title: "motion-driven layout",
+    desc: "considered motion guides the eye through the story, giving the site momentum without distracting from the message.",
   },
   {
     num: "04",
-    title: "zero-touch publishing",
-    desc: "listings go from draft to live without touching a server. the whole workflow is self-contained.",
+    title: "crisp svg visuals",
+    desc: "vector graphics keep visuals sharp at any size and load fast, reinforcing the polished, technical feel.",
   },
 ];
 
-const STACK = ["next.js", "react", "typescript", "cloudflare r2"];
+const STACK = ["redesign", "svg"];
 
-export default function GoldenLandPage() {
+export default function WorktalesPage() {
   return (
     <>
       <Header />
-      <main style={{ "--scene-hue": 80 } as CSSProperties}>
+      <main style={{ "--scene-hue": 35 } as CSSProperties}>
         {/* ── Hero ─────────────────────────────────────────── */}
-        <GoldenLandHero />
+        <WorktalesHero />
 
         {/* ── Overview ─────────────────────────────────────── */}
         <section className="case-section page">
@@ -57,15 +57,14 @@ export default function GoldenLandPage() {
               </Reveal>
               <Reveal delay={0.14}>
                 <p className="case-p">
-                  golden land had no digital infrastructure. listings were
-                  managed manually, agents had no centralised workspace, and
-                  putting a property online meant calling someone with server
-                  access.
+                  worktales were repositioning their consultancy, but their old
+                  site no longer reflected who they were. it undersold a sharper,
+                  more focused business.
                 </p>
                 <p className="case-p">
-                  the goal was a complete operational platform — one that removed
-                  every technical bottleneck between an agent writing a listing
-                  and a buyer finding it.
+                  the goal was a web presence that matched the new direction — a
+                  dark-themed, motion-driven layout built to communicate focus
+                  and authority from the first scroll.
                 </p>
               </Reveal>
             </div>

@@ -4,7 +4,7 @@ import Image from "next/image";
 import { Reveal, SectionLabel } from "@/app/components/Reveal";
 import PhoneFrame from "@/app/components/PhoneFrame";
 
-export default function GoldenLandHero() {
+export default function StoriadHero() {
   return (
     <section className="case-hero page">
       <div className="case-hero-grid">
@@ -15,17 +15,15 @@ export default function GoldenLandHero() {
 
           <Reveal delay={0.1}>
             <h1 className="case-headline">
-              golden land
-              <br />
-              real estate
+              storiad
             </h1>
           </Reveal>
 
           <Reveal delay={0.18}>
             <p className="case-sub">
-              built the full platform from scratch — property listings, agent
-              dashboards, and media uploads backed by cloudflare r2. listings
-              go from draft to live without touching a server.
+              a multi-tenant saas for book marketing. built on laravel + react
+              via inertia, with openai function-calling to automate campaign
+              generation — each author gets an isolated, provisioned workspace.
             </p>
           </Reveal>
 
@@ -37,17 +35,17 @@ export default function GoldenLandHero() {
               </div>
               <div className="case-meta-item">
                 <span className="case-meta-label">stack</span>
-                <span className="case-meta-value">next.js · cloudflare r2</span>
+                <span className="case-meta-value">laravel · inertia · react · openai</span>
               </div>
               <div className="case-meta-item">
                 <span className="case-meta-label">live</span>
                 <a
                   className="case-meta-link preserve-case"
-                  href="https://goldenlandrealestate.net"
+                  href="https://app.storiad.com"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  goldenlandrealestate.net →
+                  app.storiad.com →
                 </a>
               </div>
             </div>
@@ -57,16 +55,16 @@ export default function GoldenLandHero() {
         <Reveal delay={0.2} className="case-hero-img">
           <div className="case-devices">
             <Image
-              src="/projects/Device - Macbook Air.png"
-              alt="golden land real estate — desktop preview"
+              src="/projects/storiad-macbook.png"
+              alt="storiad — desktop preview"
               width={720}
               height={445}
               priority
               className="case-hero-screenshot"
             />
             <PhoneFrame
-              src="/projects/goldenland-mobile.png"
-              alt="golden land real estate — mobile preview"
+              src="/projects/storiad-mobile.png"
+              alt="storiad — mobile preview"
               className="case-phone"
               priority
               sizes="(max-width: 768px) 26vw, 16vw"

@@ -40,7 +40,7 @@ export const projects: Project[] = [
     desktop: "/projects/storiad.png",
     mobile: "/projects/storiad-mobile.png",
     url: "app.storiad.com",
-    caseStudy: false,
+    caseStudy: true,
     themeHue: 55,
   },
   {
@@ -53,7 +53,7 @@ export const projects: Project[] = [
     desktop: "/projects/worktales.png",
     mobile: "/projects/worktales-mobile.png",
     url: "work-tales.pages.dev",
-    caseStudy: false,
+    caseStudy: true,
     themeHue: 35,
   },
   {
@@ -66,7 +66,7 @@ export const projects: Project[] = [
     desktop: "/projects/trublu.png",
     mobile: "/projects/trublu-mobile.png",
     url: "trublutechnical.com",
-    caseStudy: false,
+    caseStudy: true,
     themeHue: 200,
   },
 ];

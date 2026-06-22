@@ -1,4 +1,5 @@
 import Image from "next/image";
+import PhoneFrame from "./PhoneFrame";
 
 type Shot = { src: string; alt: string };
 
@@ -39,19 +40,13 @@ export default function DeviceRig({ desktop, mobile, preload, url }: Props) {
         </div>
       </figure>
 
-      <figure className="rig-phone">
-        <div className="rig-phone-screen">
-          <Image
-            src={mobile.src}
-            alt={mobile.alt}
-            fill
-            sizes="(max-width: 768px) 26vw, 14vw"
-            priority={preload}
-            unoptimized={unopt(mobile.src)}
-          />
-        </div>
-        <span className="rig-phone-notch" aria-hidden="true" />
-      </figure>
+      <PhoneFrame
+        src={mobile.src}
+        alt={mobile.alt}
+        className="rig-phone"
+        priority={preload}
+        sizes="(max-width: 768px) 26vw, 14vw"
+      />
     </div>
   );
 }

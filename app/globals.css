@@ -672,12 +672,9 @@ button {
   object-position: top;
 }
 
-.rig-phone {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 32%;
-  min-width: 110px;
+/* Visual phone frame — shared by the rig (homepage) and case-hero phones. */
+.phone-frame {
+  position: relative;
   border: 1px solid var(--border-strong);
   border-radius: clamp(20px, 3vw, 38px);
   background: var(--bg-elev);
@@ -686,17 +683,17 @@ button {
   padding-bottom: 2.5%;
   box-shadow: 0 20px 48px rgba(0, 0, 0, 0.55);
 }
-.rig-phone-screen {
+.phone-frame-screen {
   position: relative;
   aspect-ratio: 390 / 844;
   border-radius: clamp(14px, 2vw, 28px);
   overflow: hidden;
 }
-.rig-phone-screen img {
+.phone-frame-screen img {
   object-fit: cover;
   object-position: top;
 }
-.rig-phone-notch {
+.phone-frame-notch {
   position: absolute;
   top: 1.2%;
   left: 50%;
@@ -705,6 +702,15 @@ button {
   height: 5px;
   border-radius: var(--radius-pill);
   background: var(--surface-2);
+}
+
+/* Positioning only — composes with .phone-frame inside the device rig. */
+.rig-phone {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 32%;
+  min-width: 110px;
 }
 
 /* =========================================================================
@@ -853,7 +859,6 @@ a.work-row:hover .work-go {
   align-items: center;
   justify-content: center;
   position: relative;
-  perspective: 1600px;
 }
 
 .case-hero-img::before {
@@ -864,35 +869,34 @@ a.work-row:hover .work-go {
   filter: blur(52px);
   pointer-events: none;
   z-index: 0;
-  transform: translate(var(--glow-x, 0px), var(--glow-y, 0px));
-  transition: transform 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  will-change: transform;
+}
+
+.case-devices {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: var(--s-5);
+  position: relative;
+  z-index: 1;
+  width: 100%;
 }
 
 .case-hero-screenshot {
-  width: 100%;
   height: auto;
-  position: relative;
-  z-index: 1;
-  transform: rotateY(-9deg) rotateX(3deg) scale(1.05);
-  transform-origin: center 60%;
-  transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   filter: drop-shadow(0 34px 46px oklch(0 0 0 / 0.5));
-  will-change: transform;
 }
 
-.case-hero-img:hover .case-hero-screenshot {
-  transform: rotateY(0deg) rotateX(0deg) scale(1.08);
+.case-devices .case-hero-screenshot {
+  flex: 0 1 auto;
+  width: auto;
+  max-width: 78%;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .case-hero-screenshot {
-    transform: none;
-    transition: none;
-  }
-  .case-hero-img:hover .case-hero-screenshot {
-    transform: none;
-  }
+.case-phone {
+  flex: 0 0 24%;
+  min-width: 104px;
+  align-self: flex-end;
+  filter: drop-shadow(0 24px 36px oklch(0 0 0 / 0.45));
 }
 
 @media (max-width: 768px) {
@@ -902,8 +906,11 @@ a.work-row:hover .work-go {
   .case-hero-img {
     order: -1;
   }
-  .case-hero-screenshot {
-    transform: none;
+  .case-devices {
+    gap: var(--s-4);
+  }
+  .case-phone {
+    flex-basis: 28%;
   }
   .case-hero-grid .case-headline {
     font-size: clamp(40px, 9vw, 72px);

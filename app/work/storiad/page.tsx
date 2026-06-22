@@ -4,46 +4,46 @@ import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import { Reveal, SectionLabel } from "@/app/components/Reveal";
-import GoldenLandHero from "./GoldenLandHero";
+import StoriadHero from "./StoriadHero";
 
 export const metadata: Metadata = {
-  title: "golden land real estate — karim khalifeh",
+  title: "storiad — karim khalifeh",
   description:
-    "full platform built from scratch — property listings, agent dashboards, and media uploads backed by cloudflare r2.",
+    "a multi-tenant saas for book marketing — laravel + react via inertia, with openai function-calling automating campaign generation per author.",
 };
 
 const FEATURES = [
   {
     num: "01",
-    title: "property listings",
-    desc: "a complete browsable catalogue with filtering — buyers find the right property without friction.",
+    title: "multi-tenant workspaces",
+    desc: "each author gets an isolated, provisioned workspace — their data, campaigns, and settings fully separated from every other tenant.",
   },
   {
     num: "02",
-    title: "agent dashboards",
-    desc: "each agent gets a dedicated workspace to manage their listings, track status, and publish updates.",
+    title: "ai campaign generation",
+    desc: "openai function-calling automates campaign creation, turning a few inputs into structured marketing output without manual setup.",
   },
   {
     num: "03",
-    title: "media pipeline",
-    desc: "images upload directly to cloudflare r2, bypassing the server entirely. no storage limits, no redeployment.",
+    title: "inertia-driven ui",
+    desc: "a laravel back end paired with a react front end over inertia — server-driven routing with the responsiveness of a single-page app.",
   },
   {
     num: "04",
-    title: "zero-touch publishing",
-    desc: "listings go from draft to live without touching a server. the whole workflow is self-contained.",
+    title: "automated provisioning",
+    desc: "new tenants are spun up and provisioned automatically, so onboarding an author needs no manual intervention.",
   },
 ];
 
-const STACK = ["next.js", "react", "typescript", "cloudflare r2"];
+const STACK = ["laravel", "inertia", "react", "openai"];
 
-export default function GoldenLandPage() {
+export default function StoriadPage() {
   return (
     <>
       <Header />
-      <main style={{ "--scene-hue": 80 } as CSSProperties}>
+      <main style={{ "--scene-hue": 55 } as CSSProperties}>
         {/* ── Hero ─────────────────────────────────────────── */}
-        <GoldenLandHero />
+        <StoriadHero />
 
         {/* ── Overview ─────────────────────────────────────── */}
         <section className="case-section page">
@@ -57,15 +57,15 @@ export default function GoldenLandPage() {
               </Reveal>
               <Reveal delay={0.14}>
                 <p className="case-p">
-                  golden land had no digital infrastructure. listings were
-                  managed manually, agents had no centralised workspace, and
-                  putting a property online meant calling someone with server
-                  access.
+                  marketing a book is repetitive, manual work — and most authors
+                  don&apos;t have the time or tooling to do it well. storiad
+                  needed a platform that could carry that load for many authors
+                  at once, each in their own space.
                 </p>
                 <p className="case-p">
-                  the goal was a complete operational platform — one that removed
-                  every technical bottleneck between an agent writing a listing
-                  and a buyer finding it.
+                  the goal was a multi-tenant saas that provisions a private
+                  workspace per author and uses ai to turn campaign setup from a
+                  chore into a few clicks.
                 </p>
               </Reveal>
             </div>

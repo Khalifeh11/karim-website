@@ -4,46 +4,46 @@ import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import { Reveal, SectionLabel } from "@/app/components/Reveal";
-import GoldenLandHero from "./GoldenLandHero";
+import TrubluHero from "./TrubluHero";
 
 export const metadata: Metadata = {
-  title: "golden land real estate — karim khalifeh",
+  title: "trublu technical — karim khalifeh",
   description:
-    "full platform built from scratch — property listings, agent dashboards, and media uploads backed by cloudflare r2.",
+    "a full build for a technical services firm — a complete design converted into production with a clean, lead-focused layout.",
 };
 
 const FEATURES = [
   {
     num: "01",
-    title: "property listings",
-    desc: "a complete browsable catalogue with filtering — buyers find the right property without friction.",
+    title: "design to production",
+    desc: "took a finished design and turned it into a pixel-faithful, production-ready site — no compromises between mockup and build.",
   },
   {
     num: "02",
-    title: "agent dashboards",
-    desc: "each agent gets a dedicated workspace to manage their listings, track status, and publish updates.",
+    title: "lead-focused layout",
+    desc: "every section is structured to guide visitors toward enquiry, with clear calls to action that turn interest into leads.",
   },
   {
     num: "03",
-    title: "media pipeline",
-    desc: "images upload directly to cloudflare r2, bypassing the server entirely. no storage limits, no redeployment.",
+    title: "responsive across devices",
+    desc: "the layout holds up from wide desktop down to mobile, so the firm looks sharp wherever a prospect lands.",
   },
   {
     num: "04",
-    title: "zero-touch publishing",
-    desc: "listings go from draft to live without touching a server. the whole workflow is self-contained.",
+    title: "fast, clean delivery",
+    desc: "built lean for quick load times and a frictionless first impression — the site feels as professional as the service behind it.",
   },
 ];
 
-const STACK = ["next.js", "react", "typescript", "cloudflare r2"];
+const STACK = ["next.js", "react", "typescript"];
 
-export default function GoldenLandPage() {
+export default function TrubluPage() {
   return (
     <>
       <Header />
-      <main style={{ "--scene-hue": 80 } as CSSProperties}>
+      <main style={{ "--scene-hue": 200 } as CSSProperties}>
         {/* ── Hero ─────────────────────────────────────────── */}
-        <GoldenLandHero />
+        <TrubluHero />
 
         {/* ── Overview ─────────────────────────────────────── */}
         <section className="case-section page">
@@ -57,15 +57,13 @@ export default function GoldenLandPage() {
               </Reveal>
               <Reveal delay={0.14}>
                 <p className="case-p">
-                  golden land had no digital infrastructure. listings were
-                  managed manually, agents had no centralised workspace, and
-                  putting a property online meant calling someone with server
-                  access.
+                  trublu is a technical services firm that needed a web presence
+                  matching the quality of their work. they had a complete design
+                  but no production site to put it in front of prospects.
                 </p>
                 <p className="case-p">
-                  the goal was a complete operational platform — one that removed
-                  every technical bottleneck between an agent writing a listing
-                  and a buyer finding it.
+                  the goal was a faithful, fast build that did more than look
+                  good — a layout engineered to convert visitors into leads.
                 </p>
               </Reveal>
             </div>
