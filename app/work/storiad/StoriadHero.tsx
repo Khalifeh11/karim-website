@@ -27,29 +27,6 @@ export default function StoriadHero() {
             </p>
           </Reveal>
 
-          <Reveal delay={0.26}>
-            <div className="case-meta">
-              <div className="case-meta-item">
-                <span className="case-meta-label">year</span>
-                <span className="case-meta-value">2024</span>
-              </div>
-              <div className="case-meta-item">
-                <span className="case-meta-label">stack</span>
-                <span className="case-meta-value">laravel · inertia · react · openai</span>
-              </div>
-              <div className="case-meta-item">
-                <span className="case-meta-label">live</span>
-                <a
-                  className="case-meta-link preserve-case"
-                  href="https://app.storiad.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  app.storiad.com →
-                </a>
-              </div>
-            </div>
-          </Reveal>
         </div>
 
         <Reveal delay={0.2} className="case-hero-img">
@@ -69,6 +46,30 @@ export default function StoriadHero() {
               priority
               sizes="(max-width: 768px) 26vw, 16vw"
             />
+          </div>
+        </Reveal>
+
+        <Reveal delay={0.3} className="case-hero-meta">
+          <div className="case-meta">
+            <div className="case-meta-item">
+              <span className="case-meta-label">year</span>
+              <span className="case-meta-value">2024</span>
+            </div>
+            <div className="case-meta-item">
+              <span className="case-meta-label">stack</span>
+              <span className="case-meta-value">laravel · inertia · react · openai</span>
+            </div>
+            <div className="case-meta-item">
+              <span className="case-meta-label">live</span>
+              <a
+                className="case-meta-link preserve-case"
+                href="https://app.storiad.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                app.storiad.com →
+              </a>
+            </div>
           </div>
         </Reveal>
       </div>

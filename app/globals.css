@@ -846,12 +846,19 @@ a.work-row:hover .work-go {
   margin-bottom: var(--s-5);
 }
 
-.case-hero-grid .case-meta {
+.case-hero-meta {
+  grid-column: 1 / -1;
+  width: 100%;
+}
+
+.case-hero-meta .case-meta {
+  width: 100%;
   flex-wrap: nowrap;
 }
 
-.case-hero-grid .case-meta-item {
-  padding: 12px 16px;
+.case-hero-meta .case-meta-item {
+  flex: 1;
+  padding: 14px 28px;
 }
 
 .case-hero-img {
@@ -1160,6 +1167,9 @@ a.work-row:hover .work-go {
   }
   .case-meta-item:last-child {
     border-bottom: none;
+  }
+  .case-hero-meta .case-meta-item {
+    flex: none;
   }
   .case-features {
     grid-template-columns: 1fr;

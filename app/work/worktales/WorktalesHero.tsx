@@ -28,29 +28,6 @@ export default function WorktalesHero() {
             </p>
           </Reveal>
 
-          <Reveal delay={0.26}>
-            <div className="case-meta">
-              <div className="case-meta-item">
-                <span className="case-meta-label">year</span>
-                <span className="case-meta-value">2024</span>
-              </div>
-              <div className="case-meta-item">
-                <span className="case-meta-label">stack</span>
-                <span className="case-meta-value">redesign · svg</span>
-              </div>
-              <div className="case-meta-item">
-                <span className="case-meta-label">live</span>
-                <a
-                  className="case-meta-link preserve-case"
-                  href="https://work-tales.pages.dev"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  work-tales.pages.dev →
-                </a>
-              </div>
-            </div>
-          </Reveal>
         </div>
 
         <Reveal delay={0.2} className="case-hero-img">
@@ -70,6 +47,30 @@ export default function WorktalesHero() {
               priority
               sizes="(max-width: 768px) 26vw, 16vw"
             />
+          </div>
+        </Reveal>
+
+        <Reveal delay={0.3} className="case-hero-meta">
+          <div className="case-meta">
+            <div className="case-meta-item">
+              <span className="case-meta-label">year</span>
+              <span className="case-meta-value">2024</span>
+            </div>
+            <div className="case-meta-item">
+              <span className="case-meta-label">stack</span>
+              <span className="case-meta-value">redesign · svg</span>
+            </div>
+            <div className="case-meta-item">
+              <span className="case-meta-label">live</span>
+              <a
+                className="case-meta-link preserve-case"
+                href="https://work-tales.pages.dev"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                work-tales.pages.dev →
+              </a>
+            </div>
           </div>
         </Reveal>
       </div>
