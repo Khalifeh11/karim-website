@@ -1,10 +1,17 @@
 "use client";
 
+import { Fragment } from "react";
 import Image from "next/image";
 import { Reveal, SectionLabel } from "@/app/components/Reveal";
 import PhoneFrame from "@/app/components/PhoneFrame";
+import { getProject } from "@/app/data/projects";
+
+const project = getProject("trublu");
 
 export default function TrubluHero() {
+  const { name, headline, blurb, tags, url, year, heroDesktop, heroMobile } =
+    project;
+
   return (
     <section className="case-hero page">
       <div className="case-hero-grid">
@@ -15,35 +22,33 @@ export default function TrubluHero() {
 
           <Reveal delay={0.1}>
             <h1 className="case-headline">
-              trublu
-              <br />
-              technical
+              {headline.split("\n").map((line, i) => (
+                <Fragment key={i}>
+                  {i > 0 && <br />}
+                  {line}
+                </Fragment>
+              ))}
             </h1>
           </Reveal>
 
           <Reveal delay={0.18}>
-            <p className="case-sub">
-              a full build for a technical services firm — converted a complete
-              design into production, with a clean layout optimised to turn
-              visitors into leads.
-            </p>
+            <p className="case-sub">{blurb}</p>
           </Reveal>
-
         </div>
 
         <Reveal delay={0.2} className="case-hero-img">
           <div className="case-devices">
             <Image
-              src="/projects/turblue-macbook.png"
-              alt="trublu technical — desktop preview"
+              src={heroDesktop}
+              alt={`${name} — desktop preview`}
               width={720}
               height={445}
               priority
               className="case-hero-screenshot"
             />
             <PhoneFrame
-              src="/projects/trublu-mobile.png"
-              alt="trublu technical — mobile preview"
+              src={heroMobile}
+              alt={`${name} — mobile preview`}
               className="case-phone"
               priority
               sizes="(max-width: 768px) 26vw, 16vw"
@@ -55,21 +60,21 @@ export default function TrubluHero() {
           <div className="case-meta">
             <div className="case-meta-item">
               <span className="case-meta-label">year</span>
-              <span className="case-meta-value">2024</span>
+              <span className="case-meta-value">{year}</span>
             </div>
             <div className="case-meta-item">
               <span className="case-meta-label">stack</span>
-              <span className="case-meta-value">next.js · react · typescript</span>
+              <span className="case-meta-value">{tags.join(" · ")}</span>
             </div>
             <div className="case-meta-item">
               <span className="case-meta-label">live</span>
               <a
                 className="case-meta-link preserve-case"
-                href="https://trublutechnical.com"
+                href={`https://${url}`}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                trublutechnical.com →
+                {url} →
               </a>
             </div>
           </div>

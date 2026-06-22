@@ -1,10 +1,17 @@
 "use client";
 
+import { Fragment } from "react";
 import Image from "next/image";
 import { Reveal, SectionLabel } from "@/app/components/Reveal";
 import PhoneFrame from "@/app/components/PhoneFrame";
+import { getProject } from "@/app/data/projects";
+
+const project = getProject("worktales");
 
 export default function WorktalesHero() {
+  const { name, headline, blurb, tags, url, year, heroDesktop, heroMobile } =
+    project;
+
   return (
     <section className="case-hero page">
       <div className="case-hero-grid">
@@ -15,34 +22,33 @@ export default function WorktalesHero() {
 
           <Reveal delay={0.1}>
             <h1 className="case-headline">
-              worktales
+              {headline.split("\n").map((line, i) => (
+                <Fragment key={i}>
+                  {i > 0 && <br />}
+                  {line}
+                </Fragment>
+              ))}
             </h1>
           </Reveal>
 
           <Reveal delay={0.18}>
-            <p className="case-sub">
-              worktales were repositioning their consultancy — the old site no
-              longer reflected who they were. redesigned the web presence from
-              the ground up with a dark-themed, motion-driven layout built to
-              communicate focus and authority.
-            </p>
+            <p className="case-sub">{blurb}</p>
           </Reveal>
-
         </div>
 
         <Reveal delay={0.2} className="case-hero-img">
           <div className="case-devices">
             <Image
-              src="/projects/worktales-macbook.png"
-              alt="worktales — desktop preview"
+              src={heroDesktop}
+              alt={`${name} — desktop preview`}
               width={720}
               height={445}
               priority
               className="case-hero-screenshot"
             />
             <PhoneFrame
-              src="/projects/worktales-mobile.png"
-              alt="worktales — mobile preview"
+              src={heroMobile}
+              alt={`${name} — mobile preview`}
               className="case-phone"
               priority
               sizes="(max-width: 768px) 26vw, 16vw"
@@ -54,21 +60,21 @@ export default function WorktalesHero() {
           <div className="case-meta">
             <div className="case-meta-item">
               <span className="case-meta-label">year</span>
-              <span className="case-meta-value">2024</span>
+              <span className="case-meta-value">{year}</span>
             </div>
             <div className="case-meta-item">
               <span className="case-meta-label">stack</span>
-              <span className="case-meta-value">redesign · svg</span>
+              <span className="case-meta-value">{tags.join(" · ")}</span>
             </div>
             <div className="case-meta-item">
               <span className="case-meta-label">live</span>
               <a
                 className="case-meta-link preserve-case"
-                href="https://work-tales.pages.dev"
+                href={`https://${url}`}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                work-tales.pages.dev →
+                {url} →
               </a>
             </div>
           </div>

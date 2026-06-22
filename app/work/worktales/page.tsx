@@ -4,7 +4,10 @@ import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import { Reveal, SectionLabel } from "@/app/components/Reveal";
+import { getProject } from "@/app/data/projects";
 import WorktalesHero from "./WorktalesHero";
+
+const project = getProject("worktales");
 
 export const metadata: Metadata = {
   title: "worktales — karim khalifeh",
@@ -35,13 +38,11 @@ const FEATURES = [
   },
 ];
 
-const STACK = ["redesign", "svg"];
-
 export default function WorktalesPage() {
   return (
     <>
       <Header />
-      <main style={{ "--scene-hue": 35 } as CSSProperties}>
+      <main style={{ "--scene-hue": project.themeHue } as CSSProperties}>
         {/* ── Hero ─────────────────────────────────────────── */}
         <WorktalesHero />
 
@@ -99,7 +100,7 @@ export default function WorktalesPage() {
             </SectionLabel>
             <Reveal delay={0.1}>
               <ul className="case-stack" aria-label="technologies used">
-                {STACK.map((s) => (
+                {project.tags.map((s) => (
                   <li key={s} className="case-stack-item">
                     {s}
                   </li>

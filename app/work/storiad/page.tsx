@@ -4,7 +4,10 @@ import Link from "next/link";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import { Reveal, SectionLabel } from "@/app/components/Reveal";
+import { getProject } from "@/app/data/projects";
 import StoriadHero from "./StoriadHero";
+
+const project = getProject("storiad");
 
 export const metadata: Metadata = {
   title: "storiad — karim khalifeh",
@@ -35,13 +38,11 @@ const FEATURES = [
   },
 ];
 
-const STACK = ["laravel", "inertia", "react", "openai"];
-
 export default function StoriadPage() {
   return (
     <>
       <Header />
-      <main style={{ "--scene-hue": 55 } as CSSProperties}>
+      <main style={{ "--scene-hue": project.themeHue } as CSSProperties}>
         {/* ── Hero ─────────────────────────────────────────── */}
         <StoriadHero />
 
@@ -100,7 +101,7 @@ export default function StoriadPage() {
             </SectionLabel>
             <Reveal delay={0.1}>
               <ul className="case-stack" aria-label="technologies used">
-                {STACK.map((s) => (
+                {project.tags.map((s) => (
                   <li key={s} className="case-stack-item">
                     {s}
                   </li>
