@@ -1,4 +1,5 @@
 import Link from "next/link";
+import SoundToggle from "./SoundToggle";
 
 /** Editorial top bar — serif nameplate + numbered mono nav. */
 export default function EditorialMasthead() {
@@ -36,6 +37,7 @@ export default function EditorialMasthead() {
               </span>
             </span>
           </a>
+          <SoundToggle />
         </nav>
       </div>
     </header>

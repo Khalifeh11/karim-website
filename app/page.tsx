@@ -1,5 +1,6 @@
 import Preloader from "./components/editorial/Preloader";
 import Cursor from "./components/editorial/Cursor";
+import SoundController from "./components/editorial/SoundController";
 import EditorialMasthead from "./components/editorial/EditorialMasthead";
 import EditorialHero from "./components/editorial/EditorialHero";
 import WorkIndex from "./components/editorial/WorkIndex";
@@ -11,6 +12,7 @@ export default function Home() {
   return (
     <div className="dir-editorial">
       <Cursor />
+      <SoundController />
       <Preloader />
       <EditorialMasthead />
       <main>
