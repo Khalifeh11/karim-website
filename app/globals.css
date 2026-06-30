@@ -1393,6 +1393,7 @@ a.work-row:hover .work-go {
 
   --ed-pad: clamp(20px, 5vw, 72px);
   --ed-max: 1320px;
+  --masthead-h: 59px;
 
   text-transform: none; /* opt out of the global lowercase */
   background: var(--paper);
@@ -1481,42 +1482,228 @@ body:has(.dir-editorial) {
 .ed-sound {
   display: inline-flex;
   align-items: center;
-  gap: 7px;
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
   color: var(--ink-3);
   transition: color var(--dur) var(--ease-out);
 }
 .ed-sound:hover {
   color: var(--ink);
 }
-.ed-sound-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  border: 1px solid currentColor;
-  transition: background-color var(--dur) var(--ease-out),
-    border-color var(--dur) var(--ease-out);
+/* Icon-only in the desktop masthead; the label is revealed in the mobile menu. */
+.ed-sound-label {
+  display: none;
+}
+.ed-sound-bars {
+  width: 17px;
+  height: 16px;
+  display: block;
+  overflow: visible;
+}
+.ed-sound-bars rect {
+  fill: currentColor;
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  transition: fill var(--dur) var(--ease-out);
 }
 .ed-sound[aria-pressed="true"] {
   color: var(--ink);
 }
-.ed-sound[aria-pressed="true"] .ed-sound-dot {
-  background: var(--accent);
-  border-color: var(--accent);
+.ed-sound[aria-pressed="true"] .ed-sound-bars rect {
+  fill: var(--accent);
+  animation: ed-sound-bar 900ms var(--ease-out) infinite;
+}
+.ed-sound[aria-pressed="true"] .ed-sound-bars rect:nth-child(1) {
+  animation-delay: 0ms;
+}
+.ed-sound[aria-pressed="true"] .ed-sound-bars rect:nth-child(2) {
+  animation-delay: 150ms;
+}
+.ed-sound[aria-pressed="true"] .ed-sound-bars rect:nth-child(3) {
+  animation-delay: 300ms;
+}
+.ed-sound[aria-pressed="true"] .ed-sound-bars rect:nth-child(4) {
+  animation-delay: 450ms;
+}
+@keyframes ed-sound-bar {
+  0%,
+  100% {
+    transform: scaleY(0.4);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ed-sound[aria-pressed="true"] .ed-sound-bars rect {
+    animation: none;
+  }
+}
+
+/* ---- MOBILE NAV (editorial masthead) ---- */
+.ed-menu-toggle {
+  display: none; /* shown < 720px */
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  color: var(--ink-2);
+  background: none;
+  border: 0;
+  padding: 4px 0;
+  transition: color var(--dur) var(--ease-out);
+}
+.ed-menu-toggle:hover {
+  color: var(--ink);
+}
+.ed-menu-icon {
+  position: relative;
+  width: 22px;
+  height: 11px;
+  flex: none;
+}
+.ed-menu-icon span {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 1.5px;
+  background: currentColor;
+  transition: transform var(--dur) var(--ease-out),
+    opacity var(--dur) var(--ease-out);
+}
+.ed-menu-icon span:first-child {
+  top: 0;
+}
+.ed-menu-icon span:last-child {
+  bottom: 0;
+}
+.ed-menu-toggle.is-open .ed-menu-icon span:first-child {
+  transform: translateY(4.75px) rotate(45deg);
+}
+.ed-menu-toggle.is-open .ed-menu-icon span:last-child {
+  transform: translateY(-4.75px) rotate(-45deg);
+}
+
+.ed-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  display: flex;
+  flex-direction: column;
+  padding: 0 var(--ed-pad) calc(env(safe-area-inset-bottom) + 40px);
+  background: color-mix(in oklab, var(--paper) 97%, transparent);
+  backdrop-filter: blur(18px) saturate(1.1);
+}
+.ed-menu-bar {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 24px;
+  padding-block: 18px;
+  padding-top: calc(env(safe-area-inset-top) + 18px);
+  border-bottom: 1px solid var(--rule);
+}
+.ed-menu-nav {
+  display: flex;
+  flex-direction: column;
+  margin-top: clamp(16px, 5vw, 40px);
+}
+.ed-menu-link {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  padding: clamp(14px, 3.5vw, 22px) 0;
+  border-bottom: 1px solid var(--rule);
+  color: var(--ink);
+  transition: color var(--dur) var(--ease-out);
+}
+.ed-menu-link:hover {
+  color: var(--accent-ink);
+}
+.ed-menu-link .idx {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--ink-3);
+}
+.ed-menu-link-label {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+  font-weight: 440;
+  font-size: clamp(2.4rem, 13vw, 3.8rem);
+  letter-spacing: -0.02em;
+  line-height: 1;
+  margin-right: auto;
+}
+.ed-menu-link-arrow {
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  color: var(--ink-3);
+  transition: transform var(--dur) var(--ease-out);
+}
+.ed-menu-link:hover .ed-menu-link-arrow {
+  transform: translateX(4px);
+}
+.ed-menu-foot {
+  margin-top: auto;
+  padding-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: stretch;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+}
+.ed-menu-email {
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  color: var(--ink-2);
+  transition: color var(--dur) var(--ease-out);
+}
+.ed-menu-email:hover {
+  color: var(--ink);
+}
+/* Comfortable, labelled tap target for the sound toggle inside the menu (mobile). */
+.ed-menu-foot .ed-sound {
+  gap: 12px;
+  min-height: 48px;
+  align-items: center;
+  color: var(--ink-2);
+}
+.ed-menu-foot .ed-sound[aria-pressed="true"] {
+  color: var(--ink);
+}
+.ed-menu-foot .ed-sound-label {
+  display: inline;
+}
+.ed-menu-foot .ed-sound-bars {
+  width: 20px;
+  height: 18px;
+}
+
+@media (max-width: 720px) {
+  .ed-nav {
+    display: none;
+  }
+  .ed-menu-toggle {
+    display: inline-flex;
+  }
 }
 
 /* ---- HERO ---- */
 .ed-hero {
-  padding-top: clamp(56px, 11vw, 150px);
-  padding-bottom: clamp(48px, 9vw, 120px);
+  min-height: calc(100svh - var(--masthead-h));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: clamp(24px, 4vw, 56px);
+  padding-bottom: clamp(24px, 4vw, 56px);
   border-bottom: 1px solid var(--rule);
 }
 .ed-hero-dateline {
   display: flex;
   flex-wrap: wrap;
   gap: 8px 22px;
-  margin-bottom: clamp(28px, 5vw, 56px);
+  margin-bottom: clamp(16px, 3vw, 32px);
 }
 .ed-hero h1 {
   font-family: var(--font-display);
@@ -1534,7 +1721,7 @@ body:has(.dir-editorial) {
   color: var(--accent-ink);
 }
 .ed-hero-foot {
-  margin-top: clamp(36px, 6vw, 72px);
+  margin-top: clamp(24px, 4vw, 48px);
   display: grid;
   grid-template-columns: 1fr;
   gap: 28px;
@@ -1909,6 +2096,10 @@ a:focus-visible .ed-marquee-row {
 .ed-line {
   display: block;
   overflow: hidden;
+  /* Tight line-height clips descenders (g, p, y); pad the clip box down
+     and pull it back so spacing is unchanged. */
+  padding-bottom: 0.16em;
+  margin-bottom: -0.16em;
 }
 .ed-line-in {
   display: block;

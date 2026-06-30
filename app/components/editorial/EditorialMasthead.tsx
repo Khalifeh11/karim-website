@@ -1,5 +1,6 @@
 import Link from "next/link";
 import SoundToggle from "./SoundToggle";
+import EditorialMobileNav from "./EditorialMobileNav";
 
 /** Editorial top bar — serif nameplate + numbered mono nav. */
 export default function EditorialMasthead() {
@@ -39,6 +40,7 @@ export default function EditorialMasthead() {
           </a>
           <SoundToggle />
         </nav>
+        <EditorialMobileNav />
       </div>
     </header>
   );
