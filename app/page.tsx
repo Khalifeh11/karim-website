@@ -1,21 +1,21 @@
-import Header from "./components/Header";
-import AetherFlowHero from "./components/AetherFlowHero";
-import ProjectCarousel from "./components/ProjectCarousel";
-import SelectedWork from "./components/SelectedWork";
-import ContactCta from "./components/ContactCta";
-import Footer from "./components/Footer";
+import EditorialMasthead from "./components/editorial/EditorialMasthead";
+import EditorialHero from "./components/editorial/EditorialHero";
+import WorkIndex from "./components/editorial/WorkIndex";
+import EditorialAbout from "./components/editorial/EditorialAbout";
+import EditorialContact from "./components/editorial/EditorialContact";
+import EditorialFooter from "./components/editorial/EditorialFooter";
 
 export default function Home() {
   return (
-    <>
-      <Header />
+    <div className="dir-editorial">
+      <EditorialMasthead />
       <main>
-        <AetherFlowHero />
-        <ProjectCarousel />
-        <SelectedWork />
-        <ContactCta />
+        <EditorialHero />
+        <WorkIndex />
+        <EditorialAbout />
+        <EditorialContact />
       </main>
-      <Footer />
-    </>
+      <EditorialFooter />
+    </div>
   );
 }
