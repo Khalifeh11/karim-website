@@ -2327,10 +2327,11 @@ body:has(.dir-noir) {
     border-bottom: 1px solid var(--rule);
     padding-block: clamp(56px, 12vh, 96px);
   }
-  /* Opaque on mobile so the fixed crystal doesn't bleed through the stack. */
+  /* Stay translucent on mobile too, so the fixed crystal remains visible
+     behind the work stack after the hero — just a touch more opaque than
+     desktop for legibility over the small-screen vertical layout. */
   .noir-sheet--glass {
-    background: var(--paper);
-    backdrop-filter: none;
+    background: color-mix(in oklab, var(--paper) 80%, transparent);
   }
 }
 
