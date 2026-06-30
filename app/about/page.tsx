@@ -1,15 +1,14 @@
 import type { Metadata } from "next";
 import type { CSSProperties } from "react";
-import Header from "@/app/components/Header";
-import Footer from "@/app/components/Footer";
-import ContactCta from "@/app/components/ContactCta";
-import { Reveal, SectionLabel } from "@/app/components/Reveal";
-import AboutHero from "./AboutHero";
+import Cursor from "@/app/components/editorial/Cursor";
+import NoirNav from "@/app/components/noir/NoirNav";
+import NoirFooter from "@/app/components/noir/NoirFooter";
+import GsapReveal from "@/app/components/scroll/GsapReveal";
 
 export const metadata: Metadata = {
   title: "about — karim khalifeh",
   description:
-    "karim khalifeh — a full-stack developer in beirut building production-grade web apps that hold up as your business scales.",
+    "Karim Khalifeh — a full-stack developer in Beirut building production-grade web apps that hold up as your business scales.",
 };
 
 const TOOLKIT = [
@@ -22,104 +21,134 @@ const TOOLKIT = [
 
 export default function AboutPage() {
   return (
-    <>
-      <Header />
-      <main style={{ "--scene-hue": 148 } as CSSProperties}>
-        {/* ── Hero ─────────────────────────────────────────── */}
-        <AboutHero />
+    <div className="dir-noir">
+      <Cursor />
+      <NoirNav />
 
-        {/* ── What I do ────────────────────────────────────── */}
-        <section className="case-section page">
-          <div className="case-section-inner">
-            <SectionLabel num="02" as="p">
-              what i do
-            </SectionLabel>
-            <div>
-              <Reveal delay={0.08}>
-                <h2 className="case-h2">production-grade web apps, end to end</h2>
-              </Reveal>
-              <Reveal delay={0.14}>
-                <p className="case-p">
-                  i build full-stack web applications — owning the data model,
-                  the backend logic, and the interface — so the whole thing
-                  holds together instead of being stitched from parts that
-                  don&apos;t quite fit. at storiad i led the migration of a
-                  near-1,000-user publishing platform off wordpress onto a custom
-                  laravel and react app, then shipped self-serve multi-tenant
-                  infrastructure that provisions a secured site per author on
-                  demand.
-                </p>
-                <p className="case-p">
-                  i also build applied-ai features that earn their place:
-                  in-app assistants using llm tool calling, structured outputs,
-                  and usage metering — not ai for its own sake, but to remove
-                  real, repetitive work. the goal on every project is the same:
-                  something that works on day one and won&apos;t need rebuilding
-                  when the business grows.
-                </p>
-              </Reveal>
-            </div>
+      <main>
+        {/* Hero */}
+        <section
+          className="noir-section"
+          style={{ paddingTop: "clamp(140px, 18vh, 220px)" } as CSSProperties}
+        >
+          <div className="noir-wrap">
+            <GsapReveal as="p" className="noir-eyebrow">
+              <span className="accent">◆</span>&nbsp;&nbsp;About
+            </GsapReveal>
+            <GsapReveal as="h1" className="noir-lead" delay={0.06} style={{ marginTop: 24 } as CSSProperties}>
+              I build web apps that hold up as the business scales.
+            </GsapReveal>
           </div>
         </section>
 
-        {/* ── Background ────────────────────────────────────── */}
-        <section className="case-section page">
-          <div className="case-section-inner">
-            <SectionLabel num="03" as="p">
-              background
-            </SectionLabel>
-            <div>
-              <Reveal delay={0.08}>
-                <h2 className="case-h2">a route into engineering through people</h2>
-              </Reveal>
-              <Reveal delay={0.14}>
-                <p className="case-p">
-                  i came to software from clinical and health psychology — an
-                  msc from bangor university before i moved into full-stack
-                  development. that background is less of a detour than it
-                  sounds: it left me with a habit of starting from the person
-                  using the thing, not the feature list.
-                </p>
-                <p className="case-p">
-                  in practice that means asking what a user is actually trying to
-                  do before deciding what to build, and weighing how a system
-                  feels under load — not only whether it passes its tests. i work
-                  in english and arabic natively, and in professional french.
-                </p>
-              </Reveal>
+        {/* What I do */}
+        <section className="noir-sheet noir-section">
+          <div className="noir-wrap">
+            <div className="noir-section-head">
+              <GsapReveal as="p" className="noir-eyebrow">
+                <span className="accent">02</span> — What I do
+              </GsapReveal>
+              <GsapReveal as="h2" className="noir-h2">
+                Production-grade web apps, end to end.
+              </GsapReveal>
             </div>
+            <GsapReveal className="noir-prose" delay={0.08}>
+              <p>
+                I build full-stack web applications — owning the data model, the
+                backend logic, and the interface — so the whole thing holds
+                together instead of being stitched from parts that don’t quite
+                fit. At Storiad I led the migration of a near-1,000-user
+                publishing platform off WordPress onto a custom Laravel and React
+                app, then shipped self-serve multi-tenant infrastructure that
+                provisions a secured site per author on demand.
+              </p>
+              <p>
+                I also build applied-AI features that earn their place: in-app
+                assistants using LLM tool calling, structured outputs, and usage
+                metering — not AI for its own sake, but to remove real, repetitive
+                work. The goal on every project is the same: something that works
+                on day one and won’t need rebuilding when the business grows.
+              </p>
+            </GsapReveal>
           </div>
         </section>
 
-        {/* ── Toolkit ───────────────────────────────────────── */}
-        <section className="case-section page">
-          <div className="case-section-inner">
-            <SectionLabel num="04" as="p">
-              toolkit
-            </SectionLabel>
-            <div className="about-skills">
+        {/* Background */}
+        <section className="noir-sheet noir-section">
+          <div className="noir-wrap">
+            <div className="noir-section-head">
+              <GsapReveal as="p" className="noir-eyebrow">
+                <span className="accent">03</span> — Background
+              </GsapReveal>
+              <GsapReveal as="h2" className="noir-h2">
+                A route into engineering through people.
+              </GsapReveal>
+            </div>
+            <GsapReveal className="noir-prose" delay={0.08}>
+              <p>
+                I came to software from clinical and health psychology — an MSc
+                from Bangor University before I moved into full-stack development.
+                That background is less of a detour than it sounds: it left me with
+                a habit of starting from the person using the thing, not the
+                feature list.
+              </p>
+              <p>
+                In practice that means asking what a user is actually trying to do
+                before deciding what to build, and weighing how a system feels
+                under load — not only whether it passes its tests. I work in
+                English and Arabic natively, and in professional French.
+              </p>
+            </GsapReveal>
+          </div>
+        </section>
+
+        {/* Toolkit */}
+        <section className="noir-sheet noir-section">
+          <div className="noir-wrap">
+            <div className="noir-section-head">
+              <GsapReveal as="p" className="noir-eyebrow">
+                <span className="accent">04</span> — Toolkit
+              </GsapReveal>
+            </div>
+            <div className="noir-skills">
               {TOOLKIT.map((group, i) => (
-                <Reveal key={group.label} delay={i * 0.06}>
-                  <div className="about-skill-group">
-                    <p className="about-skill-label">{group.label}</p>
-                    <ul className="case-stack" aria-label={group.label}>
-                      {group.items.map((item) => (
-                        <li key={item} className="case-stack-item">
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </Reveal>
+                <GsapReveal key={group.label} delay={i * 0.05}>
+                  <p className="noir-skill-label">{group.label}</p>
+                  <ul className="noir-skill-list" aria-label={group.label}>
+                    {group.items.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </GsapReveal>
               ))}
             </div>
           </div>
         </section>
 
-        {/* ── Contact ──────────────────────────────────────── */}
-        <ContactCta />
+        {/* Contact */}
+        <section className="noir-sheet noir-section">
+          <div className="noir-wrap">
+            <div className="noir-section-head">
+              <GsapReveal as="p" className="noir-eyebrow">
+                <span className="accent">05</span> — Contact
+              </GsapReveal>
+              <GsapReveal as="h2" className="noir-h2">
+                Let’s build something that lasts.
+              </GsapReveal>
+            </div>
+            <GsapReveal delay={0.08}>
+              <a
+                href="mailto:karim@storiad.com"
+                className="noir-panel-link preserve-case"
+              >
+                karim@storiad.com →
+              </a>
+            </GsapReveal>
+          </div>
+        </section>
       </main>
-      <Footer />
-    </>
+
+      <NoirFooter />
+    </div>
   );
 }

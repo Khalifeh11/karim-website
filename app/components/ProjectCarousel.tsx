@@ -17,6 +17,7 @@ export default function ProjectCarousel() {
   const barRefs = useRef<(HTMLSpanElement | null)[]>([]);
   const progressRef = useRef(0); // 0..1 within the current slide
   const pausedRef = useRef(false);
+  const touchStart = useRef<{ x: number; y: number } | null>(null);
 
   useEffect(() => {
     indexRef.current = index;
@@ -30,6 +31,24 @@ export default function ProjectCarousel() {
     progressRef.current = 0;
     setIndex(((i % projects.length) + projects.length) % projects.length);
   }, []);
+
+  // Touch swipe (mobile): decide on touchend so vertical page scrolling is
+  // never hijacked. A mostly-horizontal drag past the threshold advances —
+  // swipe left → next, swipe right → previous.
+  const onTouchStart = (e: React.TouchEvent) => {
+    const t = e.touches[0];
+    touchStart.current = { x: t.clientX, y: t.clientY };
+  };
+  const onTouchEnd = (e: React.TouchEvent) => {
+    const start = touchStart.current;
+    touchStart.current = null;
+    if (!start) return;
+    const t = e.changedTouches[0];
+    const dx = t.clientX - start.x;
+    const dy = t.clientY - start.y;
+    if (Math.abs(dx) < 45 || Math.abs(dx) <= Math.abs(dy)) return;
+    goTo(indexRef.current + (dx < 0 ? 1 : -1));
+  };
 
   useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -123,6 +142,8 @@ export default function ProjectCarousel() {
 
       <div
         className="carousel-stage"
+        onTouchStart={onTouchStart}
+        onTouchEnd={onTouchEnd}
       >
         {projects.map((p, i) => (
           <article

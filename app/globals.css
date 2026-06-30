@@ -2003,3 +2003,430 @@ a:focus-visible .ed-marquee-row {
   border-color: var(--accent);
   background: oklch(0.55 0.2 27 / 0.14);
 }
+
+/* =========================================================================
+   Direction C · Cinematic Noir
+   Scroll-driven / 3D prototype. Scoped to .dir-noir so the .dir-modern and
+   .dir-editorial pages stay untouched. Near-black stage, one cool accent,
+   mono labels over a tight sans display.
+   ========================================================================= */
+.dir-noir {
+  --font-display: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --font-serif: var(--font-fraunces), Georgia, serif;
+
+  --paper: oklch(0.12 0.015 260);
+  --paper-2: oklch(0.16 0.018 260);
+  --ink: oklch(0.95 0.01 250);
+  --ink-2: oklch(0.72 0.02 250);
+  --ink-3: oklch(0.52 0.03 255);
+  --rule: oklch(0.95 0.01 250 / 0.12);
+  --rule-strong: oklch(0.95 0.01 250 / 0.26);
+  --accent: oklch(0.74 0.14 250);
+  --accent-2: oklch(0.66 0.16 300);
+
+  --noir-pad: clamp(20px, 5vw, 80px);
+  --noir-max: 1320px;
+
+  text-transform: none; /* opt out of the global lowercase */
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-feature-settings: normal;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Paint the html/overscroll gutter the same near-black. */
+html:has(.dir-noir),
+body:has(.dir-noir) {
+  background: oklch(0.12 0.015 260);
+}
+.dir-noir ::selection {
+  background: var(--accent);
+  color: var(--paper);
+}
+.dir-noir main {
+  position: relative;
+  z-index: 1;
+  flex: 1 0 auto;
+}
+
+/* ── 3D canvas backdrop ──────────────────────────────────── */
+.noir-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+.noir-canvas canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+/* Static glow shown on reduced-motion / low-power / SSR — matches the scene's
+   resting frame so the swap is invisible. */
+.noir-canvas-poster {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(40% 50% at 50% 42%, oklch(0.74 0.14 250 / 0.22), transparent 70%),
+    radial-gradient(30% 40% at 62% 60%, oklch(0.66 0.16 300 / 0.14), transparent 70%),
+    var(--paper);
+}
+
+/* ── Shared layout helpers ───────────────────────────────── */
+.noir-wrap {
+  width: 100%;
+  max-width: var(--noir-max);
+  margin-inline: auto;
+  padding-inline: var(--noir-pad);
+}
+.noir-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.noir-eyebrow .accent {
+  color: var(--accent);
+}
+.noir-h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(2rem, 5vw, 3.6rem);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+}
+.noir-p {
+  max-width: 56ch;
+  color: var(--ink-2);
+  font-size: 1.05rem;
+  line-height: 1.65;
+}
+.noir-rule {
+  height: 1px;
+  background: var(--rule);
+  border: 0;
+}
+
+/* ── Nav ─────────────────────────────────────────────────── */
+.noir-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: clamp(16px, 2.4vw, 26px) var(--noir-pad);
+  mix-blend-mode: difference; /* stays legible over crystal + sheets */
+  color: #fff;
+}
+.noir-nav a {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.noir-nav-links {
+  display: flex;
+  gap: clamp(14px, 2vw, 28px);
+}
+.noir-nav-links a {
+  color: rgba(255, 255, 255, 0.7);
+  transition: color 0.25s var(--ease-out);
+}
+.noir-nav-links a:hover {
+  color: #fff;
+}
+.noir-brand {
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+@media (max-width: 640px) {
+  .noir-nav-links a:not(:last-child) {
+    display: none;
+  }
+}
+
+/* ── Hero ────────────────────────────────────────────────── */
+.noir-hero {
+  position: relative;
+  min-height: 100svh;
+  display: grid;
+  align-content: center;
+  padding: 0 var(--noir-pad);
+  text-align: center;
+}
+.noir-hero-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: clamp(2.8rem, 11vw, 9rem);
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+.noir-hero-title .thin {
+  font-weight: 200;
+  color: var(--ink-2);
+}
+.noir-hero-sub {
+  margin-top: clamp(16px, 2vw, 26px);
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  font-size: clamp(0.7rem, 1.4vw, 0.9rem);
+  color: var(--ink-2);
+}
+.noir-scrollcue {
+  position: absolute;
+  bottom: clamp(20px, 4vh, 40px);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.noir-scrollcue span {
+  width: 1px;
+  height: 42px;
+  background: linear-gradient(var(--accent), transparent);
+  animation: noir-cue 2s var(--ease-out) infinite;
+  transform-origin: top;
+}
+@keyframes noir-cue {
+  0% { transform: scaleY(0); opacity: 0; }
+  40% { transform: scaleY(1); opacity: 1; }
+  100% { transform: scaleY(1) translateY(42px); opacity: 0; }
+}
+
+/* ── Content sheets (opaque-ish panels over the fixed canvas) ── */
+.noir-sheet {
+  position: relative;
+  background: var(--paper);
+}
+.noir-sheet--glass {
+  background: color-mix(in oklab, var(--paper) 72%, transparent);
+  backdrop-filter: blur(2px);
+}
+.noir-section {
+  padding-block: clamp(80px, 12vh, 160px);
+}
+.noir-section-head {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-bottom: clamp(36px, 5vw, 72px);
+}
+
+/* ── Pinned horizontal section ───────────────────────────── */
+.noir-pin {
+  position: relative;
+  overflow: hidden;
+}
+.noir-pin-track {
+  display: flex;
+  align-items: stretch;
+  height: 100vh;
+  will-change: transform;
+}
+.noir-panel {
+  flex: 0 0 auto;
+  width: clamp(320px, 78vw, 760px);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--noir-pad);
+  border-right: 1px solid var(--rule);
+}
+.noir-panel--intro {
+  width: min(90vw, 560px);
+}
+.noir-panel-index {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+}
+.noir-panel-title {
+  margin-top: 14px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+}
+.noir-panel-blurb {
+  margin-top: 16px;
+  max-width: 42ch;
+  color: var(--ink-2);
+  line-height: 1.6;
+}
+.noir-panel-tags {
+  margin-top: 22px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.noir-tag {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  padding: 5px 10px;
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius-pill);
+  color: var(--ink-2);
+}
+.noir-panel-link {
+  margin-top: 26px;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  width: fit-content;
+}
+.noir-panel-link:hover {
+  color: var(--ink);
+}
+
+/* Touch / small-screen / reduced-motion fallback: no pin, no nested horizontal
+   scroll (that fights the vertical page gesture). Panels just stack vertically. */
+@media (max-width: 768px), (prefers-reduced-motion: reduce) {
+  .noir-pin {
+    overflow: visible;
+  }
+  .noir-pin-track {
+    flex-direction: column;
+    height: auto;
+    width: 100%;
+    transform: none !important; /* defend against a stale GSAP X-translate */
+  }
+  .noir-panel,
+  .noir-panel--intro {
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    border-right: 0;
+    border-bottom: 1px solid var(--rule);
+    padding-block: clamp(56px, 12vh, 96px);
+  }
+  /* Opaque on mobile so the fixed crystal doesn't bleed through the stack. */
+  .noir-sheet--glass {
+    background: var(--paper);
+    backdrop-filter: none;
+  }
+}
+
+/* ── Project grid (Work page) ────────────────────────────── */
+.noir-grid {
+  display: grid;
+  gap: clamp(20px, 3vw, 40px);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr));
+}
+.noir-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: clamp(22px, 3vw, 36px);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-lg);
+  background: var(--paper-2);
+  transition: border-color 0.3s var(--ease-out), transform 0.4s var(--ease-out);
+}
+.noir-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-4px);
+}
+.noir-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  color: var(--ink-3);
+}
+.noir-card-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  letter-spacing: -0.02em;
+}
+
+/* ── About ───────────────────────────────────────────────── */
+.noir-lead {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  font-size: clamp(1.6rem, 4vw, 3rem);
+  line-height: 1.18;
+  letter-spacing: -0.01em;
+  max-width: 18ch;
+}
+.noir-prose p {
+  max-width: 60ch;
+  color: var(--ink-2);
+  font-size: 1.08rem;
+  line-height: 1.7;
+}
+.noir-prose p + p {
+  margin-top: 1.2em;
+}
+.noir-skills {
+  display: grid;
+  gap: clamp(20px, 3vw, 40px);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+}
+.noir-skill-label {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 14px;
+}
+.noir-skill-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: var(--ink-2);
+}
+
+/* ── Footer ──────────────────────────────────────────────── */
+.noir-foot {
+  position: relative;
+  z-index: 1;
+  background: var(--paper);
+  border-top: 1px solid var(--rule);
+  padding: clamp(40px, 6vw, 80px) var(--noir-pad);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  color: var(--ink-3);
+}
+.noir-foot a:hover {
+  color: var(--accent);
+}
+

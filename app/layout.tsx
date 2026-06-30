@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Fraunces } from "next/font/google";
 import MotionProvider from "./components/MotionProvider";
+import SmoothScrollProvider from "./components/scroll/SmoothScrollProvider";
+// Lenis base styles — neutralizes the html `height:100%` and native
+// scroll-behavior so smooth scroll isn't fighting the layout.
+import "lenis/dist/lenis.css";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -37,7 +41,9 @@ export default function RootLayout({
       className={`dir-modern ${geistSans.variable} ${geistMono.variable} ${fraunces.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <MotionProvider>{children}</MotionProvider>
+        <MotionProvider>
+          <SmoothScrollProvider>{children}</SmoothScrollProvider>
+        </MotionProvider>
       </body>
     </html>
   );
