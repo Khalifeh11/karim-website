@@ -5,6 +5,8 @@ import { createPortal } from "react-dom";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { EASE } from "./Reveal";
+import SoundToggle from "./SoundToggle";
+import { playClick, playHover } from "./sound";
 
 const navItems = [
   { id: "work", num: "01", label: "work", href: "/#work" },
@@ -62,27 +64,38 @@ export default function Header() {
 
         <nav className="nav-numbered">
           {navItems.map((item) => (
-            <Link key={item.id} href={item.href}>
+            <Link
+              key={item.id}
+              href={item.href}
+              onMouseEnter={playHover}
+              onClick={playClick}
+            >
               <span className="num">{item.num}</span>
               <span>{item.label}</span>
             </Link>
           ))}
         </nav>
 
-        <button
-          type="button"
-          className="nav-toggle"
-          aria-label="open menu"
-          aria-expanded={open}
-          aria-controls="mobile-menu"
-          onClick={() => setOpen(true)}
-        >
-          <span className="nav-toggle-label">menu</span>
-          <span className="nav-toggle-icon" aria-hidden="true">
-            <span />
-            <span />
-          </span>
-        </button>
+        <div className="header-right">
+          <SoundToggle />
+          <button
+            type="button"
+            className="nav-toggle"
+            aria-label="open menu"
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+            onClick={() => {
+              playClick();
+              setOpen(true);
+            }}
+          >
+            <span className="nav-toggle-label">menu</span>
+            <span className="nav-toggle-icon" aria-hidden="true">
+              <span />
+              <span />
+            </span>
+          </button>
+        </div>
       </div>
 
       {mounted &&
@@ -143,7 +156,10 @@ export default function Header() {
                       <Link
                         className="mobile-menu-link"
                         href={item.href}
-                        onClick={close}
+                        onClick={() => {
+                          playClick();
+                          close();
+                        }}
                       >
                         <span className="num">{item.num}</span>
                         <span className="mobile-menu-link-label">

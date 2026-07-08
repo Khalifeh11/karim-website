@@ -16,7 +16,7 @@ export default function TrubluHero() {
     <section className="case-hero page">
       <div className="case-hero-grid">
         <div className="case-hero-text">
-          <SectionLabel num="01" as="p">
+          <SectionLabel num="01" as="p" display>
             case study
           </SectionLabel>
 

@@ -11,7 +11,7 @@ export default function AboutHero() {
     <section className="case-hero page">
       <div className="case-hero-grid">
         <div className="case-hero-text">
-          <SectionLabel num="01" as="p">
+          <SectionLabel num="01" as="p" display>
             about
           </SectionLabel>
 

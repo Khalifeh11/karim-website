@@ -14,9 +14,25 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://karimkhalifeh.com"),
   title: "Karim Khalifeh — full-stack developer, Beirut",
   description:
     "I'm Karim — a freelance full-stack developer based in Beirut. I build fast, well-engineered websites and web apps for businesses around the world.",
+  openGraph: {
+    type: "website",
+    url: "/",
+    siteName: "karim khalifeh",
+    title: "Karim Khalifeh — full-stack developer, Beirut",
+    description:
+      "I'm Karim — a freelance full-stack developer based in Beirut. I build fast, well-engineered websites and web apps for businesses around the world.",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Karim Khalifeh — full-stack developer, Beirut",
+    description:
+      "I'm Karim — a freelance full-stack developer based in Beirut. I build fast, well-engineered websites and web apps for businesses around the world.",
+  },
 };
 
 export default function RootLayout({

@@ -1,8 +1,9 @@
 import { Reveal, SectionLabel } from "./Reveal";
+import LocalTime from "./LocalTime";
 
 export default function ContactCta() {
   return (
-    <section id="contact" className="contact-cta page has-grid">
+    <section id="contact" className="contact-cta page has-grid section-glow">
       <SectionLabel num="03" as="p" className="contact-kicker">
         contact
       </SectionLabel>
@@ -22,6 +23,9 @@ export default function ContactCta() {
             <span className="arrow">→</span>
           </a>
         </div>
+      </Reveal>
+      <Reveal delay={0.3}>
+        <LocalTime />
       </Reveal>
     </section>
   );

@@ -161,6 +161,43 @@ button {
   z-index: 1;
 }
 
+/* Ambient section glow — the carousel's radial motif at lower volume, so
+   text-only sections keep some atmosphere. Tune via --glow-* custom props. */
+.section-glow,
+.case-end {
+  position: relative;
+  isolation: isolate;
+}
+.section-glow::after,
+.case-end::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+  background: radial-gradient(
+    ellipse var(--glow-size, 60% 80%) at var(--glow-pos, 50% 50%),
+    oklch(0.24 0.036 var(--glow-hue, 148) / var(--glow-alpha, 0.7)) 0%,
+    transparent 72%
+  );
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Fades the hero's particle field into the page background instead of a
+   hard stop at the section edge. */
+.hero-fade {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: clamp(120px, 22vh, 220px);
+  background: linear-gradient(to bottom, transparent, var(--bg));
+  pointer-events: none;
+}
+
 /* =========================================================================
    HEADER — numbered nav, terminal brand
    ========================================================================= */
@@ -245,37 +282,77 @@ button {
 }
 
 .header-right {
+  grid-column: 3;
+  justify-self: end;
   display: flex;
   align-items: center;
   gap: 10px;
 }
-.theme-pill {
+
+/* Sound on/off — icon-only pill, sibling of the menu pill. Mono-line
+   speaker in the hamburger's stroke weight; accent waves when on,
+   diagonal slash when muted. */
+.sound-toggle {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 7px 13px;
+  padding: 8px 12px;
   border-radius: var(--radius-pill);
   border: 1px solid var(--border);
   background: var(--bg-elev);
-  font-family: var(--font-mono);
-  font-size: 12px;
   color: var(--fg-2);
-  transition: all var(--dur-fast) var(--ease-out);
+  transition: color var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out);
 }
-.theme-pill:hover {
+.sound-toggle:hover {
   color: var(--fg);
   border-color: var(--border-strong);
 }
-.theme-pill svg {
-  width: 14px;
-  height: 14px;
+.sound-toggle svg {
+  display: block;
+  width: 19px;
+  height: 15px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.sound-icon-wave {
+  stroke: var(--accent);
+  opacity: 0;
+  transition: opacity var(--dur-fast) var(--ease-out);
+}
+.sound-toggle[aria-pressed="true"] .sound-icon-wave {
+  opacity: 1;
+  animation: snd-wave 1.6s var(--ease-out) infinite;
+}
+.sound-toggle[aria-pressed="true"] .sound-icon-wave-2 {
+  animation-delay: -0.8s;
+}
+.sound-icon-slash {
+  transition: opacity var(--dur-fast) var(--ease-out);
+}
+.sound-toggle[aria-pressed="true"] .sound-icon-slash {
+  opacity: 0;
+}
+@keyframes snd-wave {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sound-toggle[aria-pressed="true"] .sound-icon-wave {
+    animation: none;
+  }
 }
 
 /* Mobile menu toggle — terminal-styled pill; hidden on desktop. */
 .nav-toggle {
   display: none;
-  grid-column: 3;
-  justify-self: end;
   align-items: center;
   gap: 9px;
   padding: 7px 9px 7px 14px;
@@ -425,11 +502,27 @@ button {
 }
 
 @media (max-width: 640px) {
+  /* Nav collapses into the overlay menu; the 3-column grid's 1fr tracks get
+     too narrow for two pills, so spread brand/controls with flex instead. */
+  .header-inner {
+    display: flex;
+    justify-content: space-between;
+  }
   .nav-numbered {
     display: none;
   }
   .nav-toggle {
     display: inline-flex;
+  }
+}
+
+/* Narrowest phones: menu pill goes icon-only so both pills + brand fit. */
+@media (max-width: 380px) {
+  .header-inner .nav-toggle {
+    padding: 7px 12px;
+  }
+  .header-inner .nav-toggle-label {
+    display: none;
   }
 }
 
@@ -513,6 +606,16 @@ button {
 }
 .hero-headline .accent {
   color: var(--accent);
+}
+.hero-headline .eyebrow {
+  display: block;
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 1;
+  letter-spacing: 0.14em;
+  color: var(--fg-3);
+  margin-bottom: 24px;
 }
 
 .hero-sub {
@@ -696,7 +799,7 @@ button {
 .slide-title {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: clamp(28px, 3.4vw, 44px);
+  font-size: clamp(30px, 3.8vw, 52px);
   letter-spacing: -0.03em;
   line-height: 1.05;
   margin-bottom: var(--s-4);
@@ -727,7 +830,8 @@ button {
 .slide-link {
   font-size: 15px;
   font-weight: 500;
-  color: var(--accent);
+  /* Follows the active slide's hue, like the progress fill. */
+  color: oklch(0.80 0.11 var(--scene-hue, 148));
 }
 .slide-link .arrow {
   display: inline-block;
@@ -876,6 +980,9 @@ button {
   padding-top: var(--s-9);
   padding-bottom: var(--s-9);
   border-top: 1px solid var(--border);
+  --glow-pos: 12% 0%;
+  --glow-size: 60% 100%;
+  --glow-alpha: 0.6;
 }
 .work-index {
   list-style: none;
@@ -901,7 +1008,7 @@ button {
 .work-name {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: clamp(18px, 2vw, 24px);
+  font-size: clamp(22px, 2.4vw, 32px);
   letter-spacing: -0.02em;
 }
 .work-tags {
@@ -919,15 +1026,54 @@ button {
 a.work-row:hover {
   background: var(--bg-elev);
 }
+/* Rows glow in their project's hue (set inline as --row-hue). */
 a.work-row:hover .work-name {
-  color: var(--accent);
+  color: oklch(0.80 0.11 var(--row-hue, 148));
 }
 a.work-row:hover .work-go {
-  color: var(--accent);
+  color: oklch(0.80 0.11 var(--row-hue, 148));
   transform: translateX(3px);
 }
 .work-row.is-static {
   color: var(--fg-2);
+}
+
+/* Cursor-following screenshot preview for the work index. Positioned via
+   JS transform; the transform transition provides the trailing motion. */
+.work-preview {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 40;
+  border: 1px solid oklch(0.45 0.06 var(--row-hue, 148) / 0.65);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--bg-elev);
+  box-shadow: 0 24px 56px rgba(0, 0, 0, 0.5),
+    0 0 44px oklch(0.5 0.09 var(--row-hue, 148) / 0.18);
+  opacity: 0;
+  scale: 0.96;
+  pointer-events: none;
+  transition: transform 0.4s var(--ease-out), opacity var(--dur) var(--ease-out),
+    scale var(--dur) var(--ease-out), border-color var(--dur) var(--ease-out);
+}
+.work-preview.is-visible {
+  opacity: 1;
+  scale: 1;
+}
+.work-preview-img {
+  object-fit: cover;
+  object-position: top;
+  opacity: 0;
+  transition: opacity var(--dur) var(--ease-out);
+}
+.work-preview-img.is-active {
+  opacity: 1;
+}
+@media (hover: none), (max-width: 860px) {
+  .work-preview {
+    display: none;
+  }
 }
 
 /* =========================================================================
@@ -937,6 +1083,8 @@ a.work-row:hover .work-go {
   padding-top: var(--s-10);
   padding-bottom: var(--s-10);
   border-top: 1px solid var(--border);
+  --glow-pos: 22% 85%;
+  --glow-size: 55% 95%;
 }
 .contact-kicker {
   font-family: var(--font-mono);
@@ -947,7 +1095,7 @@ a.work-row:hover .work-go {
 .contact-headline {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: clamp(34px, 4.6vw, 64px);
+  font-size: clamp(32px, 3.6vw, 48px);
   letter-spacing: -0.04em;
   line-height: 1.02;
   max-width: 18ch;
@@ -956,6 +1104,24 @@ a.work-row:hover .work-go {
 }
 .contact-headline .accent {
   color: var(--accent);
+}
+
+/* Live location/time line under the contact button. */
+.contact-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: var(--s-6);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--fg-3);
+}
+.contact-status .status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 4px color-mix(in oklab, var(--accent) 20%, transparent);
 }
 
 .footer {
@@ -978,6 +1144,15 @@ a.work-row:hover .work-go {
 /* =========================================================================
    CASE STUDY
    ========================================================================= */
+/* Re-derive the accent from the project's --scene-hue so each case study
+   carries its own tint (links, numbers, arrows) instead of global green. */
+.case-tinted {
+  --accent: oklch(0.80 0.11 var(--scene-hue, 148));
+  --accent-hover: oklch(0.86 0.11 var(--scene-hue, 148));
+  --accent-soft: oklch(0.40 0.07 var(--scene-hue, 148));
+  --focus: oklch(0.80 0.11 var(--scene-hue, 148) / 0.35);
+}
+
 .case-hero {
   min-height: 100dvh;
   display: flex;
@@ -1294,6 +1469,8 @@ a.work-row:hover .work-go {
   padding-top: var(--s-10);
   padding-bottom: var(--s-10);
   border-top: 1px solid var(--border);
+  --glow-pos: 40% 60%;
+  --glow-hue: var(--scene-hue);
 }
 .case-end-label {
   font-family: var(--font-mono);
@@ -1309,7 +1486,7 @@ a.work-row:hover .work-go {
 .case-end-title {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: clamp(32px, 5vw, 64px);
+  font-size: clamp(30px, 3.6vw, 48px);
   letter-spacing: -0.04em;
   line-height: 1;
   transition: color var(--dur) var(--ease-out);

@@ -10,6 +10,9 @@ export const metadata: Metadata = {
   title: "about — karim khalifeh",
   description:
     "karim khalifeh — a full-stack developer in beirut building production-grade web apps that hold up as your business scales.",
+  alternates: {
+    canonical: "/about",
+  },
 };
 
 const TOOLKIT = [

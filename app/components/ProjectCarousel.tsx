@@ -100,7 +100,7 @@ export default function ProjectCarousel() {
       }}
     >
       <header className="section-head">
-        <SectionLabel num="01">featured work</SectionLabel>
+        <SectionLabel num="01" display>featured work</SectionLabel>
         <div className="carousel-nav">
           <button
             type="button"

@@ -13,6 +13,9 @@ export const metadata: Metadata = {
   title: "golden land real estate — karim khalifeh",
   description:
     "full platform built from scratch — property listings, agent dashboards, and media uploads backed by cloudflare r2.",
+  alternates: {
+    canonical: "/work/golden-land",
+  },
 };
 
 const FEATURES = [
@@ -42,7 +45,7 @@ export default function GoldenLandPage() {
   return (
     <>
       <Header />
-      <main style={{ "--scene-hue": project.themeHue } as CSSProperties}>
+      <main className="case-tinted" style={{ "--scene-hue": project.themeHue } as CSSProperties}>
         {/* ── Hero ─────────────────────────────────────────── */}
         <GoldenLandHero />
 

@@ -13,6 +13,9 @@ export const metadata: Metadata = {
   title: "storiad — karim khalifeh",
   description:
     "a multi-tenant saas for book marketing — laravel + react via inertia, with openai function-calling automating campaign generation per author.",
+  alternates: {
+    canonical: "/work/storiad",
+  },
 };
 
 const FEATURES = [
@@ -42,7 +45,7 @@ export default function StoriadPage() {
   return (
     <>
       <Header />
-      <main style={{ "--scene-hue": project.themeHue } as CSSProperties}>
+      <main className="case-tinted" style={{ "--scene-hue": project.themeHue } as CSSProperties}>
         {/* ── Hero ─────────────────────────────────────────── */}
         <StoriadHero />
 

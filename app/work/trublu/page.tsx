@@ -13,6 +13,9 @@ export const metadata: Metadata = {
   title: "trublu technical — karim khalifeh",
   description:
     "a full build for a technical services firm — a complete design converted into production with a clean, lead-focused layout.",
+  alternates: {
+    canonical: "/work/trublu",
+  },
 };
 
 const FEATURES = [
@@ -42,7 +45,7 @@ export default function TrubluPage() {
   return (
     <>
       <Header />
-      <main style={{ "--scene-hue": project.themeHue } as CSSProperties}>
+      <main className="case-tinted" style={{ "--scene-hue": project.themeHue } as CSSProperties}>
         {/* ── Hero ─────────────────────────────────────────── */}
         <TrubluHero />
 

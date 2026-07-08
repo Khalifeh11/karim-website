@@ -13,6 +13,9 @@ export const metadata: Metadata = {
   title: "worktales — karim khalifeh",
   description:
     "a ground-up redesign for a repositioning consultancy — a dark-themed, motion-driven web presence built to communicate focus and authority.",
+  alternates: {
+    canonical: "/work/worktales",
+  },
 };
 
 const FEATURES = [
@@ -42,7 +45,7 @@ export default function WorktalesPage() {
   return (
     <>
       <Header />
-      <main style={{ "--scene-hue": project.themeHue } as CSSProperties}>
+      <main className="case-tinted" style={{ "--scene-hue": project.themeHue } as CSSProperties}>
         {/* ── Hero ─────────────────────────────────────────── */}
         <WorktalesHero />
 
