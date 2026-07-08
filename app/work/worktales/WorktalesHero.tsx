@@ -16,7 +16,7 @@ export default function WorktalesHero() {
     <section className="case-hero page">
       <div className="case-hero-grid">
         <div className="case-hero-text">
-          <SectionLabel num="01" as="p" display>
+          <SectionLabel num="01" as="p">
             case study
           </SectionLabel>
 
