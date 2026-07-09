@@ -3,15 +3,15 @@ import { Reveal, SectionLabel } from "./Reveal";
 const services = [
   {
     name: "full builds",
-    desc: "your product taken from first commit to launch. design, build, deploy — one person, no handoffs.",
+    desc: "your whole product, start to finish — designed, built, shipped, and kept running after launch. one person, no handoffs.",
   },
   {
     name: "web apps & saas",
-    desc: "dashboards, multi-tenant platforms, and ai features that actually ship.",
+    desc: "customer dashboards, client portals, and ai automations that cut real busywork — working software, not demos.",
   },
   {
     name: "redesigns",
-    desc: "your site, rebuilt to match who you are now.",
+    desc: "your site, rebuilt to make your offer clear, look credible, and give visitors an obvious next step.",
   },
 ];
 

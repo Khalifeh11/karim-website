@@ -24,7 +24,11 @@ export default function TrubluHero() {
             case study
           </SectionLabel>
 
+          {/* Keyed by name: React only untracks a shared-element name on
+              unmount, so flipping `name` to undefined on a re-render would
+              leak it in the registry and cause duplicate-name errors. */}
           <ViewTransition
+            key={named ? "named" : "unnamed"}
             name={named ? `case-title-${project.slug}` : undefined}
             share="morph"
             default="none"
@@ -57,6 +61,7 @@ export default function TrubluHero() {
               className="case-hero-screenshot"
             />
             <ViewTransition
+              key={named ? "named" : "unnamed"}
               name={named ? `case-phone-${project.slug}` : undefined}
               share="morph"
               default="none"

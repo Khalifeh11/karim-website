@@ -49,7 +49,15 @@ export default function DeviceRig({
         </div>
       </figure>
 
-      <ViewTransition name={phoneTransitionName} share="morph" default="none">
+      {/* Keyed by name: React only untracks a shared-element name on unmount,
+          so flipping `name` to undefined on a re-render would leak the old
+          name in its registry and trigger duplicate-name errors later. */}
+      <ViewTransition
+        key={phoneTransitionName ?? "unnamed"}
+        name={phoneTransitionName}
+        share="morph"
+        default="none"
+      >
         <PhoneFrame
           src={mobile.src}
           alt={mobile.alt}

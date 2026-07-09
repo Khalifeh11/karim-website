@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import type { CSSProperties } from "react";
-import Link from "next/link";
+import CaseEnd from "@/app/components/CaseEnd";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import { Reveal, SectionLabel } from "@/app/components/Reveal";
@@ -115,15 +115,7 @@ export default function StoriadPage() {
         </section>
 
         {/* ── End CTA ──────────────────────────────────────── */}
-        <div className="case-end page">
-          <Reveal>
-            <p className="case-end-label">explore more</p>
-            <Link className="case-end-cta" href="/#work">
-              <span className="case-end-title">back to all work</span>
-              <span className="case-end-arrow">→</span>
-            </Link>
-          </Reveal>
-        </div>
+        <CaseEnd />
       </main>
       <Footer />
     </>

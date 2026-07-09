@@ -233,8 +233,12 @@ export default function ProjectCarousel() {
                 {String(i + 1).padStart(2, "0")} / {String(projects.length).padStart(2, "0")}
               </p>
               {/* Names are only paired on the active slide so a hidden
-                  slide can never be the source of a cross-page morph. */}
+                  slide can never be the source of a cross-page morph.
+                  Keyed by name: React only untracks a name on unmount, so
+                  flipping `name` to undefined on a re-render would leak it
+                  in the registry and cause duplicate-name errors later. */}
               <ViewTransition
+                key={onHome && i === index ? "named" : "unnamed"}
                 name={onHome && i === index ? `case-title-${p.slug}` : undefined}
                 share="morph"
                 default="none"

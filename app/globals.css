@@ -1650,6 +1650,18 @@ a.work-row:hover .work-go {
 .case-end-cta:hover .case-end-arrow {
   transform: translateX(8px);
 }
+.case-end-back {
+  margin-top: var(--s-6);
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+.case-end-back a {
+  color: var(--fg-3);
+  transition: color var(--dur) var(--ease-out);
+}
+.case-end-back a:hover {
+  color: var(--accent);
+}
 
 /* =========================================================================
    RESPONSIVE — mobile-first collapses
