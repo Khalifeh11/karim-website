@@ -1,4 +1,4 @@
-// Tiny Web Audio "terminal blip" engine — synthesized, no assets, no deps.
+// Tiny Web Audio "mechanical thock" engine — synthesized, no assets, no deps.
 // Off by default; the choice persists in localStorage. All play functions
 // are safe to call anywhere: they no-op when sound is off or before init.
 
@@ -49,23 +49,56 @@ function getCtx() {
   return ctx;
 }
 
-// One short square-wave tone with a fast exponential decay — the whole
-// vocabulary of the terminal aesthetic is built from stacking these.
-function tone(
-  freq: number,
-  at: number,
-  dur: number,
-  peak: number,
-  type: OscillatorType = "square",
-) {
+// Mechanical "thock" vocabulary — the sound of a good keyboard switch, not
+// a video game. Two primitives: a filtered noise tick (the contact) and a
+// low sine thump (the body). No pitch melodies anywhere; the identity of
+// each event comes from texture and weight instead.
+
+let noiseBuf: AudioBuffer | null = null;
+
+function getNoise(ac: AudioContext) {
+  if (!noiseBuf) {
+    noiseBuf = ac.createBuffer(1, ac.sampleRate * 0.1, ac.sampleRate);
+    const data = noiseBuf.getChannelData(0);
+    for (let i = 0; i < data.length; i++) data[i] = Math.random() * 2 - 1;
+  }
+  return noiseBuf;
+}
+
+// Short burst of bandpassed noise — the "tick" of contact. Center frequency
+// sets the perceived material: high = plasticky tap, low = muted felt.
+function tick(at: number, dur: number, peak: number, center: number) {
+  const ac = getCtx();
+  if (!ac) return;
+  const t = ac.currentTime + at;
+  const src = ac.createBufferSource();
+  src.buffer = getNoise(ac);
+  const filter = ac.createBiquadFilter();
+  filter.type = "bandpass";
+  filter.frequency.setValueAtTime(center, t);
+  filter.Q.setValueAtTime(1.2, t);
+  const gain = ac.createGain();
+  gain.gain.setValueAtTime(0.0001, t);
+  gain.gain.linearRampToValueAtTime(peak, t + 0.002);
+  gain.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+  src.connect(filter).connect(gain).connect(ac.destination);
+  src.start(t);
+  src.stop(t + dur + 0.02);
+}
+
+// Low sine with a slight downward bend — the "body" behind the tick that
+// makes a click feel weighted instead of thin.
+function thump(at: number, dur: number, peak: number, freq: number) {
   const ac = getCtx();
   if (!ac) return;
   const t = ac.currentTime + at;
   const osc = ac.createOscillator();
-  const gain = ac.createGain();
-  osc.type = type;
+  osc.type = "sine";
   osc.frequency.setValueAtTime(freq, t);
-  gain.gain.setValueAtTime(peak, t);
+  osc.frequency.exponentialRampToValueAtTime(freq * 0.7, t + dur);
+  const gain = ac.createGain();
+  gain.gain.setValueAtTime(0.0001, t);
+  gain.gain.linearRampToValueAtTime(peak, t + 0.004);
   gain.gain.exponentialRampToValueAtTime(0.0001, t + dur);
   osc.connect(gain).connect(ac.destination);
   osc.start(t);
@@ -87,30 +120,33 @@ function ready() {
 
 let lastHover = 0;
 
-/** Quiet high blip for hovers. Throttled so link-sweeps don't machine-gun. */
+/** Featherweight tick for hovers — contact only, no body. Throttled so
+ *  link-sweeps don't machine-gun. */
 export function playHover() {
   if (!ready()) return;
   const now = performance.now();
   if (now - lastHover < 70) return;
   lastHover = now;
-  tone(1320, 0, 0.045, 0.015);
+  tick(0, 0.03, 0.02, 2600);
 }
 
-/** Two-step confirm blip for clicks / selections. */
+/** Full thock for clicks: sharp contact plus a low body an instant later,
+ *  like a switch bottoming out. */
 export function playClick() {
   if (!ready()) return;
-  tone(880, 0, 0.05, 0.03);
-  tone(1480, 0.055, 0.07, 0.025);
+  tick(0, 0.04, 0.06, 1800);
+  thump(0.004, 0.08, 0.05, 190);
 }
 
-/** Rising (on) / falling (off) pair for the sound switch itself. */
+/** Switch on = firm press (deeper body); off = softer release. Same texture
+ *  family, weight carries the meaning. */
 export function playToggle(on: boolean) {
   if (!ready()) return;
   if (on) {
-    tone(740, 0, 0.06, 0.03);
-    tone(1240, 0.07, 0.09, 0.025);
+    tick(0, 0.04, 0.06, 1800);
+    thump(0.004, 0.1, 0.06, 160);
   } else {
-    tone(1240, 0, 0.06, 0.03);
-    tone(740, 0.07, 0.09, 0.025);
+    tick(0, 0.035, 0.04, 1300);
+    thump(0.004, 0.07, 0.035, 130);
   }
 }
