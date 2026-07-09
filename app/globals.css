@@ -59,7 +59,7 @@
 /* Direction A — Modern. Dark by default. */
 .dir-modern {
   /* Families map to the next/font variables from layout.tsx */
-  --font-display: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: var(--font-instrument-serif), Georgia, "Times New Roman", serif;
   --font-body: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
 
@@ -458,9 +458,9 @@ button {
 }
 .mobile-menu-link-label {
   font-family: var(--font-display);
-  font-weight: 600;
-  font-size: clamp(34px, 11vw, 52px);
-  letter-spacing: -0.03em;
+  font-weight: 400;
+  font-size: clamp(36px, 11.5vw, 56px);
+  letter-spacing: -0.01em;
   line-height: 1;
   margin-right: auto;
 }
@@ -603,16 +603,17 @@ button {
 
 .hero-headline {
   font-family: var(--font-display);
-  font-weight: 700;
-  font-size: clamp(46px, 6.4vw, 92px);
-  line-height: 0.96;
-  letter-spacing: -0.045em;
+  font-weight: 400;
+  font-size: clamp(50px, 7vw, 100px);
+  line-height: 0.98;
+  letter-spacing: -0.015em;
   max-width: 15ch;
   margin-bottom: 32px;
   text-wrap: balance;
 }
 .hero-headline .accent {
   color: var(--accent);
+  font-style: italic;
 }
 .hero-headline .eyebrow {
   display: block;
@@ -777,6 +778,8 @@ button {
 /* Slides share one grid cell; the active one fades/lifts in. */
 .carousel-stage {
   display: grid;
+  /* vertical pans scroll the page; horizontal swipes drive the carousel */
+  touch-action: pan-y;
 }
 .carousel-slide {
   grid-area: 1 / 1;
@@ -805,9 +808,9 @@ button {
 }
 .slide-title {
   font-family: var(--font-display);
-  font-weight: 700;
-  font-size: clamp(30px, 3.8vw, 52px);
-  letter-spacing: -0.03em;
+  font-weight: 400;
+  font-size: clamp(33px, 4.2vw, 57px);
+  letter-spacing: -0.01em;
   line-height: 1.05;
   margin-bottom: var(--s-4);
   text-wrap: balance;
@@ -1014,9 +1017,9 @@ button {
 }
 .work-name {
   font-family: var(--font-display);
-  font-weight: 600;
-  font-size: clamp(22px, 2.4vw, 32px);
-  letter-spacing: -0.02em;
+  font-weight: 400;
+  font-size: clamp(24px, 2.7vw, 35px);
+  letter-spacing: -0.005em;
 }
 .work-tags {
   font-family: var(--font-mono);
@@ -1101,9 +1104,9 @@ a.work-row:hover .work-go {
 }
 .contact-headline {
   font-family: var(--font-display);
-  font-weight: 700;
-  font-size: clamp(32px, 3.6vw, 48px);
-  letter-spacing: -0.04em;
+  font-weight: 400;
+  font-size: clamp(35px, 4vw, 53px);
+  letter-spacing: -0.01em;
   line-height: 1.02;
   max-width: 18ch;
   margin-bottom: var(--s-6);
@@ -1325,9 +1328,9 @@ a.work-row:hover .work-go {
 
 .case-headline {
   font-family: var(--font-display);
-  font-weight: 700;
-  font-size: clamp(62px, 9vw, 124px);
-  letter-spacing: -0.048em;
+  font-weight: 400;
+  font-size: clamp(68px, 9.8vw, 136px);
+  letter-spacing: -0.02em;
   line-height: 0.91;
   margin-top: var(--s-5);
   margin-bottom: var(--s-6);
@@ -1400,9 +1403,9 @@ a.work-row:hover .work-go {
 
 .case-h2 {
   font-family: var(--font-display);
-  font-weight: 700;
-  font-size: clamp(26px, 3vw, 40px);
-  letter-spacing: -0.03em;
+  font-weight: 400;
+  font-size: clamp(29px, 3.3vw, 44px);
+  letter-spacing: -0.01em;
   line-height: 1.05;
   margin-bottom: var(--s-5);
   text-wrap: balance;
@@ -1443,9 +1446,9 @@ a.work-row:hover .work-go {
 }
 .case-feature-title {
   font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 16px;
-  letter-spacing: -0.02em;
+  font-weight: 400;
+  font-size: 18px;
+  letter-spacing: 0;
   margin-bottom: var(--s-2);
 }
 .case-feature-desc {
@@ -1492,9 +1495,9 @@ a.work-row:hover .work-go {
 }
 .case-end-title {
   font-family: var(--font-display);
-  font-weight: 700;
-  font-size: clamp(30px, 3.6vw, 48px);
-  letter-spacing: -0.04em;
+  font-weight: 400;
+  font-size: clamp(33px, 4vw, 53px);
+  letter-spacing: -0.01em;
   line-height: 1;
   transition: color var(--dur) var(--ease-out);
 }
@@ -1551,5 +1554,216 @@ a.work-row:hover .work-go {
   }
   .case-features {
     grid-template-columns: 1fr;
+  }
+}
+
+/* =========================================================================
+   COMMAND PALETTE — opened with "/", terminal window over a dimmed page
+   ========================================================================= */
+.palette-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 120; /* above the mobile menu (100) */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: min(16vh, 150px) var(--page-pad) var(--s-7);
+  background: color-mix(in oklab, var(--bg) 55%, transparent);
+  backdrop-filter: blur(8px);
+}
+
+.palette {
+  width: 100%;
+  max-width: 560px;
+  max-height: min(62vh, 520px);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--bg-elev);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+  font-family: var(--font-mono);
+}
+
+/* Title bar — echoes the brand mark's ">_" */
+.palette-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--border);
+  font-size: 12px;
+  color: var(--fg-3);
+}
+.palette-bar .prompt {
+  color: var(--accent);
+  font-weight: 500;
+}
+.palette-bar .palette-kbd {
+  margin-left: auto;
+}
+
+.palette-kbd {
+  padding: 1px 6px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface-2);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--fg-3);
+}
+
+.palette-input-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+}
+.palette-prompt {
+  color: var(--accent);
+  font-size: 14px;
+}
+.palette-input {
+  flex: 1;
+  min-width: 0;
+  background: none;
+  border: 0;
+  outline: 0;
+  font: inherit;
+  font-size: 14px;
+  color: var(--fg);
+  caret-color: var(--accent);
+}
+.palette-input::placeholder {
+  color: var(--fg-3);
+}
+
+.palette-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 6px 8px 10px;
+}
+.palette-group-label {
+  padding: 12px 10px 4px;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--fg-3);
+}
+.palette-item {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  width: 100%;
+  padding: 9px 10px;
+  border-radius: var(--radius-md);
+  text-align: left;
+  font-size: 13.5px;
+  color: var(--fg-2);
+}
+.palette-caret {
+  color: transparent;
+}
+.palette-item[aria-selected="true"] {
+  background: var(--surface-2);
+  color: var(--fg);
+}
+.palette-item[aria-selected="true"] .palette-caret {
+  color: var(--accent);
+}
+.palette-desc {
+  margin-left: auto;
+  padding-left: var(--s-4);
+  font-size: 12px;
+  color: var(--fg-3);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.palette-empty {
+  padding: 18px 12px;
+  font-size: 13px;
+  color: var(--fg-3);
+}
+
+.palette-foot {
+  display: flex;
+  gap: 16px;
+  padding: 10px 16px;
+  border-top: 1px solid var(--border);
+  font-size: 11px;
+  color: var(--fg-3);
+}
+.palette-foot span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Header hint — the "/" key pill; hidden on touch-first widths where the
+   overlay menu owns navigation. */
+.slash-hint {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 0;
+  min-width: 41px; /* same footprint as the sound pill: 15px icon + 12px padding ×2 + borders */
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  background: var(--bg-elev);
+  color: var(--fg-2);
+  transition: color var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out);
+}
+.slash-hint kbd {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  line-height: 15px; /* same content height as the sound pill's svg */
+}
+.slash-hint:hover {
+  color: var(--fg);
+  border-color: var(--border-strong);
+}
+@media (max-width: 640px) {
+  .slash-hint {
+    display: none;
+  }
+}
+
+/* =========================================================================
+   VIEW TRANSITIONS — cross-page morphs (carousel → case-study hero)
+   ========================================================================= */
+::view-transition-group(.morph) {
+  animation-duration: 400ms;
+}
+::view-transition-image-pair(.morph) {
+  animation-name: vt-blur;
+}
+/* Softens pixel interpolation while paired snapshots crossfade mid-flight. */
+@keyframes vt-blur {
+  30% {
+    filter: blur(3px);
+  }
+}
+
+/* The header is the viewer's spatial anchor — pin it while content moves. */
+::view-transition-group(site-header) {
+  animation: none;
+  z-index: 100;
+}
+::view-transition-old(site-header) {
+  display: none;
+}
+::view-transition-new(site-header) {
+  animation: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(*),
+  ::view-transition-new(*),
+  ::view-transition-group(*) {
+    animation-duration: 0s !important;
+    animation-delay: 0s !important;
   }
 }

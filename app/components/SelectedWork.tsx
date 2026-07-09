@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 import type { CSSProperties } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { projects } from "../data/projects";
 import { Reveal, SectionLabel } from "./Reveal";
 
@@ -51,7 +52,7 @@ export default function SelectedWork() {
             <li key={p.slug}>
               <Reveal delay={i * 0.08}>
                 {p.caseStudy ? (
-                  <a
+                  <Link
                     className="work-row"
                     href={`/work/${p.slug}`}
                     style={{ "--row-hue": p.themeHue } as CSSProperties}
@@ -59,7 +60,7 @@ export default function SelectedWork() {
                     onMouseLeave={() => setActive(null)}
                   >
                     {row}
-                  </a>
+                  </Link>
                 ) : (
                   <div className="work-row is-static">{row}</div>
                 )}

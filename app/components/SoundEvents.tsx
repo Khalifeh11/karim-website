@@ -5,13 +5,14 @@ import { playClick, playHover } from "./sound";
 
 // Delegated listeners instead of onClick/onMouseEnter sprinkled across every
 // component: any <a> or <button> on the page gets the hover tick and click
-// thock, including ones added later. The sound toggle is excluded from the
-// click — it plays its own on/off sound.
+// thock, including ones added later. Controls marked data-own-sound (the
+// sound toggle and its palette counterpart) are excluded from the click —
+// they play their own on/off sound.
 export default function SoundEvents() {
   useEffect(() => {
     const onClick = (e: MouseEvent) => {
       const el = (e.target as Element | null)?.closest?.("a, button");
-      if (el && !el.closest(".sound-toggle")) playClick();
+      if (el && !el.closest("[data-own-sound]")) playClick();
     };
     const onPointerOver = (e: PointerEvent) => {
       if (e.pointerType !== "mouse") return; // no phantom hover before taps

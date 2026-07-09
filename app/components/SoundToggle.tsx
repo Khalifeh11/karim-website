@@ -10,6 +10,7 @@ export default function SoundToggle() {
     <button
       type="button"
       className="sound-toggle"
+      data-own-sound=""
       aria-pressed={on}
       aria-label={on ? "turn sound off" : "turn sound on"}
       onClick={toggleSound}

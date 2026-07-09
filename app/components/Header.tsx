@@ -6,12 +6,17 @@ import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { EASE } from "./Reveal";
 import SoundToggle from "./SoundToggle";
+import { openPalette } from "./CommandPalette";
 
 const navItems = [
   { id: "work", num: "01", label: "work", href: "/#work" },
   { id: "about", num: "02", label: "about", href: "/about" },
   { id: "contact", num: "03", label: "contact", href: "/#contact" },
 ];
+
+// The header remounts on every client navigation (it's rendered per page);
+// replaying the drop-in there would fight the pinned view transition.
+let headerHasAnimated = false;
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -51,9 +56,13 @@ export default function Header() {
   return (
     <motion.header
       className={`header ${scrolled ? "scrolled" : ""}`}
-      initial={{ opacity: 0, y: -20 }}
+      style={{ viewTransitionName: "site-header" }}
+      initial={headerHasAnimated ? false : { opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.55, ease: EASE }}
+      onAnimationComplete={() => {
+        headerHasAnimated = true;
+      }}
     >
       <div className="header-inner">
         <Link className="brand-mark" href="/" onClick={close}>
@@ -71,6 +80,15 @@ export default function Header() {
         </nav>
 
         <div className="header-right">
+          <button
+            type="button"
+            className="slash-hint"
+            aria-label="open command palette"
+            title="command palette"
+            onClick={openPalette}
+          >
+            <kbd>/</kbd>
+          </button>
           <SoundToggle />
           <button
             type="button"

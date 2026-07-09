@@ -1,7 +1,8 @@
 "use client";
 
-import { Fragment } from "react";
+import { Fragment, ViewTransition } from "react";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { Reveal, SectionLabel } from "@/app/components/Reveal";
 import PhoneFrame from "@/app/components/PhoneFrame";
 import { getProject } from "@/app/data/projects";
@@ -11,6 +12,9 @@ const project = getProject("worktales");
 export default function WorktalesHero() {
   const { name, headline, blurb, tags, url, year, heroDesktop, heroMobile } =
     project;
+  // Mirror of the carousel's gate: shared-element names must exist on only
+  // one route's tree per commit, or React flags them as duplicates.
+  const named = usePathname() === `/work/${project.slug}`;
 
   return (
     <section className="case-hero page">
@@ -20,7 +24,11 @@ export default function WorktalesHero() {
             case study
           </SectionLabel>
 
-          <Reveal delay={0.1}>
+          <ViewTransition
+            name={named ? `case-title-${project.slug}` : undefined}
+            share="morph"
+            default="none"
+          >
             <h1 className="case-headline">
               {headline.split("\n").map((line, i) => (
                 <Fragment key={i}>
@@ -29,14 +37,16 @@ export default function WorktalesHero() {
                 </Fragment>
               ))}
             </h1>
-          </Reveal>
+          </ViewTransition>
 
           <Reveal delay={0.18}>
             <p className="case-sub">{blurb}</p>
           </Reveal>
         </div>
 
-        <Reveal delay={0.2} className="case-hero-img">
+        {/* No Reveal here — a mount fade would play inside the live
+            view-transition snapshot and fight the phone morph. */}
+        <div className="case-hero-img">
           <div className="case-devices">
             <Image
               src={heroDesktop}
@@ -46,15 +56,21 @@ export default function WorktalesHero() {
               priority
               className="case-hero-screenshot"
             />
-            <PhoneFrame
-              src={heroMobile}
-              alt={`${name} — mobile preview`}
-              className="case-phone"
-              priority
-              sizes="(max-width: 768px) 26vw, 16vw"
-            />
+            <ViewTransition
+              name={named ? `case-phone-${project.slug}` : undefined}
+              share="morph"
+              default="none"
+            >
+              <PhoneFrame
+                src={heroMobile}
+                alt={`${name} — mobile preview`}
+                className="case-phone"
+                priority
+                sizes="(max-width: 768px) 26vw, 16vw"
+              />
+            </ViewTransition>
           </div>
-        </Reveal>
+        </div>
 
         <Reveal delay={0.3} className="case-hero-meta">
           <div className="case-meta">

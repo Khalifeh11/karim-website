@@ -245,8 +245,8 @@ export default function AetherFlowHero() {
           variants={fadeUp}
         >
           <span className="eyebrow">full-stack web developer · beirut</span>
-          the last version of your website{" "}
-          <span className="accent">you&apos;ll need to build.</span>
+          designed, built, and deployed{" "}
+          <span className="accent">by one person.</span>
         </motion.h1>
 
         <motion.p
@@ -255,9 +255,8 @@ export default function AetherFlowHero() {
           custom={2}
           variants={fadeUp}
         >
-          i&apos;m karim. startups and small businesses hire me to build sites
-          and web apps that hold up under real users, real traffic, and their
-          own growth.
+          i&apos;m karim. startups hand me the whole thing: design, code,
+          infrastructure. and it&apos;s still me maintaining it a year later.
         </motion.p>
 
         <motion.div

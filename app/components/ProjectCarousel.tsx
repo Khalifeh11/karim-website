@@ -1,13 +1,26 @@
 "use client";
 
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  ViewTransition,
+} from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import DeviceRig from "./DeviceRig";
 import { SectionLabel } from "./Reveal";
+import { playClick } from "./sound";
 import { projects } from "../data/projects";
 
 const SLIDE_MS = 7000;
 
 export default function ProjectCarousel() {
+  // Shared-element names must vanish the moment we leave the home route —
+  // during the navigation commit the incoming case-study hero briefly
+  // coexists with this carousel, and duplicate names break the transition.
+  const onHome = usePathname() === "/";
   const [index, setIndex] = useState(0);
   const [focused, setFocused] = useState(false);
   const [reduceMotion, setReduceMotion] = useState(false);
@@ -17,6 +30,12 @@ export default function ProjectCarousel() {
   const barRefs = useRef<(HTMLSpanElement | null)[]>([]);
   const progressRef = useRef(0); // 0..1 within the current slide
   const pausedRef = useRef(false);
+  const slideRefs = useRef<(HTMLElement | null)[]>([]);
+  const draggingRef = useRef(false);
+  // A finished swipe still makes the browser fire a click on the element
+  // under the finger; this flag swallows that one click.
+  const swipedRef = useRef(false);
+  const dragRef = useRef({ x: 0, y: 0, dx: 0, claimed: false, id: -1 });
 
   useEffect(() => {
     indexRef.current = index;
@@ -63,7 +82,7 @@ export default function ProjectCarousel() {
       // progress doesn't leap forward or skip a slide.
       const dt = Math.min(now - last, 100);
       last = now;
-      if (!pausedRef.current && !document.hidden) {
+      if (!pausedRef.current && !draggingRef.current && !document.hidden) {
         progressRef.current += dt / SLIDE_MS;
         if (progressRef.current >= 1) {
           progressRef.current = 0;
@@ -82,6 +101,74 @@ export default function ProjectCarousel() {
     rafId = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(rafId);
   }, []);
+
+  // Touch swipe: the active slide follows the finger (drag-follow), then
+  // either snaps to the neighbour or springs back. Vertical scrolling stays
+  // with the browser via `touch-action: pan-y`; a gesture is only claimed
+  // once its horizontal travel beats its vertical.
+  const activeSlideEl = () => slideRefs.current[indexRef.current];
+
+  const onPointerDown = (e: React.PointerEvent) => {
+    if (e.pointerType !== "touch") return;
+    swipedRef.current = false;
+    dragRef.current = {
+      x: e.clientX,
+      y: e.clientY,
+      dx: 0,
+      claimed: false,
+      id: e.pointerId,
+    };
+  };
+
+  const onPointerMove = (e: React.PointerEvent) => {
+    const d = dragRef.current;
+    if (e.pointerId !== d.id) return;
+    const dx = e.clientX - d.x;
+    const dy = e.clientY - d.y;
+    if (!d.claimed) {
+      if (Math.abs(dx) < 12 || Math.abs(dx) < Math.abs(dy)) return;
+      d.claimed = true;
+      draggingRef.current = true;
+      try {
+        e.currentTarget.setPointerCapture(e.pointerId);
+      } catch {
+        // capture is best-effort; the handlers work uncaptured too
+      }
+    }
+    d.dx = dx;
+    const el = activeSlideEl();
+    if (el) {
+      el.style.transition = "none";
+      el.style.transform = `translateX(${dx * 0.55}px)`;
+      el.style.opacity = String(Math.max(0.35, 1 - Math.abs(dx) / 480));
+    }
+  };
+
+  const onPointerEnd = (e: React.PointerEvent) => {
+    const d = dragRef.current;
+    if (e.pointerId !== d.id) return;
+    d.id = -1;
+    const el = activeSlideEl();
+    if (el) {
+      el.style.transition = "";
+      el.style.transform = "";
+      el.style.opacity = "";
+    }
+    if (!d.claimed) return;
+    draggingRef.current = false;
+    swipedRef.current = true;
+    if (Math.abs(d.dx) > 60) {
+      goTo(indexRef.current + (d.dx < 0 ? 1 : -1));
+      playClick();
+    }
+  };
+
+  const onClickCapture = (e: React.MouseEvent) => {
+    if (!swipedRef.current) return;
+    swipedRef.current = false;
+    e.preventDefault();
+    e.stopPropagation();
+  };
 
   return (
     <section
@@ -123,10 +210,18 @@ export default function ProjectCarousel() {
 
       <div
         className="carousel-stage"
+        onPointerDown={onPointerDown}
+        onPointerMove={onPointerMove}
+        onPointerUp={onPointerEnd}
+        onPointerCancel={onPointerEnd}
+        onClickCapture={onClickCapture}
       >
         {projects.map((p, i) => (
           <article
             key={p.slug}
+            ref={(el) => {
+              slideRefs.current[i] = el;
+            }}
             className={`carousel-slide ${i === index ? "is-active" : ""}`}
             aria-hidden={i !== index}
             inert={i !== index}
@@ -137,7 +232,15 @@ export default function ProjectCarousel() {
               <p className="slide-index">
                 {String(i + 1).padStart(2, "0")} / {String(projects.length).padStart(2, "0")}
               </p>
-              <h3 className="slide-title">{p.name}</h3>
+              {/* Names are only paired on the active slide so a hidden
+                  slide can never be the source of a cross-page morph. */}
+              <ViewTransition
+                name={onHome && i === index ? `case-title-${p.slug}` : undefined}
+                share="morph"
+                default="none"
+              >
+                <h3 className="slide-title">{p.name}</h3>
+              </ViewTransition>
               <p className="slide-blurb">{p.blurb}</p>
               {p.tags.length > 0 && (
                 <ul className="slide-tags">
@@ -147,15 +250,18 @@ export default function ProjectCarousel() {
                 </ul>
               )}
               {p.caseStudy && (
-                <a className="slide-link" href={`/work/${p.slug}`}>
+                <Link className="slide-link" href={`/work/${p.slug}`}>
                   read the case study <span className="arrow">→</span>
-                </a>
+                </Link>
               )}
             </div>
             <div className="slide-visual">
               <DeviceRig
                 preload={i === 0}
                 url={p.url}
+                phoneTransitionName={
+                  onHome && i === index ? `case-phone-${p.slug}` : undefined
+                }
                 desktop={{
                   src: p.desktop,
                   alt: `${p.name} — desktop view`,
