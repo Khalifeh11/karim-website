@@ -16,6 +16,25 @@ import { projects } from "../data/projects";
 
 const SLIDE_MS = 7000;
 
+// Android's Geist Mono subset lacks the ← glyph, so text arrows fall back
+// to a mismatched system font; an SVG mirrored via transform stays identical.
+function ArrowIcon({ flipped = false }: { flipped?: boolean }) {
+  return (
+    <svg
+      width="15"
+      height="15"
+      viewBox="0 0 15 15"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.25"
+      aria-hidden="true"
+      style={flipped ? { transform: "scaleX(-1)" } : undefined}
+    >
+      <path d="M2 7.5h11M9 3.5l4 4-4 4" />
+    </svg>
+  );
+}
+
 export default function ProjectCarousel() {
   // Shared-element names must vanish the moment we leave the home route —
   // during the navigation commit the incoming case-study hero briefly
@@ -195,7 +214,7 @@ export default function ProjectCarousel() {
             aria-label="previous project"
             onClick={() => goTo(index - 1)}
           >
-            ←
+            <ArrowIcon flipped />
           </button>
           <button
             type="button"
@@ -203,7 +222,7 @@ export default function ProjectCarousel() {
             aria-label="next project"
             onClick={() => goTo(index + 1)}
           >
-            →
+            <ArrowIcon />
           </button>
         </div>
       </header>
