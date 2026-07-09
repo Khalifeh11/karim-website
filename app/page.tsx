@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Header from "./components/Header";
 import AetherFlowHero from "./components/AetherFlowHero";
 import ProjectCarousel from "./components/ProjectCarousel";
-import SelectedWork from "./components/SelectedWork";
+import Services from "./components/Services";
+import Process from "./components/Process";
 import ContactCta from "./components/ContactCta";
 import Footer from "./components/Footer";
 
@@ -45,7 +46,8 @@ export default function Home() {
       <main>
         <AetherFlowHero />
         <ProjectCarousel />
-        <SelectedWork />
+        <Services />
+        <Process />
         <ContactCta />
       </main>
       <Footer />

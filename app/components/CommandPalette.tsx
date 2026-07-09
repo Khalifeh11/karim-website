@@ -14,8 +14,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { EASE } from "./Reveal";
 import { isSoundEnabled, playClick, subscribe, toggleSound } from "./sound";
 import { projects } from "../data/projects";
-
-const EMAIL = "karim.ah.khalifeh@gmail.com";
+import { EMAIL } from "../lib/links";
 
 /** Anything outside the palette (e.g. the header hint) opens it with this. */
 export function openPalette() {

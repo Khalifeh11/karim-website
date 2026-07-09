@@ -724,6 +724,7 @@ button {
 
 .carousel,
 .selected,
+.services,
 .contact-cta {
   scroll-margin-top: 73px; /* land anchor jumps below the sticky header */
 }
@@ -1087,6 +1088,91 @@ a.work-row:hover .work-go {
 }
 
 /* =========================================================================
+   SERVICES — what i sell, in plain language
+   ========================================================================= */
+.services {
+  padding-top: var(--s-9);
+  padding-bottom: var(--s-9);
+  border-top: 1px solid var(--border);
+  --glow-pos: 12% 0%;
+  --glow-size: 60% 100%;
+  --glow-alpha: 0.6;
+}
+.svc-list {
+  list-style: none;
+}
+.svc-row {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr) minmax(0, 1.3fr);
+  align-items: baseline;
+  gap: var(--s-5);
+  padding: 26px 4px;
+  border-bottom: 1px solid var(--border);
+}
+.svc-list li:first-child .svc-row {
+  border-top: 1px solid var(--border);
+}
+.svc-num {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--fg-3);
+  font-feature-settings: "tnum";
+}
+.svc-name {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(24px, 2.7vw, 35px);
+  letter-spacing: -0.005em;
+}
+.svc-desc {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--fg-2);
+  max-width: 52ch;
+}
+
+/* =========================================================================
+   PROCESS — 4-step "how it works" strip
+   ========================================================================= */
+.process {
+  padding-top: var(--s-9);
+  padding-bottom: var(--s-9);
+  border-top: 1px solid var(--border);
+  --glow-pos: 88% 0%;
+  --glow-size: 55% 95%;
+  --glow-alpha: 0.5;
+}
+.process-grid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--s-5);
+}
+.step {
+  border-top: 1px solid var(--border-strong);
+  padding-top: 18px;
+  height: 100%;
+}
+.step-num {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--accent);
+  font-feature-settings: "tnum";
+}
+.step-name {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(20px, 1.8vw, 24px);
+  letter-spacing: -0.005em;
+  margin: 12px 0 8px;
+}
+.step-desc {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--fg-2);
+}
+
+/* =========================================================================
    CONTACT CTA + FOOTER
    ========================================================================= */
 .contact-cta {
@@ -1116,15 +1202,52 @@ a.work-row:hover .work-go {
   color: var(--accent);
 }
 
-/* Live location/time line under the contact button. */
+/* "or book a call" tertiary link under the contact buttons. */
+.contact-alt {
+  margin-top: 18px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--fg-3);
+}
+.contact-alt a {
+  color: var(--fg-2);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+.contact-alt a:hover {
+  color: var(--accent);
+}
+.contact-alt .arrow {
+  display: inline-block;
+  transition: transform var(--dur) var(--ease-out);
+}
+.contact-alt a:hover .arrow {
+  transform: translateX(3px);
+}
+
+/* Meta row: local time · response time · social links. */
+.contact-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 28px;
+  margin-top: var(--s-6);
+}
 .contact-status {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  margin-top: var(--s-6);
   font-family: var(--font-mono);
   font-size: 13px;
   color: var(--fg-3);
+}
+.contact-social {
+  gap: 18px;
+}
+.contact-social a {
+  transition: color var(--dur-fast) var(--ease-out);
+}
+.contact-social a:hover {
+  color: var(--accent);
 }
 .contact-status .status-dot {
   width: 7px;
@@ -1139,11 +1262,25 @@ a.work-row:hover .work-go {
 }
 .footer-inner {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
+  gap: 16px 24px;
   padding-top: var(--s-6);
   padding-bottom: var(--s-6);
+}
+.footer-links {
+  display: flex;
+  gap: 18px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+.footer-links a {
+  color: var(--fg-3);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+.footer-links a:hover {
+  color: var(--accent);
 }
 .footer-meta {
   font-family: var(--font-mono);
@@ -1531,6 +1668,16 @@ a.work-row:hover .work-go {
   .work-tags {
     display: none;
   }
+  .svc-row {
+    grid-template-columns: 36px minmax(0, 1fr);
+    row-gap: var(--s-2);
+  }
+  .svc-desc {
+    grid-column: 2;
+  }
+  .process-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
   .case-section-inner {
     grid-template-columns: 1fr;
     gap: var(--s-5);
@@ -1554,6 +1701,10 @@ a.work-row:hover .work-go {
   }
   .case-features {
     grid-template-columns: 1fr;
+  }
+  .process-grid {
+    grid-template-columns: 1fr;
+    gap: var(--s-4);
   }
 }
 
