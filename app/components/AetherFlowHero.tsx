@@ -221,7 +221,10 @@ export default function AetherFlowHero() {
   }, []);
 
   return (
-    <section className="relative flex min-h-svh flex-col items-center justify-center overflow-hidden">
+    <section
+      className="relative flex flex-col items-center justify-center overflow-hidden"
+      style={{ minHeight: "calc(100svh - var(--header-h))" }}
+    >
       <canvas
         ref={canvasRef}
         className="absolute inset-0 h-full w-full"
