@@ -47,20 +47,17 @@ export default function ContactCta() {
             </Reveal>
           )}
           <Reveal delay={0.22}>
-            <p className="contact-alt contact-skip">
-              or skip the form:{" "}
+            <div className="contact-alt contact-skip">
+              <p className="contact-skip-label">or skip the form:</p>
+              {CALENDLY && (
+                <a href={CALENDLY} target="_blank" rel="noreferrer">
+                  book a 30-min call <span className="arrow">→</span>
+                </a>
+              )}
               <a className="preserve-case" href={`mailto:${EMAIL}`}>
                 {EMAIL}
               </a>
-              {CALENDLY && (
-                <>
-                  {" · "}
-                  <a href={CALENDLY} target="_blank" rel="noreferrer">
-                    book a 30-min call <span className="arrow">→</span>
-                  </a>
-                </>
-              )}
-            </p>
+            </div>
           </Reveal>
           <Reveal delay={0.25}>
             <div className="contact-meta">

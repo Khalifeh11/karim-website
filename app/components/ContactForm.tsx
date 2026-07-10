@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { EMAIL } from "../lib/links";
 
 const BUDGETS = ["under $1k", "$1k–$5k", "$5k–$10k", "$10k+", "not sure"];
 
@@ -72,9 +71,6 @@ export default function ContactForm() {
       <div className="cform-bar">
         <span className="prompt">{">_"}</span>
         <span>new_message</span>
-        <a className="cform-bar-esc" href={`mailto:${EMAIL}`}>
-          esc→email
-        </a>
       </div>
 
       <div className="cform-field">
@@ -199,7 +195,7 @@ export default function ContactForm() {
         )}
         {status === "error" && (
           <p className="cform-error">
-            {"> error: send failed — try again or email me below"}
+            {"> error: send failed — try again or email me directly"}
           </p>
         )}
         {status === "rate_limited" && (

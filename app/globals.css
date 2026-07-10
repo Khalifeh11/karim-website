@@ -1299,11 +1299,30 @@ a.work-row:hover .work-go {
   }
 }
 
-/* "or skip the form" links — inline text but ≥44px touch targets. */
+/* "or skip the form" escape hatches — a label above two stacked links, so
+   neither reads as a continuation of the other. ≥44px touch targets; the
+   underline is what separates them from the muted prose around them. */
+.contact-skip {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.contact-skip-label {
+  color: var(--fg-3);
+}
 .contact-skip a {
   display: inline-flex;
   align-items: center;
   min-height: 44px;
+  color: var(--fg);
+  text-decoration: underline;
+  text-decoration-color: var(--border-strong);
+  text-underline-offset: 4px;
+  transition: text-decoration-color var(--dur-fast) var(--ease-out);
+}
+.contact-skip a:hover {
+  color: var(--accent);
+  text-decoration-color: var(--accent);
 }
 
 /* =========================================================================
@@ -1334,18 +1353,6 @@ a.work-row:hover .work-go {
   color: var(--accent);
   font-weight: 500;
 }
-.cform-bar-esc {
-  display: inline-flex;
-  align-items: center;
-  margin-left: auto;
-  min-height: 44px;
-  color: var(--fg-3);
-  transition: color var(--dur-fast) var(--ease-out);
-}
-.cform-bar-esc:hover {
-  color: var(--accent);
-}
-
 .cform-field {
   padding: 12px 16px 14px;
   border-bottom: 1px solid var(--border);
