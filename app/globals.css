@@ -501,6 +501,10 @@ button {
   color: var(--fg-3);
 }
 .mobile-menu-email {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  min-height: 44px;
   color: var(--fg-2);
   transition: color var(--dur-fast) var(--ease-out);
 }
@@ -1255,6 +1259,194 @@ a.work-row:hover .work-go {
   border-radius: 50%;
   background: var(--accent);
   box-shadow: 0 0 0 4px color-mix(in oklab, var(--accent) 20%, transparent);
+}
+
+/* Land /#contact below the sticky header. */
+.contact-cta {
+  scroll-margin-top: 80px;
+}
+
+/* Intro (headline + alt channels + meta) beside the form on desktop. */
+.contact-grid {
+  display: grid;
+  gap: var(--s-6);
+  align-items: start;
+}
+@media (min-width: 861px) {
+  .contact-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 560px);
+    gap: var(--s-7);
+  }
+}
+
+/* WhatsApp — co-primary contact channel, accent-tinted so it stands out. */
+.btn-whatsapp {
+  min-height: 44px;
+  margin-bottom: var(--s-4);
+  color: var(--accent);
+  border-color: var(--accent-soft);
+}
+.btn-whatsapp:hover {
+  background: color-mix(in oklab, var(--accent) 12%, transparent);
+  border-color: var(--accent);
+}
+@media (max-width: 640px) {
+  .btn-whatsapp {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    min-height: 48px;
+  }
+}
+
+/* "or skip the form" links — inline text but ≥44px touch targets. */
+.contact-skip a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+/* =========================================================================
+   CONTACT FORM — terminal window, echoes the command palette
+   ========================================================================= */
+.cform {
+  --err: oklch(0.74 0.15 25);
+  width: 100%;
+  overflow: hidden;
+  background: var(--bg-elev);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  font-family: var(--font-mono);
+  color-scheme: dark; /* native select/autofill chrome matches the dark UI */
+}
+
+/* Title bar — same shape as the palette's. */
+.cform-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--border);
+  font-size: 12px;
+  color: var(--fg-3);
+}
+.cform-bar .prompt {
+  color: var(--accent);
+  font-weight: 500;
+}
+.cform-bar-esc {
+  display: inline-flex;
+  align-items: center;
+  margin-left: auto;
+  min-height: 44px;
+  color: var(--fg-3);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+.cform-bar-esc:hover {
+  color: var(--accent);
+}
+
+.cform-field {
+  padding: 12px 16px 14px;
+  border-bottom: 1px solid var(--border);
+}
+.cform-label {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding-bottom: 2px;
+  font-size: 13px;
+  color: var(--fg-2);
+}
+.cform-prompt {
+  color: var(--fg-3);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+.cform-field:focus-within .cform-prompt {
+  color: var(--accent);
+}
+.cform-flag {
+  font-size: 11px;
+  color: var(--fg-3);
+}
+
+.cform-input {
+  display: block;
+  width: 100%;
+  min-height: 44px;
+  background: none;
+  border: 0;
+  outline: 0;
+  font: inherit;
+  font-size: 16px; /* ≥16px so iOS doesn't zoom on focus */
+  color: var(--fg);
+  caret-color: var(--accent);
+}
+.cform-input::placeholder {
+  color: var(--fg-3);
+  text-transform: lowercase;
+}
+.cform-textarea {
+  resize: vertical;
+  min-height: 120px;
+  line-height: 1.55;
+  padding-top: 8px;
+}
+.cform-select {
+  cursor: pointer;
+}
+
+.cform-error {
+  padding-top: 6px;
+  font-size: 13px;
+  color: var(--err);
+}
+
+/* Honeypot — off-screen, not display:none (some bots skip hidden fields). */
+.cform-hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.cform-submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: calc(100% - 32px);
+  margin: 16px;
+  min-height: 48px;
+  border-radius: var(--radius-md);
+  background: var(--accent);
+  color: var(--accent-fg);
+  font-size: 15px;
+  transition: background var(--dur-fast) var(--ease-out);
+}
+.cform-submit:hover {
+  background: var(--accent-hover);
+}
+.cform-submit:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+/* Terminal output — success / failure lines under the button. */
+.cform-out {
+  padding: 0 16px;
+  font-size: 13px;
+  color: var(--fg-2);
+}
+.cform-out:not(:empty) {
+  padding-bottom: 16px;
+}
+.cform-out .cform-error {
+  padding-top: 0;
+}
+.cform-out-ok {
+  color: var(--accent);
 }
 
 .footer {

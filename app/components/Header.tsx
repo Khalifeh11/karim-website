@@ -7,6 +7,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { EASE } from "./Reveal";
 import SoundToggle from "./SoundToggle";
 import { openPalette } from "./CommandPalette";
+import { EMAIL } from "../lib/links";
 
 const navItems = [
   { id: "work", num: "01", label: "work", href: "/#work" },
@@ -190,13 +191,13 @@ export default function Header() {
                     <span className="status-dot" aria-hidden="true" />
                     available for work
                   </span>
-                  <a
+                  <Link
                     className="mobile-menu-email preserve-case"
-                    href="mailto:karim.ah.khalifeh@gmail.com"
+                    href="/#contact"
                     onClick={close}
                   >
-                    karim.ah.khalifeh@gmail.com
-                  </a>
+                    {EMAIL}
+                  </Link>
                 </motion.div>
               </motion.div>
             )}
