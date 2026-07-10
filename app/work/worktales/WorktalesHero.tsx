@@ -57,7 +57,7 @@ export default function WorktalesHero() {
               alt={`${name} — desktop preview`}
               width={720}
               height={445}
-              priority
+              preload
               className="case-hero-screenshot"
             />
             <ViewTransition
@@ -70,7 +70,7 @@ export default function WorktalesHero() {
                 src={heroMobile}
                 alt={`${name} — mobile preview`}
                 className="case-phone"
-                priority
+                preload
                 sizes="(max-width: 768px) 26vw, 16vw"
               />
             </ViewTransition>

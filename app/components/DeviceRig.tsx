@@ -9,6 +9,9 @@ type Props = {
   mobile: Shot;
   /** Pass true for the first carousel slide so it isn't lazy-loaded. */
   preload?: boolean;
+  /** Pass true for the currently visible slide so its shots fetch at high
+      priority the moment it activates (mutually exclusive with preload). */
+  eager?: boolean;
   /** Fake address-bar text shown in the browser chrome. */
   url?: string;
   /** Names the phone as a shared element so it morphs across navigations. */
@@ -23,10 +26,17 @@ export default function DeviceRig({
   desktop,
   mobile,
   preload,
+  eager,
   url,
   phoneTransitionName,
 }: Props) {
   const unopt = (src: string) => src.endsWith(".svg");
+  // `preload` (head <link>) can't be combined with loading/fetchPriority,
+  // so a preloaded rig ignores `eager`.
+  const eagerProps =
+    !preload && eager
+      ? ({ loading: "eager", fetchPriority: "high" } as const)
+      : {};
 
   return (
     <div className="device-rig">
@@ -43,8 +53,9 @@ export default function DeviceRig({
             alt={desktop.alt}
             fill
             sizes="(max-width: 768px) 92vw, 56vw"
-            priority={preload}
+            preload={preload}
             unoptimized={unopt(desktop.src)}
+            {...eagerProps}
           />
         </div>
       </figure>
@@ -62,7 +73,8 @@ export default function DeviceRig({
           src={mobile.src}
           alt={mobile.alt}
           className="rig-phone"
-          priority={preload}
+          preload={preload}
+          eager={eager}
           sizes="(max-width: 768px) 26vw, 14vw"
         />
       </ViewTransition>

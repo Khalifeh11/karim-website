@@ -43,6 +43,13 @@ export default function ProjectCarousel() {
   const [index, setIndex] = useState(0);
   const [focused, setFocused] = useState(false);
   const [reduceMotion, setReduceMotion] = useState(false);
+  // Touch has no hover to pause on, so autoplay would swap a slide out from
+  // under a reader mid-scroll; coarse pointers get swipe/dots/arrows only.
+  const [coarsePointer, setCoarsePointer] = useState(false);
+  // Below 860px the carousel flattens into a plain stacked list: every slide
+  // is visible and scrolls with the page, so autoplay, swipe, arrows and the
+  // active-slide bookkeeping all stand down.
+  const [stacked, setStacked] = useState(false);
   const paused = focused;
 
   const indexRef = useRef(0);
@@ -61,8 +68,8 @@ export default function ProjectCarousel() {
   }, [index]);
 
   useEffect(() => {
-    pausedRef.current = paused || reduceMotion;
-  }, [paused, reduceMotion]);
+    pausedRef.current = paused || reduceMotion || coarsePointer || stacked;
+  }, [paused, reduceMotion, coarsePointer, stacked]);
 
   const goTo = useCallback((i: number) => {
     progressRef.current = 0;
@@ -70,14 +77,28 @@ export default function ProjectCarousel() {
   }, []);
 
   useEffect(() => {
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const sync = () => setReduceMotion(mq.matches);
+    const motionMq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const coarseMq = window.matchMedia("(pointer: coarse)");
+    // Must match the stacked-list breakpoint in globals.css.
+    const stackedMq = window.matchMedia("(max-width: 860px)");
+    const sync = () => {
+      setReduceMotion(motionMq.matches);
+      setCoarsePointer(coarseMq.matches);
+      setStacked(stackedMq.matches);
+    };
     sync();
-    mq.addEventListener("change", sync);
-    return () => mq.removeEventListener("change", sync);
+    motionMq.addEventListener("change", sync);
+    coarseMq.addEventListener("change", sync);
+    stackedMq.addEventListener("change", sync);
+    return () => {
+      motionMq.removeEventListener("change", sync);
+      coarseMq.removeEventListener("change", sync);
+      stackedMq.removeEventListener("change", sync);
+    };
   }, []);
 
   useEffect(() => {
+    if (stacked) return; // arrow keys have no "active slide" to move
     const handleKey = (e: KeyboardEvent) => {
       if (e.key !== "ArrowLeft" && e.key !== "ArrowRight") return;
       const tag = (document.activeElement as HTMLElement)?.tagName;
@@ -87,7 +108,7 @@ export default function ProjectCarousel() {
     };
     document.addEventListener("keydown", handleKey);
     return () => document.removeEventListener("keydown", handleKey);
-  }, [goTo]);
+  }, [goTo, stacked]);
 
   // Timing loop: fills the active progress bar via transform (no re-renders)
   // and advances when full. Holds while hovered/focused, when the tab is
@@ -128,7 +149,7 @@ export default function ProjectCarousel() {
   const activeSlideEl = () => slideRefs.current[indexRef.current];
 
   const onPointerDown = (e: React.PointerEvent) => {
-    if (e.pointerType !== "touch") return;
+    if (stacked || e.pointerType !== "touch") return;
     swipedRef.current = false;
     dragRef.current = {
       x: e.clientX,
@@ -194,7 +215,7 @@ export default function ProjectCarousel() {
       id="work"
       className={`carousel page ${paused && !reduceMotion ? "is-paused" : ""}`}
       style={{ '--scene-hue': projects[index].themeHue } as React.CSSProperties}
-      aria-roledescription="carousel"
+      aria-roledescription={stacked ? undefined : "carousel"}
       aria-label="featured projects"
       // Pause for keyboard focus only — a mouse click parks focus on the
       // button it hit, which would otherwise freeze the carousel for good.
@@ -242,23 +263,32 @@ export default function ProjectCarousel() {
               slideRefs.current[i] = el;
             }}
             className={`carousel-slide ${i === index ? "is-active" : ""}`}
-            aria-hidden={i !== index}
-            inert={i !== index}
-            aria-roledescription="slide"
+            // Each card keeps its own hue in the stacked list, where there is
+            // no single "current project" for the section variable to track.
+            style={{ '--scene-hue': p.themeHue } as React.CSSProperties}
+            aria-hidden={!stacked && i !== index}
+            inert={!stacked && i !== index}
+            aria-roledescription={stacked ? undefined : "slide"}
             aria-label={`${i + 1} of ${projects.length}: ${p.name}`}
           >
             <div className="slide-copy">
               <p className="slide-index">
                 {String(i + 1).padStart(2, "0")} / {String(projects.length).padStart(2, "0")}
               </p>
-              {/* Names are only paired on the active slide so a hidden
-                  slide can never be the source of a cross-page morph.
+              {/* Names are only paired on slides a user can actually tap —
+                  the active one, or all of them in the stacked list (names
+                  are per-slug, so they never collide) — so a hidden slide
+                  can never be the source of a cross-page morph.
                   Keyed by name: React only untracks a name on unmount, so
                   flipping `name` to undefined on a re-render would leak it
                   in the registry and cause duplicate-name errors later. */}
               <ViewTransition
-                key={onHome && i === index ? "named" : "unnamed"}
-                name={onHome && i === index ? `case-title-${p.slug}` : undefined}
+                key={onHome && (stacked || i === index) ? "named" : "unnamed"}
+                name={
+                  onHome && (stacked || i === index)
+                    ? `case-title-${p.slug}`
+                    : undefined
+                }
                 share="morph"
                 default="none"
               >
@@ -281,9 +311,12 @@ export default function ProjectCarousel() {
             <div className="slide-visual">
               <DeviceRig
                 preload={i === 0}
+                eager={i === index}
                 url={p.url}
                 phoneTransitionName={
-                  onHome && i === index ? `case-phone-${p.slug}` : undefined
+                  onHome && (stacked || i === index)
+                    ? `case-phone-${p.slug}`
+                    : undefined
                 }
                 desktop={{
                   src: p.desktop,

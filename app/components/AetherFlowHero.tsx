@@ -166,6 +166,27 @@ export default function AetherFlowHero() {
       draw(t);
     };
 
+    // The field is only worth painting while it's actually on screen — the
+    // hero scrolls away but the component never unmounts, and on phones the
+    // hotter coarse-pointer tuning makes an always-on loop a battery drain.
+    let onScreen = true;
+    let running = false;
+    const syncLoop = () => {
+      const shouldRun = onScreen && !document.hidden;
+      if (shouldRun && !running) {
+        running = true;
+        rafId = requestAnimationFrame(animate);
+      } else if (!shouldRun && running) {
+        running = false;
+        cancelAnimationFrame(rafId);
+      }
+    };
+    const io = new IntersectionObserver(([entry]) => {
+      onScreen = entry.isIntersecting;
+      syncLoop();
+    });
+    const onVisibility = () => syncLoop();
+
     const place = (x: number, y: number) => {
       pointer.tx = x;
       pointer.ty = y;
@@ -207,7 +228,9 @@ export default function AetherFlowHero() {
     window.addEventListener("touchstart", onTouch, { passive: true });
     window.addEventListener("touchmove", onTouch, { passive: true });
     window.addEventListener("touchend", onTouchEnd);
-    rafId = requestAnimationFrame(animate);
+    document.addEventListener("visibilitychange", onVisibility);
+    io.observe(canvas);
+    syncLoop();
 
     return () => {
       window.removeEventListener("resize", onResize);
@@ -216,6 +239,8 @@ export default function AetherFlowHero() {
       window.removeEventListener("touchstart", onTouch);
       window.removeEventListener("touchmove", onTouch);
       window.removeEventListener("touchend", onTouchEnd);
+      document.removeEventListener("visibilitychange", onVisibility);
+      io.disconnect();
       cancelAnimationFrame(rafId);
     };
   }, []);

@@ -831,7 +831,7 @@ button {
 }
 .slide-tags li {
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 13px;
   color: var(--fg-2);
   padding: 5px 12px;
   border: 1px solid var(--border);
@@ -927,7 +927,7 @@ button {
 .rig-url {
   margin-left: 12px;
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 12px;
   color: var(--fg-3);
   padding: 3px 14px;
   border-radius: var(--radius-pill);
@@ -1024,7 +1024,7 @@ button {
 }
 .work-tags {
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 13px;
   color: var(--fg-3);
 }
 .work-go {
@@ -1273,7 +1273,7 @@ a.work-row:hover .work-go {
   display: flex;
   gap: 18px;
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 13px;
 }
 .footer-links a {
   color: var(--fg-3);
@@ -1284,7 +1284,7 @@ a.work-row:hover .work-go {
 }
 .footer-meta {
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 13px;
   color: var(--fg-3);
 }
 
@@ -1506,7 +1506,7 @@ a.work-row:hover .work-go {
   border-right: none;
 }
 .case-meta-label {
-  font-size: 11px;
+  font-size: 12px;
   color: var(--fg-3);
   letter-spacing: 0.05em;
 }
@@ -1576,7 +1576,7 @@ a.work-row:hover .work-go {
 }
 .case-feature-num {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 12px;
   color: var(--accent);
   margin-bottom: var(--s-3);
   font-feature-settings: "tnum";
@@ -1667,9 +1667,30 @@ a.work-row:hover .work-go {
    RESPONSIVE — mobile-first collapses
    ========================================================================= */
 @media (max-width: 860px) {
+  /* The carousel flattens into a stacked list (mirrored by `stacked` in
+     ProjectCarousel): every project is visible at once and page scroll is
+     the only navigation, so the arrows, progress tabs, slide fades and the
+     swipe gesture all go away. */
+  .carousel-nav,
+  .carousel-progress {
+    display: none;
+  }
+  .carousel-stage {
+    display: block;
+    touch-action: auto;
+  }
   .carousel-slide {
     grid-template-columns: 1fr;
-    gap: var(--s-6);
+    gap: var(--s-5);
+    opacity: 1;
+    transform: none;
+    transition: none;
+    pointer-events: auto;
+  }
+  .carousel-slide + .carousel-slide {
+    margin-top: var(--s-6);
+    padding-top: var(--s-6);
+    border-top: 1px solid var(--border);
   }
   .slide-visual {
     order: -1;
