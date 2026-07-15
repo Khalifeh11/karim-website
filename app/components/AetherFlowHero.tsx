@@ -62,7 +62,7 @@ export default function AetherFlowHero() {
     // shortly after load a single ripple expands from the center to show the
     // field once, then the hero settles back to its calm resting state.
     const REVEAL_DELAY = 500;
-    const REVEAL_DURATION = 1600;
+    const REVEAL_DURATION = 2200;
     let revealStart = -1;
     let revealDone = false;
 
@@ -149,7 +149,9 @@ export default function AetherFlowHero() {
           cx = window.innerWidth / 2;
           cy = window.innerHeight / 2;
           ringR = p * Math.hypot(cx, cy);
-          ringFade = 0.9 * (1 - p);
+          // Quadratic fade holds full brightness through the sweep's middle
+          // instead of dimming linearly from the start.
+          ringFade = 1 - p * p;
         }
       }
 
@@ -177,11 +179,11 @@ export default function AetherFlowHero() {
             }
           }
           if (ringR >= 0) {
-            // Gaussian band ~80px wide centered on the expanding ring.
+            // Gaussian band ~130px wide centered on the expanding ring.
             const dx = x - cx;
             const dy = y - cy;
             const d = Math.sqrt(dx * dx + dy * dy) - ringR;
-            const rb = Math.exp(-(d * d) / 6400) * ringFade;
+            const rb = Math.exp(-(d * d) / 16000) * ringFade;
             if (rb > boost) boost = rb;
           }
           alpha += boost * boost * 0.65;
