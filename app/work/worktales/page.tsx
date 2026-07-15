@@ -12,7 +12,7 @@ const project = getProject("worktales");
 export const metadata: Metadata = {
   title: "worktales — karim khalifeh",
   description:
-    "a ground-up redesign for a repositioning consultancy — a dark-themed, motion-driven web presence built to communicate focus and authority.",
+    "a full redesign of a b2b sales-talent site — rebuilt page by page for two audiences, employers and job-seeking salespeople, with a dark-themed, motion-driven layout.",
   alternates: {
     canonical: "/work/worktales",
   },
@@ -21,23 +21,23 @@ export const metadata: Metadata = {
 const FEATURES = [
   {
     num: "01",
-    title: "Ground-up redesign",
-    desc: "Rebuilt the web presence from scratch to match the consultancy's new direction — the old site no longer reflected who they were.",
+    title: "Built for two audiences",
+    desc: "One site speaking to both sides of the business: employers hiring sales talent, and salespeople looking for their next role.",
   },
   {
     num: "02",
-    title: "Dark, focused identity",
-    desc: "A dark-themed layout sets a confident, premium tone that communicates focus and authority at a glance.",
+    title: "Employer pillar pages",
+    desc: "Hire, Train, and Accelerate — each pillar of the offering gets its own page, framing the value for businesses.",
   },
   {
     num: "03",
-    title: "Motion-driven layout",
-    desc: "Considered motion guides the eye through the story, giving the site momentum without distracting from the message.",
+    title: "Candidate talent pool",
+    desc: "A dedicated page inviting salespeople to join the talent pool, turning the site into a two-sided funnel.",
   },
   {
     num: "04",
-    title: "Crisp SVG visuals",
-    desc: "Vector graphics keep visuals sharp at any size and load fast, reinforcing the polished, technical feel.",
+    title: "Webinars library",
+    desc: "A resource hub of live and on-demand sessions, plus an about page, all rewritten to match the client's brand voice.",
   },
 ];
 
@@ -61,14 +61,15 @@ export default function WorktalesPage() {
               </Reveal>
               <Reveal delay={0.14}>
                 <p className="case-p">
-                  Worktales were repositioning their consultancy, but their old
-                  site no longer reflected who they were. It undersold a sharper,
-                  more focused business.
+                  Worktales, a B2B sales-talent company, had outgrown a site that
+                  no longer reflected who they were or who they sell to. It
+                  spoke to no one clearly.
                 </p>
                 <p className="case-p">
-                  The goal was a web presence that matched the new direction — a
-                  dark-themed, motion-driven layout built to communicate focus
-                  and authority from the first scroll.
+                  The goal was a full redesign, rebuilt page by page, that speaks
+                  to both audiences at once: employers and job-seeking
+                  salespeople. A dark-themed, motion-driven layout carries the
+                  focus and authority the brand was missing.
                 </p>
               </Reveal>
             </div>

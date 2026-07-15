@@ -22,16 +22,32 @@ export type Project = {
   themeHue: number;
 };
 
-// Blurbs stick to confirmed facts only — real copy and screenshots
-// are swapped in per project once Karim provides them.
+// Blurbs stick to confirmed facts only. Real screenshots are swapped in per project.
 export const projects: Project[] = [
+  {
+    slug: "storiad",
+    name: "Storiad",
+    displayName: "Storiad",
+    headline: "Storiad",
+    blurb:
+      "Lead developer on the logged-in app for self-published authors. An Inertia dashboard with AI-assisted writing, a press-contact database for outreach, self-publishing profit calculators, and Stripe billing.",
+    tags: ["laravel", "inertia", "react", "ai"],
+    desktop: "/projects/storiad.webp",
+    mobile: "/projects/storiad-mobile.webp",
+    heroDesktop: "/projects/storiad-macbook.webp",
+    heroMobile: "/projects/storiad-mobile.webp",
+    url: "app.storiad.com",
+    year: "2024",
+    caseStudy: true,
+    themeHue: 55,
+  },
   {
     slug: "golden-land",
     name: "Golden Land Real Estate",
     displayName: "Golden Land Real Estate",
     headline: "Golden Land\nReal Estate",
     blurb:
-      "Built the full platform from scratch — property listings, agent dashboards, and media uploads backed by Cloudflare R2. Listings go from draft to live without touching a server.",
+      "Solo build that migrated a real-estate platform off a legacy CMS with zero data loss: 7,953 listings, 57 agents, 37K+ images. Public listings plus a full admin dashboard, with image uploads wired straight to Cloudflare R2.",
     tags: ["next.js", "react", "typescript", "cloudflare r2"],
     desktop: "/projects/goldenland.webp",
     mobile: "/projects/goldenland-mobile.webp",
@@ -43,30 +59,13 @@ export const projects: Project[] = [
     themeHue: 80,
   },
   {
-    slug: "storiad",
-    name: "Storiad",
-    displayName: "Storiad",
-    headline: "Storiad",
-    blurb:
-      "A multi-tenant SaaS for book marketing. Built on Laravel + React via Inertia, with OpenAI function-calling to automate campaign generation — each author gets an isolated, provisioned workspace.",
-    tags: ["laravel", "inertia", "react", "openai"],
-    desktop: "/projects/storiad.webp",
-    mobile: "/projects/storiad-mobile.webp",
-    heroDesktop: "/projects/storiad-macbook.webp",
-    heroMobile: "/projects/storiad-mobile.webp",
-    url: "app.storiad.com",
-    year: "2024",
-    caseStudy: true,
-    themeHue: 55,
-  },
-  {
     slug: "worktales",
     name: "Worktales",
     displayName: "Worktales",
     headline: "Worktales",
     blurb:
-      "Worktales were repositioning their consultancy — the old site no longer reflected who they were. Redesigned the web presence from the ground up to match the new direction, with a dark-themed, motion-driven layout built to communicate focus and authority.",
-    tags: ["redesign", "svg"],
+      "A full redesign of a B2B sales-talent site, rebuilt page by page for two audiences: employers and job-seeking salespeople. A dark-themed, motion-driven layout built to communicate focus and authority.",
+    tags: ["redesign"],
     desktop: "/projects/worktales.webp",
     mobile: "/projects/worktales-mobile.webp",
     heroDesktop: "/projects/worktales-macbook.webp",
@@ -82,7 +81,7 @@ export const projects: Project[] = [
     displayName: "Trublu",
     headline: "Trublu\nTechnical",
     blurb:
-      "A full build for a technical services firm — converted a complete design into production, with a clean layout optimised to turn visitors into leads.",
+      "Converted a complete design into production for a Beirut home-services firm. Per-service pages and a WhatsApp-driven booking funnel, with full technical SEO.",
     tags: ["next.js", "react", "typescript"],
     desktop: "/projects/trublu.webp",
     mobile: "/projects/trublu-mobile.webp",

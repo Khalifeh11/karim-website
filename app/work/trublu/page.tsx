@@ -12,7 +12,7 @@ const project = getProject("trublu");
 export const metadata: Metadata = {
   title: "trublu technical — karim khalifeh",
   description:
-    "a full build for a technical services firm — a complete design converted into production with a clean, lead-focused layout.",
+    "a marketing site for a beirut home-services firm — a supplied design converted into production, with per-service pages, a whatsapp booking funnel, and full technical seo.",
   alternates: {
     canonical: "/work/trublu",
   },
@@ -26,18 +26,18 @@ const FEATURES = [
   },
   {
     num: "02",
-    title: "Lead-focused layout",
-    desc: "Every section is structured to guide visitors toward enquiry, with clear calls to action that turn interest into leads.",
+    title: "Per-service pages",
+    desc: "Dynamic pages for plumbing, electrical, HVAC, water heater, handyman, and custom jobs, each with its own copy and add-ons.",
   },
   {
     num: "03",
-    title: "Responsive across devices",
-    desc: "The layout holds up from wide desktop down to mobile, so the firm looks sharp wherever a prospect lands.",
+    title: "WhatsApp booking funnel",
+    desc: "A WhatsApp CTA runs through the site as the primary booking channel, turning interest into a booked job in one tap.",
   },
   {
     num: "04",
-    title: "Fast, clean delivery",
-    desc: "Built lean for quick load times and a frictionless first impression — the site feels as professional as the service behind it.",
+    title: "Full technical SEO",
+    desc: "Sitemap, structured data, OG images, and canonical URLs, so the firm surfaces cleanly in search and shares.",
   },
 ];
 
@@ -61,13 +61,15 @@ export default function TrubluPage() {
               </Reveal>
               <Reveal delay={0.14}>
                 <p className="case-p">
-                  Trublu is a technical services firm that needed a web presence
-                  matching the quality of their work. They had a complete design
-                  but no production site to put it in front of prospects.
+                  Trublu is a Beirut home-repair and maintenance service that
+                  needed a site matching the quality of their work. They had a
+                  complete design but no production site to put it in front of
+                  homeowners.
                 </p>
                 <p className="case-p">
                   The goal was a faithful, fast build that did more than look
-                  good — a layout engineered to convert visitors into leads.
+                  good — a layout engineered to turn visitors into booked jobs,
+                  with WhatsApp as the booking channel.
                 </p>
               </Reveal>
             </div>

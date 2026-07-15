@@ -12,7 +12,7 @@ const project = getProject("golden-land");
 export const metadata: Metadata = {
   title: "golden land real estate — karim khalifeh",
   description:
-    "full platform built from scratch — property listings, agent dashboards, and media uploads backed by cloudflare r2.",
+    "a real-estate platform rebuilt in next.js and migrated off a legacy cms with zero data loss — public listings, a staff admin dashboard, and image uploads backed by cloudflare r2.",
   alternates: {
     canonical: "/work/golden-land",
   },
@@ -21,23 +21,23 @@ export const metadata: Metadata = {
 const FEATURES = [
   {
     num: "01",
-    title: "Property listings",
-    desc: "A complete browsable catalogue with filtering — buyers find the right property without friction.",
+    title: "Legacy migration",
+    desc: "Moved the entire dataset off an aging ApostropheCMS platform with zero data loss: 7,953 properties, 57 agents, and 37K+ images.",
   },
   {
     num: "02",
-    title: "Agent dashboards",
-    desc: "Each agent gets a dedicated workspace to manage their listings, track status, and publish updates.",
+    title: "Property listings",
+    desc: "A complete browsable catalogue with property and agent detail pages — buyers find the right property without friction.",
   },
   {
     num: "03",
-    title: "Media pipeline",
-    desc: "Images upload directly to Cloudflare R2, bypassing the server entirely. No storage limits, no redeployment.",
+    title: "Staff admin dashboard",
+    desc: "One internal dashboard where staff manage listings, agents, and contacts, so a listing goes from draft to live without touching a server.",
   },
   {
     num: "04",
-    title: "Zero-touch publishing",
-    desc: "Listings go from draft to live without touching a server. The whole workflow is self-contained.",
+    title: "Media pipeline",
+    desc: "Images upload directly to Cloudflare R2, bypassing Vercel's upload-size limit entirely. No storage ceiling, no redeployment.",
   },
 ];
 
@@ -61,15 +61,15 @@ export default function GoldenLandPage() {
               </Reveal>
               <Reveal delay={0.14}>
                 <p className="case-p">
-                  Golden Land had no digital infrastructure. Listings were
-                  managed manually, agents had no centralised workspace, and
-                  putting a property online meant calling someone with server
-                  access.
+                  Golden Land ran on an aging ApostropheCMS platform, with years
+                  of real inventory locked inside it. The stack was holding the
+                  business back, but the data was too valuable to lose.
                 </p>
                 <p className="case-p">
-                  The goal was a complete operational platform — one that removed
-                  every technical bottleneck between an agent writing a listing
-                  and a buyer finding it.
+                  The goal was a full rebuild in Next.js that carried the entire
+                  legacy dataset across intact, then removed every technical
+                  bottleneck between a staff member writing a listing and a buyer
+                  finding it.
                 </p>
               </Reveal>
             </div>

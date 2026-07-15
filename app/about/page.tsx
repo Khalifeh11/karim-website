@@ -43,22 +43,22 @@ export default function AboutPage() {
               </Reveal>
               <Reveal delay={0.14}>
                 <p className="case-p">
-                  I build full-stack web applications — owning the data model,
-                  the backend logic, and the interface — so the whole thing
-                  holds together instead of being stitched from parts that
-                  don&apos;t quite fit. At Storiad I led the migration of a
-                  near-1,000-user publishing platform off WordPress onto a custom
-                  Laravel and React app, then shipped self-serve multi-tenant
-                  infrastructure that provisions a secured site per author on
-                  demand.
+                  I build full-stack web applications and own the whole thing:
+                  the data model, the backend logic, and the interface. That way
+                  it holds together instead of feeling stitched from parts that
+                  don&apos;t quite fit. At Storiad I led the move of a
+                  near-1,000-user publishing platform off WordPress and onto a
+                  custom Laravel and React app, then built self-serve
+                  multi-tenant infrastructure that spins up a secured site for
+                  each author on demand.
                 </p>
                 <p className="case-p">
-                  I also build applied-AI features that earn their place:
-                  in-app assistants using LLM tool calling, structured outputs,
-                  and usage metering — not AI for its own sake, but to remove
-                  real, repetitive work. The goal on every project is the same:
-                  something that works on day one and won&apos;t need rebuilding
-                  when the business grows.
+                  I also build AI features that earn their keep: in-app
+                  assistants using LLM tool calling, structured outputs, and
+                  usage metering. Not AI for its own sake, but to take real,
+                  repetitive work off people&apos;s plates. The goal on every
+                  project is the same. Ship something that works on day one and
+                  won&apos;t need rebuilding as the business grows.
                 </p>
               </Reveal>
             </div>
@@ -73,21 +73,24 @@ export default function AboutPage() {
             </SectionLabel>
             <div>
               <Reveal delay={0.08}>
-                <h2 className="case-h2">A route into engineering through people</h2>
+                <h2 className="case-h2">I build for the person, not the feature list</h2>
               </Reveal>
               <Reveal delay={0.14}>
                 <p className="case-p">
-                  I came to software from clinical and health psychology — an
-                  MSc from Bangor University before I moved into full-stack
-                  development. That background is less of a detour than it
-                  sounds: it left me with a habit of starting from the person
-                  using the thing, not the feature list.
+                  Before I decide what to build, I ask what the person using it
+                  is actually trying to do. It&apos;s a habit that keeps me from
+                  shipping screens that technically work but leave someone stuck,
+                  and it shapes everything from the data model up to the last bit
+                  of copy.
                 </p>
                 <p className="case-p">
-                  In practice that means asking what a user is actually trying to
-                  do before deciding what to build, and weighing how a system
-                  feels under load — not only whether it passes its tests. I work
-                  in English and Arabic natively, and in professional French.
+                  That instinct is partly where I come from: an MSc in clinical
+                  and health psychology from Bangor University before I moved
+                  into full-stack development. It&apos;s also why I pay attention
+                  to how a system feels under real load, not just whether it
+                  passes its tests. I work natively in English and Arabic, and
+                  professionally in French, so building for mixed-language users
+                  and teams is familiar ground.
                 </p>
               </Reveal>
             </div>

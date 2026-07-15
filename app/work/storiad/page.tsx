@@ -12,7 +12,7 @@ const project = getProject("storiad");
 export const metadata: Metadata = {
   title: "storiad — karim khalifeh",
   description:
-    "a multi-tenant saas for book marketing — laravel + react via inertia, with openai function-calling automating campaign generation per author.",
+    "the logged-in app for self-published authors, built on laravel and react via inertia — ai-assisted writing, a press-contact database, self-publishing profit calculators, and stripe billing.",
   alternates: {
     canonical: "/work/storiad",
   },
@@ -21,23 +21,23 @@ export const metadata: Metadata = {
 const FEATURES = [
   {
     num: "01",
-    title: "Multi-tenant workspaces",
-    desc: "Each author gets an isolated, provisioned workspace — their data, campaigns, and settings fully separated from every other tenant.",
+    title: "AI-assisted writing",
+    desc: "A writing and chatbot feature helps authors draft and shape their content, turning a blank page into a starting point.",
   },
   {
     num: "02",
-    title: "AI campaign generation",
-    desc: "OpenAI function-calling automates campaign creation, turning a few inputs into structured marketing output without manual setup.",
+    title: "Contacts Database",
+    desc: "A searchable media and press directory authors use to build outreach lists and pitch reviewers and bloggers directly.",
   },
   {
     num: "03",
-    title: "Inertia-driven UI",
-    desc: "A Laravel back end paired with a React front end over Inertia — server-driven routing with the responsiveness of a single-page app.",
+    title: "Financial Calculators",
+    desc: "Self-publishing profit tools — projected book worth and ROI, sales targets, and profit and loss — with charts and a public, embeddable version.",
   },
   {
     num: "04",
-    title: "Automated provisioning",
-    desc: "New tenants are spun up and provisioned automatically, so onboarding an author needs no manual intervention.",
+    title: "Author websites and billing",
+    desc: "Author-website management alongside Stripe subscription billing, all inside one Inertia-driven dashboard.",
   },
 ];
 
@@ -61,15 +61,14 @@ export default function StoriadPage() {
               </Reveal>
               <Reveal delay={0.14}>
                 <p className="case-p">
-                  Marketing a book is repetitive, manual work — and most authors
-                  don&apos;t have the time or tooling to do it well. Storiad
-                  needed a platform that could carry that load for many authors
-                  at once, each in their own space.
+                  Self-published authors have no single place to manage their
+                  brand, their content, and their book promotion. The work is
+                  scattered across tools that were never built for them.
                 </p>
                 <p className="case-p">
-                  The goal was a multi-tenant SaaS that provisions a private
-                  workspace per author and uses AI to turn campaign setup from a
-                  chore into a few clicks.
+                  The goal was one logged-in app that pulls the whole author
+                  workflow together: writing, outreach, the numbers behind a
+                  launch, and the author&apos;s own website.
                 </p>
               </Reveal>
             </div>
