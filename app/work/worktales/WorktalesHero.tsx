@@ -10,7 +10,7 @@ import { getProject } from "@/app/data/projects";
 const project = getProject("worktales");
 
 export default function WorktalesHero() {
-  const { name, headline, blurb, tags, url, year, heroDesktop, heroMobile } =
+  const { name, headline, blurb, tags, url, scope, heroDesktop, heroMobile } =
     project;
   // Mirror of the carousel's gate: shared-element names must exist on only
   // one route's tree per commit, or React flags them as duplicates.
@@ -80,8 +80,8 @@ export default function WorktalesHero() {
         <Reveal delay={0.3} className="case-hero-meta">
           <div className="case-meta">
             <div className="case-meta-item">
-              <span className="case-meta-label">year</span>
-              <span className="case-meta-value">{year}</span>
+              <span className="case-meta-label">scope</span>
+              <span className="case-meta-value">{scope}</span>
             </div>
             <div className="case-meta-item">
               <span className="case-meta-label">stack</span>

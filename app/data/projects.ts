@@ -15,8 +15,8 @@ export type Project = {
   heroMobile: string;
   /** Shown in the browser-frame address bar of the device rig. */
   url: string;
-  /** Year shown in the case-study hero meta. */
-  year: string;
+  /** Extent of the engagement, shown in the case-study hero meta. */
+  scope: string;
   caseStudy: boolean;
   /** OKLCH hue (0–360) used for the ambient scene tint while this project is active. */
   themeHue: number;
@@ -37,7 +37,7 @@ export const projects: Project[] = [
     heroDesktop: "/projects/storiad-macbook.webp",
     heroMobile: "/projects/storiad-mobile.webp",
     url: "app.storiad.com",
-    year: "2024",
+    scope: "lead developer",
     caseStudy: true,
     themeHue: 55,
   },
@@ -54,7 +54,7 @@ export const projects: Project[] = [
     heroDesktop: "/projects/Device - Macbook Air.webp",
     heroMobile: "/projects/goldenland-mobile.webp",
     url: "goldenlandrealestate.net",
-    year: "2024",
+    scope: "solo build",
     caseStudy: true,
     themeHue: 80,
   },
@@ -71,7 +71,7 @@ export const projects: Project[] = [
     heroDesktop: "/projects/worktales-macbook.webp",
     heroMobile: "/projects/worktales-mobile.webp",
     url: "work-tales.pages.dev",
-    year: "2024",
+    scope: "full redesign",
     caseStudy: true,
     themeHue: 35,
   },
@@ -88,7 +88,7 @@ export const projects: Project[] = [
     heroDesktop: "/projects/turblue-macbook.webp",
     heroMobile: "/projects/trublu-mobile.webp",
     url: "trublutechnical.com",
-    year: "2024",
+    scope: "build from design",
     caseStudy: true,
     themeHue: 200,
   },
