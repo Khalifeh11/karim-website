@@ -302,8 +302,9 @@ export default function AetherFlowHero() {
           className="hero-sub hero-enter"
           style={{ textAlign: "center", animationDelay: "0.66s" }}
         >
-          I&apos;m Karim. Startups hand me the whole thing: design, code,
-          infrastructure. And it&apos;s still me maintaining it a year later.
+          I&apos;m Karim. Startups and businesses hand me the whole thing:
+          design, code, infrastructure. And it&apos;s still me maintaining it a
+          year later.
         </p>
 
         <div
