@@ -36,8 +36,8 @@ export default function AetherFlowHero() {
     // Touch devices have no hovering cursor, so the field runs hotter there
     // and gets autonomous "phantom" pulses to carry the ripple effect.
     const coarse = window.matchMedia("(pointer: coarse)").matches;
-    const baseAlpha = coarse ? 0.09 : 0.05;
-    const waveAmp = coarse ? 0.11 : 0.075;
+    const baseAlpha = coarse ? 0.1 : 0.09;
+    const waveAmp = coarse ? 0.12 : 0.1;
 
     // Canvas font strings can't resolve CSS variables — read the next/font
     // family off the root element instead.
@@ -57,6 +57,14 @@ export default function AetherFlowHero() {
     const pointer = { x: 0, y: 0, tx: 0, ty: 0, strength: 0, target: 0, placed: false };
     // Reused each frame: pointer + phantom pulses, as {x, y, radius, strength}.
     const sources: { x: number; y: number; radius: number; strength: number }[] = [];
+
+    // One-time reveal ring: most visitors never think to move the cursor, so
+    // shortly after load a single ripple expands from the center to show the
+    // field once, then the hero settles back to its calm resting state.
+    const REVEAL_DELAY = 500;
+    const REVEAL_DURATION = 1600;
+    let revealStart = -1;
+    let revealDone = false;
 
     // fillStyle strings are cached per quantized alpha — building
     // "rgba(...)" thousands of times a frame is measurable garbage.
@@ -114,17 +122,37 @@ export default function AetherFlowHero() {
           {
             x: w * (0.5 + 0.38 * Math.sin(time * 0.9)),
             y: h * (0.45 + 0.32 * Math.cos(time * 0.62)),
-            radius: 200,
-            strength: 0.65 + 0.25 * Math.sin(time * 1.8),
+            radius: 260,
+            strength: 0.8 + 0.2 * Math.sin(time * 1.8),
           },
           {
             x: w * (0.5 + 0.36 * Math.sin(time * 0.55 + 2.6)),
             y: h * (0.5 + 0.34 * Math.cos(time * 0.8 + 4.1)),
-            radius: 170,
-            strength: 0.6 + 0.25 * Math.sin(time * 1.3 + 1.9),
+            radius: 230,
+            strength: 0.75 + 0.2 * Math.sin(time * 1.3 + 1.9),
           },
         );
       }
+
+      // Reveal ring geometry for this frame; -1 while inactive. Clocked off
+      // frame timestamps so a tab hidden mid-reveal resumes where it left off.
+      let ringR = -1;
+      let ringFade = 0;
+      let cx = 0;
+      let cy = 0;
+      if (!revealDone && t > 0) {
+        if (revealStart < 0) revealStart = t;
+        const p = (t - revealStart - REVEAL_DELAY) / REVEAL_DURATION;
+        if (p >= 1) {
+          revealDone = true;
+        } else if (p > 0) {
+          cx = window.innerWidth / 2;
+          cy = window.innerHeight / 2;
+          ringR = p * Math.hypot(cx, cy);
+          ringFade = 0.9 * (1 - p);
+        }
+      }
+
       for (let r = 0; r < rows; r++) {
         for (let c = 0; c < cols; c++) {
           const i = r * cols + c;
@@ -147,6 +175,14 @@ export default function AetherFlowHero() {
               const b = (1 - Math.sqrt(distSq) / s.radius) * s.strength;
               if (b > boost) boost = b;
             }
+          }
+          if (ringR >= 0) {
+            // Gaussian band ~80px wide centered on the expanding ring.
+            const dx = x - cx;
+            const dy = y - cy;
+            const d = Math.sqrt(dx * dx + dy * dy) - ringR;
+            const rb = Math.exp(-(d * d) / 6400) * ringFade;
+            if (rb > boost) boost = rb;
           }
           alpha += boost * boost * 0.65;
 
