@@ -5,14 +5,28 @@ import Footer from "@/app/components/Footer";
 import ContactCta from "@/app/components/ContactCta";
 import { Reveal, SectionLabel } from "@/app/components/Reveal";
 import AboutHero from "./AboutHero";
+import { JsonLd, PERSON } from "@/app/lib/jsonld";
+
+const DESCRIPTION =
+  "karim khalifeh — a full-stack developer in beirut building production-grade web apps that hold up as your business scales.";
 
 export const metadata: Metadata = {
-  title: "about — karim khalifeh",
-  description:
-    "karim khalifeh — a full-stack developer in beirut building production-grade web apps that hold up as your business scales.",
+  title: "about",
+  description: DESCRIPTION,
   alternates: {
     canonical: "/about",
   },
+  openGraph: {
+    title: "about — karim khalifeh",
+    description: DESCRIPTION,
+    url: "/about",
+  },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  mainEntity: PERSON,
 };
 
 const TOOLKIT = [
@@ -26,6 +40,7 @@ const TOOLKIT = [
 export default function AboutPage() {
   return (
     <>
+      <JsonLd data={jsonLd} />
       <Header />
       <main style={{ "--scene-hue": 148 } as CSSProperties}>
         {/* ── Hero ─────────────────────────────────────────── */}

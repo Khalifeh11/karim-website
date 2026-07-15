@@ -5,16 +5,24 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import { Reveal, SectionLabel } from "@/app/components/Reveal";
 import { getProject } from "@/app/data/projects";
+import { JsonLd, workJsonLd } from "@/app/lib/jsonld";
 import WorktalesHero from "./WorktalesHero";
 
 const project = getProject("worktales");
 
+const DESCRIPTION =
+  "a full redesign of a b2b sales-talent site — rebuilt page by page for two audiences, employers and job-seeking salespeople, with a dark-themed, motion-driven layout.";
+
 export const metadata: Metadata = {
-  title: "worktales — karim khalifeh",
-  description:
-    "a full redesign of a b2b sales-talent site — rebuilt page by page for two audiences, employers and job-seeking salespeople, with a dark-themed, motion-driven layout.",
+  title: "worktales",
+  description: DESCRIPTION,
   alternates: {
     canonical: "/work/worktales",
+  },
+  openGraph: {
+    title: "worktales — karim khalifeh",
+    description: DESCRIPTION,
+    url: "/work/worktales",
   },
 };
 
@@ -44,6 +52,7 @@ const FEATURES = [
 export default function WorktalesPage() {
   return (
     <>
+      <JsonLd data={workJsonLd(project, DESCRIPTION)} />
       <Header />
       <main className="case-tinted" style={{ "--scene-hue": project.themeHue } as CSSProperties}>
         {/* ── Hero ─────────────────────────────────────────── */}

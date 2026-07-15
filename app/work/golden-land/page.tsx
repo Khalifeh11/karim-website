@@ -5,16 +5,24 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import { Reveal, SectionLabel } from "@/app/components/Reveal";
 import { getProject } from "@/app/data/projects";
+import { JsonLd, workJsonLd } from "@/app/lib/jsonld";
 import GoldenLandHero from "./GoldenLandHero";
 
 const project = getProject("golden-land");
 
+const DESCRIPTION =
+  "a real-estate platform rebuilt in next.js and migrated off a legacy cms with zero data loss — public listings, a staff admin dashboard, and image uploads backed by cloudflare r2.";
+
 export const metadata: Metadata = {
-  title: "golden land real estate — karim khalifeh",
-  description:
-    "a real-estate platform rebuilt in next.js and migrated off a legacy cms with zero data loss — public listings, a staff admin dashboard, and image uploads backed by cloudflare r2.",
+  title: "golden land real estate",
+  description: DESCRIPTION,
   alternates: {
     canonical: "/work/golden-land",
+  },
+  openGraph: {
+    title: "golden land real estate — karim khalifeh",
+    description: DESCRIPTION,
+    url: "/work/golden-land",
   },
 };
 
@@ -44,6 +52,7 @@ const FEATURES = [
 export default function GoldenLandPage() {
   return (
     <>
+      <JsonLd data={workJsonLd(project, DESCRIPTION)} />
       <Header />
       <main className="case-tinted" style={{ "--scene-hue": project.themeHue } as CSSProperties}>
         {/* ── Hero ─────────────────────────────────────────── */}

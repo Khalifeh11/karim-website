@@ -5,16 +5,24 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import { Reveal, SectionLabel } from "@/app/components/Reveal";
 import { getProject } from "@/app/data/projects";
+import { JsonLd, workJsonLd } from "@/app/lib/jsonld";
 import StoriadHero from "./StoriadHero";
 
 const project = getProject("storiad");
 
+const DESCRIPTION =
+  "the logged-in app for self-published authors, built on laravel and react via inertia — ai-assisted writing, a press-contact database, self-publishing profit calculators, and stripe billing.";
+
 export const metadata: Metadata = {
-  title: "storiad — karim khalifeh",
-  description:
-    "the logged-in app for self-published authors, built on laravel and react via inertia — ai-assisted writing, a press-contact database, self-publishing profit calculators, and stripe billing.",
+  title: "storiad",
+  description: DESCRIPTION,
   alternates: {
     canonical: "/work/storiad",
+  },
+  openGraph: {
+    title: "storiad — karim khalifeh",
+    description: DESCRIPTION,
+    url: "/work/storiad",
   },
 };
 
@@ -44,6 +52,7 @@ const FEATURES = [
 export default function StoriadPage() {
   return (
     <>
+      <JsonLd data={workJsonLd(project, DESCRIPTION)} />
       <Header />
       <main className="case-tinted" style={{ "--scene-hue": project.themeHue } as CSSProperties}>
         {/* ── Hero ─────────────────────────────────────────── */}

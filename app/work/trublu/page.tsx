@@ -5,16 +5,24 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import { Reveal, SectionLabel } from "@/app/components/Reveal";
 import { getProject } from "@/app/data/projects";
+import { JsonLd, workJsonLd } from "@/app/lib/jsonld";
 import TrubluHero from "./TrubluHero";
 
 const project = getProject("trublu");
 
+const DESCRIPTION =
+  "a marketing site for a beirut home-services firm — a supplied design converted into production, with per-service pages, a whatsapp booking funnel, and full technical seo.";
+
 export const metadata: Metadata = {
-  title: "trublu technical — karim khalifeh",
-  description:
-    "a marketing site for a beirut home-services firm — a supplied design converted into production, with per-service pages, a whatsapp booking funnel, and full technical seo.",
+  title: "trublu technical",
+  description: DESCRIPTION,
   alternates: {
     canonical: "/work/trublu",
+  },
+  openGraph: {
+    title: "trublu technical — karim khalifeh",
+    description: DESCRIPTION,
+    url: "/work/trublu",
   },
 };
 
@@ -44,6 +52,7 @@ const FEATURES = [
 export default function TrubluPage() {
   return (
     <>
+      <JsonLd data={workJsonLd(project, DESCRIPTION)} />
       <Header />
       <main className="case-tinted" style={{ "--scene-hue": project.themeHue } as CSSProperties}>
         {/* ── Hero ─────────────────────────────────────────── */}

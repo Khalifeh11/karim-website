@@ -24,7 +24,10 @@ const instrumentSerif = Instrument_Serif({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://karimkhalifeh.com"),
-  title: "Karim Khalifeh — full-stack developer, Beirut",
+  title: {
+    default: "Karim Khalifeh — full-stack developer, Beirut",
+    template: "%s — karim khalifeh",
+  },
   description:
     "I'm Karim — a freelance full-stack developer based in Beirut. I build fast, well-engineered websites and web apps for businesses around the world.",
   openGraph: {

@@ -1,0 +1,21 @@
+# Karim Khalifeh
+
+> Freelance full-stack developer based in Beirut. Builds fast, well-engineered websites and web apps for businesses around the world. Stack: Laravel, Next.js, React, TypeScript, Node.js. Also builds AI features — LLM tool calling, structured outputs, usage metering.
+
+## Pages
+
+- [Home](https://karimkhalifeh.com): Overview — services, process, and selected work.
+- [About](https://karimkhalifeh.com/about): Background, toolkit, and how Karim works. MSc in clinical and health psychology (Bangor University) before moving into full-stack development. Works natively in English and Arabic, professionally in French.
+
+## Work
+
+- [Storiad](https://karimkhalifeh.com/work/storiad): Lead developer on the logged-in app for self-published authors — an Inertia dashboard with AI-assisted writing, a press-contact database, self-publishing profit calculators, and Stripe billing.
+- [Golden Land Real Estate](https://karimkhalifeh.com/work/golden-land): Solo build that migrated a real-estate platform off a legacy CMS with zero data loss — 7,953 listings, 57 agents, 37K+ images — with a full admin dashboard and Cloudflare R2 image uploads.
+- [Trublu Technical](https://karimkhalifeh.com/work/trublu): Marketing site for a Beirut home-services firm — per-service pages and a WhatsApp-driven booking funnel, with full technical SEO.
+- [Worktales](https://karimkhalifeh.com/work/worktales): Full redesign of a B2B sales-talent site, rebuilt page by page for employers and job-seeking salespeople.
+
+## Contact
+
+- Email: karim.ah.khalifeh@gmail.com
+- GitHub: https://github.com/Khalifeh11
+- LinkedIn: https://www.linkedin.com/in/karimkhalifeh/
