@@ -631,6 +631,29 @@ button {
   box-shadow: 0 0 0 4px color-mix(in oklab, var(--accent) 20%, transparent);
 }
 
+/* CSS-only hero entrance: plays as soon as styles load instead of waiting
+   for the JS bundle + hydration, keeping the H1 (LCP element) fast. */
+@keyframes hero-enter {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.hero-enter {
+  opacity: 0;
+  animation: hero-enter 0.55s cubic-bezier(0.25, 0.1, 0.25, 1) both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-enter {
+    animation: none;
+    opacity: 1;
+  }
+}
+
 .hero-headline {
   font-family: var(--font-display);
   font-weight: 400;

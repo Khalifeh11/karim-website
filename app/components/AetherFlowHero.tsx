@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { motion } from "framer-motion";
 
 // Character field: a grid of dim mono glyphs that brighten in slow ambient
 // waves and ripple around the cursor — extends the ">_" terminal brand.
@@ -13,15 +12,6 @@ const GLYPHS = "····························─│�
 // Higher intensity promotes a cell's glyph up this ramp (near the cursor).
 const RAMP = [":", "+", "*", "#"];
 const ALPHA_STEPS = 24;
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 20 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { delay: i * 0.18 + 0.3, duration: 0.55, ease: [0.25, 0.1, 0.25, 1] as const },
-  }),
-};
 
 export default function AetherFlowHero() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -295,38 +285,30 @@ export default function AetherFlowHero() {
       />
       <div className="hero-fade" aria-hidden="true" />
 
-      <motion.div
+      <div
         className="relative z-10 flex flex-col items-center text-center"
         style={{ maxWidth: "var(--page-max)", padding: "0 var(--page-pad)" }}
-        initial="hidden"
-        animate="visible"
       >
-        <motion.h1
-          className="hero-headline"
-          style={{ maxWidth: "20ch" }}
-          custom={1}
-          variants={fadeUp}
+        <h1
+          className="hero-headline hero-enter"
+          style={{ maxWidth: "20ch", animationDelay: "0.48s" }}
         >
           <span className="eyebrow">full-stack web developer · beirut</span>
           Designed, built, and deployed{" "}
           <span className="accent">by one person.</span>
-        </motion.h1>
+        </h1>
 
-        <motion.p
-          className="hero-sub"
-          style={{ textAlign: "center" }}
-          custom={2}
-          variants={fadeUp}
+        <p
+          className="hero-sub hero-enter"
+          style={{ textAlign: "center", animationDelay: "0.66s" }}
         >
           I&apos;m Karim. Startups hand me the whole thing: design, code,
           infrastructure. And it&apos;s still me maintaining it a year later.
-        </motion.p>
+        </p>
 
-        <motion.div
-          className="hero-actions"
-          style={{ justifyContent: "center" }}
-          custom={3}
-          variants={fadeUp}
+        <div
+          className="hero-actions hero-enter"
+          style={{ justifyContent: "center", animationDelay: "0.84s" }}
         >
           <a className="btn btn-primary" href="#contact">
             Start a project
@@ -335,8 +317,8 @@ export default function AetherFlowHero() {
           <a className="btn btn-secondary" href="#work">
             See the work
           </a>
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
     </section>
   );
 }
