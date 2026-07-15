@@ -21,23 +21,23 @@ export const metadata: Metadata = {
 const FEATURES = [
   {
     num: "01",
-    title: "multi-tenant workspaces",
-    desc: "each author gets an isolated, provisioned workspace — their data, campaigns, and settings fully separated from every other tenant.",
+    title: "Multi-tenant workspaces",
+    desc: "Each author gets an isolated, provisioned workspace — their data, campaigns, and settings fully separated from every other tenant.",
   },
   {
     num: "02",
-    title: "ai campaign generation",
-    desc: "openai function-calling automates campaign creation, turning a few inputs into structured marketing output without manual setup.",
+    title: "AI campaign generation",
+    desc: "OpenAI function-calling automates campaign creation, turning a few inputs into structured marketing output without manual setup.",
   },
   {
     num: "03",
-    title: "inertia-driven ui",
-    desc: "a laravel back end paired with a react front end over inertia — server-driven routing with the responsiveness of a single-page app.",
+    title: "Inertia-driven UI",
+    desc: "A Laravel back end paired with a React front end over Inertia — server-driven routing with the responsiveness of a single-page app.",
   },
   {
     num: "04",
-    title: "automated provisioning",
-    desc: "new tenants are spun up and provisioned automatically, so onboarding an author needs no manual intervention.",
+    title: "Automated provisioning",
+    desc: "New tenants are spun up and provisioned automatically, so onboarding an author needs no manual intervention.",
   },
 ];
 
@@ -53,22 +53,22 @@ export default function StoriadPage() {
         <section className="case-section page">
           <div className="case-section-inner">
             <SectionLabel num="02" as="p">
-              overview
+              Overview
             </SectionLabel>
             <div>
               <Reveal delay={0.08}>
-                <h2 className="case-h2">the problem</h2>
+                <h2 className="case-h2">The problem</h2>
               </Reveal>
               <Reveal delay={0.14}>
                 <p className="case-p">
-                  marketing a book is repetitive, manual work — and most authors
-                  don&apos;t have the time or tooling to do it well. storiad
+                  Marketing a book is repetitive, manual work — and most authors
+                  don&apos;t have the time or tooling to do it well. Storiad
                   needed a platform that could carry that load for many authors
                   at once, each in their own space.
                 </p>
                 <p className="case-p">
-                  the goal was a multi-tenant saas that provisions a private
-                  workspace per author and uses ai to turn campaign setup from a
+                  The goal was a multi-tenant SaaS that provisions a private
+                  workspace per author and uses AI to turn campaign setup from a
                   chore into a few clicks.
                 </p>
               </Reveal>
@@ -80,7 +80,7 @@ export default function StoriadPage() {
         <section className="case-section page">
           <div className="section-head">
             <SectionLabel num="03" as="p">
-              what was built
+              What was built
             </SectionLabel>
           </div>
           <div className="case-features">
@@ -100,7 +100,7 @@ export default function StoriadPage() {
         <section className="case-section page">
           <div className="case-section-inner">
             <SectionLabel num="04" as="p">
-              the stack
+              The stack
             </SectionLabel>
             <Reveal delay={0.1}>
               <ul className="case-stack" aria-label="technologies used">

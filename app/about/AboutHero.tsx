@@ -4,7 +4,7 @@ import { Fragment } from "react";
 import Image from "next/image";
 import { Reveal, SectionLabel } from "@/app/components/Reveal";
 
-const HEADLINE = "software that holds up\nas the business grows.";
+const HEADLINE = "Software that holds up\nas the business grows.";
 
 export default function AboutHero() {
   return (
@@ -12,7 +12,7 @@ export default function AboutHero() {
       <div className="case-hero-grid">
         <div className="case-hero-text">
           <SectionLabel num="01" as="p">
-            about
+            About
           </SectionLabel>
 
           <Reveal delay={0.1}>
@@ -28,10 +28,10 @@ export default function AboutHero() {
 
           <Reveal delay={0.18}>
             <p className="case-sub">
-              i&apos;m{" "}
-              <span className="preserve-case">karim</span> — a full-stack
-              developer in beirut with 3+ years building production web apps.
-              startups and small businesses hire me to ship platforms that work
+              I&apos;m{" "}
+              <span className="preserve-case">Karim</span> — a full-stack
+              developer in Beirut with 3+ years building production web apps.
+              Startups and small businesses hire me to ship platforms that work
               on day one and don&apos;t need rebuilding when they scale.
             </p>
           </Reveal>

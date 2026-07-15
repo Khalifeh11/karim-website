@@ -27,11 +27,11 @@ export type Project = {
 export const projects: Project[] = [
   {
     slug: "golden-land",
-    name: "golden land real estate",
-    displayName: "golden land real estate",
-    headline: "golden land\nreal estate",
+    name: "Golden Land Real Estate",
+    displayName: "Golden Land Real Estate",
+    headline: "Golden Land\nReal Estate",
     blurb:
-      "built the full platform from scratch — property listings, agent dashboards, and media uploads backed by cloudflare r2. listings go from draft to live without touching a server.",
+      "Built the full platform from scratch — property listings, agent dashboards, and media uploads backed by Cloudflare R2. Listings go from draft to live without touching a server.",
     tags: ["next.js", "react", "typescript", "cloudflare r2"],
     desktop: "/projects/goldenland.webp",
     mobile: "/projects/goldenland-mobile.webp",
@@ -44,11 +44,11 @@ export const projects: Project[] = [
   },
   {
     slug: "storiad",
-    name: "storiad",
-    displayName: "storiad",
-    headline: "storiad",
+    name: "Storiad",
+    displayName: "Storiad",
+    headline: "Storiad",
     blurb:
-      "a multi-tenant saas for book marketing. built on laravel + react via inertia, with openai function-calling to automate campaign generation — each author gets an isolated, provisioned workspace.",
+      "A multi-tenant SaaS for book marketing. Built on Laravel + React via Inertia, with OpenAI function-calling to automate campaign generation — each author gets an isolated, provisioned workspace.",
     tags: ["laravel", "inertia", "react", "openai"],
     desktop: "/projects/storiad.webp",
     mobile: "/projects/storiad-mobile.webp",
@@ -61,11 +61,11 @@ export const projects: Project[] = [
   },
   {
     slug: "worktales",
-    name: "worktales",
-    displayName: "worktales",
-    headline: "worktales",
+    name: "Worktales",
+    displayName: "Worktales",
+    headline: "Worktales",
     blurb:
-      "worktales were repositioning their consultancy — the old site no longer reflected who they were. redesigned the web presence from the ground up to match the new direction, with a dark-themed, motion-driven layout built to communicate focus and authority.",
+      "Worktales were repositioning their consultancy — the old site no longer reflected who they were. Redesigned the web presence from the ground up to match the new direction, with a dark-themed, motion-driven layout built to communicate focus and authority.",
     tags: ["redesign", "svg"],
     desktop: "/projects/worktales.webp",
     mobile: "/projects/worktales-mobile.webp",
@@ -78,11 +78,11 @@ export const projects: Project[] = [
   },
   {
     slug: "trublu",
-    name: "trublu",
-    displayName: "trublu",
-    headline: "trublu\ntechnical",
+    name: "Trublu",
+    displayName: "Trublu",
+    headline: "Trublu\nTechnical",
     blurb:
-      "a full build for a technical services firm — converted a complete design into production, with a clean layout optimised to turn visitors into leads.",
+      "A full build for a technical services firm — converted a complete design into production, with a clean layout optimised to turn visitors into leads.",
     tags: ["next.js", "react", "typescript"],
     desktop: "/projects/trublu.webp",
     mobile: "/projects/trublu-mobile.webp",

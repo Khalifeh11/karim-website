@@ -8,7 +8,7 @@ export default function CaseEnd() {
       <Reveal>
         <p className="case-end-label">need something like this?</p>
         <Link className="case-end-cta" href="/#contact">
-          <span className="case-end-title">let&apos;s talk about your project</span>
+          <span className="case-end-title">Let&apos;s talk about your project</span>
           <span className="case-end-arrow">→</span>
         </Link>
         <p className="case-end-back">

@@ -227,7 +227,7 @@ export default function ProjectCarousel() {
       }}
     >
       <header className="section-head">
-        <SectionLabel num="01">featured work</SectionLabel>
+        <SectionLabel num="01">Featured work</SectionLabel>
         <div className="carousel-nav">
           <button
             type="button"
@@ -304,7 +304,7 @@ export default function ProjectCarousel() {
               )}
               {p.caseStudy && (
                 <Link className="slide-link" href={`/work/${p.slug}`}>
-                  read the case study <span className="arrow">→</span>
+                  Read the case study <span className="arrow">→</span>
                 </Link>
               )}
             </div>

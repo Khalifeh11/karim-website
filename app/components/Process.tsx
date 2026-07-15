@@ -2,20 +2,20 @@ import { Reveal, SectionLabel } from "./Reveal";
 
 const steps = [
   {
-    name: "intro call",
-    desc: "30 minutes, free. we talk through what you need and whether i'm the right fit.",
+    name: "Intro call",
+    desc: "30 minutes, free. We talk through what you need and whether I'm the right fit.",
   },
   {
-    name: "proposal",
-    desc: "a fixed scope and quote in your inbox within 2–3 days. no surprises later.",
+    name: "Proposal",
+    desc: "A fixed scope and quote in your inbox within 2–3 days. No surprises later.",
   },
   {
-    name: "build",
-    desc: "weekly demos on a live link — you watch it come together and steer as we go.",
+    name: "Build",
+    desc: "Weekly demos on a live link — you watch it come together and steer as we go.",
   },
   {
-    name: "launch",
-    desc: "deploy, handoff, and 30 days of support after going live.",
+    name: "Launch",
+    desc: "Deploy, handoff, and 30 days of support after going live.",
   },
 ];
 
@@ -23,7 +23,7 @@ export default function Process() {
   return (
     <section id="process" className="process page has-grid section-glow">
       <header className="section-head">
-        <SectionLabel num="03">how it works</SectionLabel>
+        <SectionLabel num="03">How it works</SectionLabel>
       </header>
 
       <ol className="process-grid">

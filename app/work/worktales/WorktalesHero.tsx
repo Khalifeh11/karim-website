@@ -21,7 +21,7 @@ export default function WorktalesHero() {
       <div className="case-hero-grid">
         <div className="case-hero-text">
           <SectionLabel num="01" as="p">
-            case study
+            Case study
           </SectionLabel>
 
           {/* Keyed by name: React only untracks a shared-element name on

@@ -21,23 +21,23 @@ export const metadata: Metadata = {
 const FEATURES = [
   {
     num: "01",
-    title: "property listings",
-    desc: "a complete browsable catalogue with filtering — buyers find the right property without friction.",
+    title: "Property listings",
+    desc: "A complete browsable catalogue with filtering — buyers find the right property without friction.",
   },
   {
     num: "02",
-    title: "agent dashboards",
-    desc: "each agent gets a dedicated workspace to manage their listings, track status, and publish updates.",
+    title: "Agent dashboards",
+    desc: "Each agent gets a dedicated workspace to manage their listings, track status, and publish updates.",
   },
   {
     num: "03",
-    title: "media pipeline",
-    desc: "images upload directly to cloudflare r2, bypassing the server entirely. no storage limits, no redeployment.",
+    title: "Media pipeline",
+    desc: "Images upload directly to Cloudflare R2, bypassing the server entirely. No storage limits, no redeployment.",
   },
   {
     num: "04",
-    title: "zero-touch publishing",
-    desc: "listings go from draft to live without touching a server. the whole workflow is self-contained.",
+    title: "Zero-touch publishing",
+    desc: "Listings go from draft to live without touching a server. The whole workflow is self-contained.",
   },
 ];
 
@@ -53,21 +53,21 @@ export default function GoldenLandPage() {
         <section className="case-section page">
           <div className="case-section-inner">
             <SectionLabel num="02" as="p">
-              overview
+              Overview
             </SectionLabel>
             <div>
               <Reveal delay={0.08}>
-                <h2 className="case-h2">the problem</h2>
+                <h2 className="case-h2">The problem</h2>
               </Reveal>
               <Reveal delay={0.14}>
                 <p className="case-p">
-                  golden land had no digital infrastructure. listings were
+                  Golden Land had no digital infrastructure. Listings were
                   managed manually, agents had no centralised workspace, and
                   putting a property online meant calling someone with server
                   access.
                 </p>
                 <p className="case-p">
-                  the goal was a complete operational platform — one that removed
+                  The goal was a complete operational platform — one that removed
                   every technical bottleneck between an agent writing a listing
                   and a buyer finding it.
                 </p>
@@ -80,7 +80,7 @@ export default function GoldenLandPage() {
         <section className="case-section page">
           <div className="section-head">
             <SectionLabel num="03" as="p">
-              what was built
+              What was built
             </SectionLabel>
           </div>
           <div className="case-features">
@@ -100,7 +100,7 @@ export default function GoldenLandPage() {
         <section className="case-section page">
           <div className="case-section-inner">
             <SectionLabel num="04" as="p">
-              the stack
+              The stack
             </SectionLabel>
             <Reveal delay={0.1}>
               <ul className="case-stack" aria-label="technologies used">

@@ -109,6 +109,31 @@ body {
   text-transform: none;
 }
 
+/* Content copy reads in natural case — headlines, prose, CTAs, and section
+   headings carry the emphasis. Chrome (nav, footer, labels, tags, meta,
+   command palette, form scaffolding) keeps the lowercase terminal motif via
+   the global rule above. */
+.section-title,
+.contact-kicker,
+.slide-title,
+.slide-blurb,
+.slide-link,
+.svc-name,
+.svc-desc,
+.step-name,
+.step-desc,
+.contact-headline,
+.contact-alt a,
+.case-headline,
+.case-sub,
+.case-h2,
+.case-p,
+.case-feature-title,
+.case-feature-desc,
+.case-end-title {
+  text-transform: none;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -551,6 +576,7 @@ button {
   border-radius: var(--radius-pill);
   border: 1px solid transparent;
   transition: all var(--dur-fast) var(--ease-out);
+  text-transform: none; /* CTAs read in natural case */
 }
 .btn:active {
   transform: scale(0.98);
@@ -614,6 +640,7 @@ button {
   max-width: 15ch;
   margin-bottom: 32px;
   text-wrap: balance;
+  text-transform: none; /* restore case — headline carries the emphasis */
 }
 .hero-headline .accent {
   color: var(--accent);
@@ -628,6 +655,7 @@ button {
   letter-spacing: 0.14em;
   color: var(--fg-3);
   margin-bottom: 24px;
+  text-transform: lowercase; /* decorative label — stays lowercase as a motif */
 }
 
 .hero-sub {
@@ -637,6 +665,7 @@ button {
   color: var(--fg-2);
   margin-bottom: 40px;
   text-wrap: pretty;
+  text-transform: none; /* restore sentence case for readability */
 }
 
 .hero-actions {
@@ -1266,16 +1295,44 @@ a.work-row:hover .work-go {
   scroll-margin-top: 80px;
 }
 
-/* Intro (headline + alt channels + meta) beside the form on desktop. */
+/* Intro + alt channels beside the form on desktop; on mobile the escape
+   hatches ("or skip the form" + meta) drop below the form instead of above. */
 .contact-grid {
   display: grid;
   gap: var(--s-6);
   align-items: start;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "intro"
+    "form"
+    "skip"
+    "meta";
+}
+.contact-intro {
+  grid-area: intro;
+}
+.contact-form-col {
+  grid-area: form;
+}
+.contact-skip-col {
+  grid-area: skip;
+}
+.contact-meta-col {
+  grid-area: meta;
+}
+/* margins that spaced these blocks in normal flow are now handled by grid gap */
+.contact-skip-col .contact-alt,
+.contact-meta-col .contact-meta {
+  margin-top: 0;
 }
 @media (min-width: 861px) {
   .contact-grid {
     grid-template-columns: minmax(0, 1fr) minmax(0, 560px);
-    gap: var(--s-7);
+    gap: var(--s-6) var(--s-7);
+    grid-template-areas:
+      "intro form"
+      "skip  form"
+      "meta  form";
   }
 }
 

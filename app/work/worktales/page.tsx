@@ -21,23 +21,23 @@ export const metadata: Metadata = {
 const FEATURES = [
   {
     num: "01",
-    title: "ground-up redesign",
-    desc: "rebuilt the web presence from scratch to match the consultancy's new direction — the old site no longer reflected who they were.",
+    title: "Ground-up redesign",
+    desc: "Rebuilt the web presence from scratch to match the consultancy's new direction — the old site no longer reflected who they were.",
   },
   {
     num: "02",
-    title: "dark, focused identity",
-    desc: "a dark-themed layout sets a confident, premium tone that communicates focus and authority at a glance.",
+    title: "Dark, focused identity",
+    desc: "A dark-themed layout sets a confident, premium tone that communicates focus and authority at a glance.",
   },
   {
     num: "03",
-    title: "motion-driven layout",
-    desc: "considered motion guides the eye through the story, giving the site momentum without distracting from the message.",
+    title: "Motion-driven layout",
+    desc: "Considered motion guides the eye through the story, giving the site momentum without distracting from the message.",
   },
   {
     num: "04",
-    title: "crisp svg visuals",
-    desc: "vector graphics keep visuals sharp at any size and load fast, reinforcing the polished, technical feel.",
+    title: "Crisp SVG visuals",
+    desc: "Vector graphics keep visuals sharp at any size and load fast, reinforcing the polished, technical feel.",
   },
 ];
 
@@ -53,20 +53,20 @@ export default function WorktalesPage() {
         <section className="case-section page">
           <div className="case-section-inner">
             <SectionLabel num="02" as="p">
-              overview
+              Overview
             </SectionLabel>
             <div>
               <Reveal delay={0.08}>
-                <h2 className="case-h2">the problem</h2>
+                <h2 className="case-h2">The problem</h2>
               </Reveal>
               <Reveal delay={0.14}>
                 <p className="case-p">
-                  worktales were repositioning their consultancy, but their old
-                  site no longer reflected who they were. it undersold a sharper,
+                  Worktales were repositioning their consultancy, but their old
+                  site no longer reflected who they were. It undersold a sharper,
                   more focused business.
                 </p>
                 <p className="case-p">
-                  the goal was a web presence that matched the new direction — a
+                  The goal was a web presence that matched the new direction — a
                   dark-themed, motion-driven layout built to communicate focus
                   and authority from the first scroll.
                 </p>
@@ -79,7 +79,7 @@ export default function WorktalesPage() {
         <section className="case-section page">
           <div className="section-head">
             <SectionLabel num="03" as="p">
-              what was built
+              What was built
             </SectionLabel>
           </div>
           <div className="case-features">
@@ -99,7 +99,7 @@ export default function WorktalesPage() {
         <section className="case-section page">
           <div className="case-section-inner">
             <SectionLabel num="04" as="p">
-              the stack
+              The stack
             </SectionLabel>
             <Reveal delay={0.1}>
               <ul className="case-stack" aria-label="technologies used">

@@ -35,28 +35,28 @@ export default function AboutPage() {
         <section className="case-section page">
           <div className="case-section-inner">
             <SectionLabel num="02" as="p">
-              what i do
+              What I do
             </SectionLabel>
             <div>
               <Reveal delay={0.08}>
-                <h2 className="case-h2">production-grade web apps, end to end</h2>
+                <h2 className="case-h2">Production-grade web apps, end to end</h2>
               </Reveal>
               <Reveal delay={0.14}>
                 <p className="case-p">
-                  i build full-stack web applications — owning the data model,
+                  I build full-stack web applications — owning the data model,
                   the backend logic, and the interface — so the whole thing
                   holds together instead of being stitched from parts that
-                  don&apos;t quite fit. at storiad i led the migration of a
-                  near-1,000-user publishing platform off wordpress onto a custom
-                  laravel and react app, then shipped self-serve multi-tenant
+                  don&apos;t quite fit. At Storiad I led the migration of a
+                  near-1,000-user publishing platform off WordPress onto a custom
+                  Laravel and React app, then shipped self-serve multi-tenant
                   infrastructure that provisions a secured site per author on
                   demand.
                 </p>
                 <p className="case-p">
-                  i also build applied-ai features that earn their place:
-                  in-app assistants using llm tool calling, structured outputs,
-                  and usage metering — not ai for its own sake, but to remove
-                  real, repetitive work. the goal on every project is the same:
+                  I also build applied-AI features that earn their place:
+                  in-app assistants using LLM tool calling, structured outputs,
+                  and usage metering — not AI for its own sake, but to remove
+                  real, repetitive work. The goal on every project is the same:
                   something that works on day one and won&apos;t need rebuilding
                   when the business grows.
                 </p>
@@ -69,25 +69,25 @@ export default function AboutPage() {
         <section className="case-section page">
           <div className="case-section-inner">
             <SectionLabel num="03" as="p">
-              background
+              Background
             </SectionLabel>
             <div>
               <Reveal delay={0.08}>
-                <h2 className="case-h2">a route into engineering through people</h2>
+                <h2 className="case-h2">A route into engineering through people</h2>
               </Reveal>
               <Reveal delay={0.14}>
                 <p className="case-p">
-                  i came to software from clinical and health psychology — an
-                  msc from bangor university before i moved into full-stack
-                  development. that background is less of a detour than it
+                  I came to software from clinical and health psychology — an
+                  MSc from Bangor University before I moved into full-stack
+                  development. That background is less of a detour than it
                   sounds: it left me with a habit of starting from the person
                   using the thing, not the feature list.
                 </p>
                 <p className="case-p">
-                  in practice that means asking what a user is actually trying to
+                  In practice that means asking what a user is actually trying to
                   do before deciding what to build, and weighing how a system
-                  feels under load — not only whether it passes its tests. i work
-                  in english and arabic natively, and in professional french.
+                  feels under load — not only whether it passes its tests. I work
+                  in English and Arabic natively, and in professional French.
                 </p>
               </Reveal>
             </div>
@@ -98,7 +98,7 @@ export default function AboutPage() {
         <section className="case-section page">
           <div className="case-section-inner">
             <SectionLabel num="04" as="p">
-              toolkit
+              Toolkit
             </SectionLabel>
             <div className="about-skills">
               {TOOLKIT.map((group, i) => (

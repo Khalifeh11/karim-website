@@ -270,7 +270,7 @@ export default function AetherFlowHero() {
           variants={fadeUp}
         >
           <span className="eyebrow">full-stack web developer · beirut</span>
-          designed, built, and deployed{" "}
+          Designed, built, and deployed{" "}
           <span className="accent">by one person.</span>
         </motion.h1>
 
@@ -280,8 +280,8 @@ export default function AetherFlowHero() {
           custom={2}
           variants={fadeUp}
         >
-          i&apos;m karim. startups hand me the whole thing: design, code,
-          infrastructure. and it&apos;s still me maintaining it a year later.
+          I&apos;m Karim. Startups hand me the whole thing: design, code,
+          infrastructure. And it&apos;s still me maintaining it a year later.
         </motion.p>
 
         <motion.div
@@ -291,11 +291,11 @@ export default function AetherFlowHero() {
           variants={fadeUp}
         >
           <a className="btn btn-primary" href="#contact">
-            start a project
+            Start a project
             <span className="arrow">→</span>
           </a>
           <a className="btn btn-secondary" href="#work">
-            see the work
+            See the work
           </a>
         </motion.div>
       </motion.div>
