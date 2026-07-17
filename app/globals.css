@@ -59,7 +59,7 @@
 /* Direction A — Modern. Dark by default. */
 .dir-modern {
   /* Families map to the next/font variables from layout.tsx */
-  --font-display: var(--font-instrument-serif), Georgia, "Times New Roman", serif;
+  --font-display: var(--font-barlow-cond), "Arial Narrow", sans-serif;
   --font-body: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
 
@@ -261,8 +261,8 @@ button {
   gap: 10px;
   cursor: pointer;
   font-family: var(--font-mono);
-  font-size: 14px;
-  letter-spacing: -0.005em;
+  font-size: 13px;
+  letter-spacing: 0.14em; /* matches .eyebrow — all mono labels share one voice */
 }
 .brand-mark .prompt {
   color: var(--accent);
@@ -656,10 +656,10 @@ button {
 
 .hero-headline {
   font-family: var(--font-display);
-  font-weight: 400;
+  font-weight: 300;
   font-size: clamp(50px, 7vw, 100px);
   line-height: 0.98;
-  letter-spacing: -0.015em;
+  letter-spacing: 0.01em;
   max-width: 15ch;
   margin-bottom: 32px;
   text-wrap: balance;
@@ -1744,9 +1744,9 @@ a.work-row:hover .work-go {
 
 .case-headline {
   font-family: var(--font-display);
-  font-weight: 400;
+  font-weight: 300;
   font-size: clamp(68px, 9.8vw, 136px);
-  letter-spacing: -0.02em;
+  letter-spacing: 0.01em;
   line-height: 0.91;
   margin-top: var(--s-5);
   margin-bottom: var(--s-6);
@@ -2018,6 +2018,18 @@ a.work-row:hover .work-go {
     grid-template-columns: 1fr;
     gap: var(--s-4);
   }
+  .step {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    column-gap: 12px;
+    align-items: baseline;
+  }
+  .step-name {
+    margin: 0 0 6px;
+  }
+  .step-desc {
+    grid-column: 2;
+  }
 }
 
 /* =========================================================================
@@ -2230,3 +2242,5 @@ a.work-row:hover .work-go {
     animation-delay: 0s !important;
   }
 }
+
+

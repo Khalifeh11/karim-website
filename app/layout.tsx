@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
+import { Barlow_Condensed, Geist, Geist_Mono } from "next/font/google";
 import MotionProvider from "./components/MotionProvider";
 import SoundEvents from "./components/SoundEvents";
 import CommandPalette from "./components/CommandPalette";
@@ -15,10 +15,10 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const instrumentSerif = Instrument_Serif({
-  variable: "--font-instrument-serif",
+const barlowCondensed = Barlow_Condensed({
+  variable: "--font-barlow-cond",
   subsets: ["latin"],
-  weight: "400",
+  weight: ["300", "400"],
   style: ["normal", "italic"],
 });
 
@@ -55,7 +55,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`dir-modern ${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable} h-full antialiased`}
+      className={`dir-modern ${geistSans.variable} ${geistMono.variable} ${barlowCondensed.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <SoundEvents />
