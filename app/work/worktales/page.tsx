@@ -35,7 +35,7 @@ const FEATURES = [
   {
     num: "02",
     title: "Employer pillar pages",
-    desc: "Hire, Train, and Accelerate — each pillar of the offering gets its own page, framing the value for businesses.",
+    desc: "Diagnose, Develop, and Deliver — each pillar of the offering gets its own page, framing the value for businesses.",
   },
   {
     num: "03",

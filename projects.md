@@ -43,7 +43,7 @@ I also led the SEO and content work.
 
 **The problem:** Worktales, a B2B sales-talent company, had outgrown a site that no longer reflected who they were or who they sell to.
 
-**What shipped:** A full redesign of their existing site, rebuilt page by page. The copy speaks to two audiences: employers ("For Businesses") and job-seeking salespeople. It covers the employer pillar pages (Hire, Train, Accelerate), a candidate talent-pool page, a webinars library, a homepage, and an about page, all rewritten to match the client's brand voice. The dark-themed, motion-driven layout communicates focus and authority.
+**What shipped:** A full redesign of their existing site, rebuilt page by page. The copy speaks to two audiences: employers ("For Businesses") and job-seeking salespeople. It covers the employer pillar pages (Diagnose, Develop, Deliver), a candidate talent-pool page, a webinars library, a homepage, and an about page, all rewritten to match the client's brand voice. The dark-themed, motion-driven layout communicates focus and authority.
 
 **Stack:** Hand-written HTML, CSS, and JS with no framework or build step.
 

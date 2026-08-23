@@ -70,7 +70,7 @@ export const projects: Project[] = [
     mobile: "/projects/worktales-mobile.webp",
     heroDesktop: "/projects/worktales-macbook.webp",
     heroMobile: "/projects/worktales-mobile.webp",
-    url: "work-tales.pages.dev",
+    url: "worktales.com",
     scope: "full redesign",
     caseStudy: true,
     themeHue: 35,
