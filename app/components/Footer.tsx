@@ -1,4 +1,4 @@
-import { EMAIL, GITHUB, LINKEDIN } from "../lib/links";
+import { EMAIL, GITHUB, LINKEDIN, RESUME } from "../lib/links";
 
 export default function Footer() {
   return (
@@ -16,9 +16,12 @@ export default function Footer() {
             linkedin ↗
           </a>
           <a href={`mailto:${EMAIL}`}>email</a>
+          <a href={RESUME} target="_blank" rel="noreferrer">
+            résumé ↗
+          </a>
         </nav>
         <span className="footer-meta">
-          full-stack developer · beirut · {new Date().getFullYear()}
+          senior full-stack developer · beirut · {new Date().getFullYear()}
         </span>
       </div>
     </footer>

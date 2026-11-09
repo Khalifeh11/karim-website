@@ -4,7 +4,7 @@ import { Fragment } from "react";
 import Image from "next/image";
 import { Reveal, SectionLabel } from "@/app/components/Reveal";
 
-const HEADLINE = "Software that holds up\nas the business grows.";
+const HEADLINE = "Four years owning\na production backend.";
 
 export default function AboutHero() {
   return (
@@ -29,11 +29,10 @@ export default function AboutHero() {
           <Reveal delay={0.18}>
             <p className="case-sub">
               I&apos;m{" "}
-              <span className="preserve-case">Karim</span>, a full-stack
-              developer in Beirut. For the past 4+ years I&apos;ve built
-              production web apps for startups and businesses who need something
-              that works on day one and won&apos;t need rebuilding once they
-              grow.
+              <span className="preserve-case">Karim</span>, a senior
+              full-stack developer in Beirut. I&apos;ve built and maintained
+              production web apps on Laravel, React, and Node, mostly owning the backend at Storiad. I&apos;m
+              open to remote senior roles.
             </p>
           </Reveal>
         </div>

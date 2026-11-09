@@ -2,8 +2,6 @@
 
 import { useEffect, useRef, useState } from "react";
 
-const BUDGETS = ["under $1k", "$1k–$5k", "$5k–$10k", "$10k+", "not sure"];
-
 type FieldErrors = { name?: string; email?: string; message?: string };
 type Status = "idle" | "sending" | "sent" | "error" | "rate_limited";
 
@@ -33,7 +31,6 @@ export default function ContactForm() {
     const name = String(data.get("name") ?? "");
     const email = String(data.get("email") ?? "");
     const message = String(data.get("message") ?? "");
-    const budget = String(data.get("budget") ?? "");
 
     const fieldErrors = validate(name, email, message);
     setErrors(fieldErrors);
@@ -48,7 +45,6 @@ export default function ContactForm() {
           name: name.trim(),
           email: email.trim(),
           message: message.trim(),
-          ...(budget ? { budget } : {}),
           company: String(data.get("company") ?? ""),
           elapsed: Date.now() - openedAt.current,
         }),
@@ -135,7 +131,7 @@ export default function ContactForm() {
           className="cform-input cform-textarea preserve-case"
           name="message"
           rows={5}
-          placeholder="what are we building?"
+          placeholder="the role, the team, or just say hi"
           aria-invalid={!!errors.message}
           aria-describedby={errors.message ? "cform-message-error" : undefined}
         />
@@ -144,29 +140,6 @@ export default function ContactForm() {
             {errors.message}
           </p>
         )}
-      </div>
-
-      <div className="cform-field">
-        <label className="cform-label" htmlFor="cform-budget">
-          <span className="cform-prompt" aria-hidden="true">
-            $
-          </span>
-          budget
-          <span className="cform-flag">--optional</span>
-        </label>
-        <select
-          id="cform-budget"
-          className="cform-input cform-select preserve-case"
-          name="budget"
-          defaultValue=""
-        >
-          <option value="">—</option>
-          {BUDGETS.map((b) => (
-            <option key={b} value={b}>
-              {b}
-            </option>
-          ))}
-        </select>
       </div>
 
       {/* Honeypot — invisible to humans, bots fill it in. */}

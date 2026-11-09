@@ -25,25 +25,25 @@ const barlowCondensed = Barlow_Condensed({
 export const metadata: Metadata = {
   metadataBase: new URL("https://karimkhalifeh.com"),
   title: {
-    default: "Karim Khalifeh — full-stack developer, Beirut",
+    default: "Karim Khalifeh — senior full-stack developer",
     template: "%s — karim khalifeh",
   },
   description:
-    "I'm Karim — a freelance full-stack developer based in Beirut. I build fast, well-engineered websites and web apps for businesses around the world.",
+    "Senior full-stack developer in Beirut — Laravel, React, Node, and applied AI. Four years owning the backend of a ~1,000-user publishing platform. Open to remote senior roles.",
   openGraph: {
     type: "website",
     url: "/",
     siteName: "karim khalifeh",
-    title: "Karim Khalifeh — full-stack developer, Beirut",
+    title: "Karim Khalifeh — senior full-stack developer",
     description:
-      "I'm Karim — a freelance full-stack developer based in Beirut. I build fast, well-engineered websites and web apps for businesses around the world.",
+      "Senior full-stack developer in Beirut — Laravel, React, Node, and applied AI. Four years owning the backend of a ~1,000-user publishing platform. Open to remote senior roles.",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Karim Khalifeh — full-stack developer, Beirut",
+    title: "Karim Khalifeh — senior full-stack developer",
     description:
-      "I'm Karim — a freelance full-stack developer based in Beirut. I build fast, well-engineered websites and web apps for businesses around the world.",
+      "Senior full-stack developer in Beirut — Laravel, React, Node, and applied AI. Four years owning the backend of a ~1,000-user publishing platform. Open to remote senior roles.",
   },
 };
 

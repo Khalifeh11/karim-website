@@ -14,9 +14,6 @@ const schema = z.object({
   name: z.string().trim().min(1).max(200),
   email: z.email().max(320),
   message: z.string().trim().min(1).max(5000),
-  budget: z
-    .enum(["under $1k", "$1k–$5k", "$5k–$10k", "$10k+", "not sure"])
-    .optional(),
   // Honeypot — hidden from humans, bots fill it in.
   company: z.string().max(1000).optional().default(""),
   // Milliseconds the form was open before submit (client-measured).
@@ -62,7 +59,7 @@ export async function POST(request: Request) {
     return Response.json({ error: "invalid" }, { status: 400 });
   }
 
-  const { name, email, message, budget, company, elapsed } = parsed.data;
+  const { name, email, message, company, elapsed } = parsed.data;
 
   // Tripped the honeypot or submitted faster than a human could type —
   // pretend it worked so the bot doesn't learn what caught it.
@@ -82,15 +79,7 @@ export async function POST(request: Request) {
       to: EMAIL,
       replyTo: email,
       subject: `portfolio contact — ${name}`,
-      text: [
-        `name: ${name}`,
-        `email: ${email}`,
-        budget ? `budget: ${budget}` : null,
-        "",
-        message,
-      ]
-        .filter((line) => line !== null)
-        .join("\n"),
+      text: [`name: ${name}`, `email: ${email}`, "", message].join("\n"),
     });
     if (error) {
       console.error("contact form send failed:", error);

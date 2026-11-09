@@ -7,12 +7,13 @@ import { AnimatePresence, motion } from "framer-motion";
 import { EASE } from "./Reveal";
 import SoundToggle from "./SoundToggle";
 import { openPalette } from "./CommandPalette";
-import { EMAIL } from "../lib/links";
+import { EMAIL, RESUME } from "../lib/links";
 
 const navItems = [
   { id: "work", num: "01", label: "work", href: "/#work" },
   { id: "about", num: "02", label: "about", href: "/about" },
   { id: "contact", num: "03", label: "contact", href: "/#contact" },
+  { id: "resume", num: "04", label: "résumé", href: RESUME, external: true },
 ];
 
 // The header remounts on every client navigation (it's rendered per page);
@@ -72,12 +73,19 @@ export default function Header() {
         </Link>
 
         <nav className="nav-numbered">
-          {navItems.map((item) => (
-            <Link key={item.id} href={item.href}>
-              <span className="num">{item.num}</span>
-              <span>{item.label}</span>
-            </Link>
-          ))}
+          {navItems.map((item) =>
+            item.external ? (
+              <a key={item.id} href={item.href} target="_blank" rel="noreferrer">
+                <span className="num">{item.num}</span>
+                <span>{item.label}</span>
+              </a>
+            ) : (
+              <Link key={item.id} href={item.href}>
+                <span className="num">{item.num}</span>
+                <span>{item.label}</span>
+              </Link>
+            ),
+          )}
         </nav>
 
         <div className="header-right">
@@ -167,6 +175,9 @@ export default function Header() {
                         className="mobile-menu-link"
                         href={item.href}
                         onClick={close}
+                        {...(item.external
+                          ? { target: "_blank", rel: "noreferrer" }
+                          : {})}
                       >
                         <span className="num">{item.num}</span>
                         <span className="mobile-menu-link-label">
@@ -189,7 +200,7 @@ export default function Header() {
                 >
                   <span className="mobile-menu-status">
                     <span className="status-dot" aria-hidden="true" />
-                    available for work
+                    open to remote senior roles
                   </span>
                   <Link
                     className="mobile-menu-email preserve-case"

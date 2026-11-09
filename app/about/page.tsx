@@ -8,7 +8,7 @@ import AboutHero from "./AboutHero";
 import { JsonLd, PERSON } from "@/app/lib/jsonld";
 
 const DESCRIPTION =
-  "karim khalifeh — a full-stack developer in beirut building production-grade web apps that hold up as your business scales.";
+  "karim khalifeh — senior full-stack developer in beirut. laravel, react, node, and applied ai. background, toolkit, education, and certifications.";
 
 export const metadata: Metadata = {
   title: "about",
@@ -29,12 +29,28 @@ const jsonLd = {
   mainEntity: PERSON,
 };
 
+// Mirrors the résumé's "languages & technologies" section.
 const TOOLKIT = [
   { label: "languages", items: ["javascript", "typescript", "php", "python", "sql"] },
-  { label: "frontend", items: ["react", "next.js", "react native", "inertia.js", "tailwind"] },
+  { label: "frontend & mobile", items: ["react", "next.js", "react native", "inertia.js", "tailwind"] },
   { label: "backend", items: ["laravel", "node.js"] },
-  { label: "ai", items: ["llm tool calling", "structured outputs", "openai api"] },
-  { label: "cloud & infra", items: ["aws", "cloudflare r2", "vercel", "laravel forge", "git"] },
+  { label: "ai", items: ["llm tool calling", "structured outputs", "context grounding", "rag (embeddings, bm25, contextual retrieval)", "mcp"] },
+  { label: "payments & billing", items: ["stripe (subscriptions, webhooks)", "laravel cashier"] },
+  { label: "databases", items: ["mysql", "postgresql", "mongodb"] },
+  { label: "cloud & infra", items: ["aws (ec2, s3)", "cloudflare r2", "vercel", "laravel forge", "git"] },
+];
+
+const CREDENTIALS = [
+  { label: "certifications", items: [
+    { name: "ZAKA Certified AI Consultant", org: "ZAKA", year: "2026" },
+    { name: "Foundations of DevOps", org: "SE Factory", year: "2024" },
+    { name: "AWS Certified Cloud Practitioner", org: "AWS", year: "2024" },
+  ] },
+  { label: "education", items: [
+    { name: "Full-Stack Web Development", org: "SE Factory, Lebanon", year: "2022" },
+    { name: "MSc Clinical & Health Psychology", org: "Bangor University, Wales", year: "2018" },
+    { name: "BA Psychology", org: "Lebanese American University, Beirut", year: "2016" },
+  ] },
 ];
 
 export default function AboutPage() {
@@ -71,9 +87,9 @@ export default function AboutPage() {
                   I also build AI features that earn their keep: in-app
                   assistants using LLM tool calling, structured outputs, and
                   usage metering. Not AI for its own sake, but to take real,
-                  repetitive work off people&apos;s plates. The goal on every
-                  project is the same. Ship something that works on day one and
-                  won&apos;t need rebuilding as the business grows.
+                  repetitive work off people&apos;s plates. After four years on
+                  one codebase, I write code for whoever opens the file next.
+                  Usually that&apos;s me.
                 </p>
               </Reveal>
             </div>
@@ -127,6 +143,34 @@ export default function AboutPage() {
                       {group.items.map((item) => (
                         <li key={item} className="case-stack-item">
                           {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── Credentials ───────────────────────────────────── */}
+        <section className="case-section page">
+          <div className="case-section-inner">
+            <SectionLabel num="05" as="p">
+              Credentials
+            </SectionLabel>
+            <div className="about-skills">
+              {CREDENTIALS.map((group, i) => (
+                <Reveal key={group.label} delay={i * 0.06}>
+                  <div className="about-skill-group">
+                    <p className="about-skill-label">{group.label}</p>
+                    <ul className="about-creds" aria-label={group.label}>
+                      {group.items.map((item) => (
+                        <li key={item.name} className="about-cred">
+                          <span className="about-cred-name">{item.name}</span>
+                          <span className="about-cred-meta">
+                            {item.org} · {item.year}
+                          </span>
                         </li>
                       ))}
                     </ul>

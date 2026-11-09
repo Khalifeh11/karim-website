@@ -309,21 +309,37 @@ export default function ProjectCarousel() {
               )}
             </div>
             <div className="slide-visual">
-              <DeviceRig
-                preload={i === 0}
-                eager={i === index}
-                url={p.url}
-                phoneTransitionName={
-                  onHome && (stacked || i === index)
-                    ? `case-phone-${p.slug}`
-                    : undefined
-                }
-                desktop={{
-                  src: p.desktop,
-                  alt: `${p.name} — desktop view`,
-                }}
-                mobile={{ src: p.mobile, alt: `${p.name} — mobile view` }}
-              />
+              {(() => {
+                const rig = (
+                  <DeviceRig
+                    preload={i === 0}
+                    eager={i === index}
+                    url={p.url}
+                    phoneTransitionName={
+                      onHome && (stacked || i === index)
+                        ? `case-phone-${p.slug}`
+                        : undefined
+                    }
+                    desktop={{
+                      src: p.desktop,
+                      alt: `${p.name} — desktop view`,
+                    }}
+                    mobile={{ src: p.mobile, alt: `${p.name} — mobile view` }}
+                  />
+                );
+                return p.caseStudy ? (
+                  <Link
+                    className="slide-visual-link"
+                    href={`/work/${p.slug}`}
+                    aria-label={`${p.name} — read the case study`}
+                    tabIndex={-1}
+                  >
+                    {rig}
+                  </Link>
+                ) : (
+                  rig
+                );
+              })()}
             </div>
           </article>
         ))}

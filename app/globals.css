@@ -118,10 +118,10 @@ body {
 .slide-title,
 .slide-blurb,
 .slide-link,
-.svc-name,
-.svc-desc,
-.step-name,
-.step-desc,
+.exp-role-title,
+.exp-name,
+.exp-desc,
+.about-cred-name,
 .contact-headline,
 .contact-alt a,
 .case-headline,
@@ -780,7 +780,8 @@ button {
 
 .carousel,
 .selected,
-.services,
+.experience,
+.side-projects,
 .contact-cta {
   scroll-margin-top: 73px; /* land anchor jumps below the sticky header */
 }
@@ -804,6 +805,14 @@ button {
     justify-self: end;
     width: min(100%, calc((100svh - 330px) * 1.45));
   }
+}
+
+/* The image itself is a tap target to its case study — most useful on the
+   stacked mobile list, where it's the largest thing to poke. */
+.slide-visual-link {
+  display: block;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .carousel-nav {
@@ -1144,9 +1153,10 @@ a.work-row:hover .work-go {
 }
 
 /* =========================================================================
-   SERVICES — what i sell, in plain language
+   EXPERIENCE + SIDE PROJECTS — résumé highlights as numbered rows
    ========================================================================= */
-.services {
+.experience,
+.side-projects {
   padding-top: var(--s-9);
   padding-bottom: var(--s-9);
   border-top: 1px solid var(--border);
@@ -1154,10 +1164,42 @@ a.work-row:hover .work-go {
   --glow-size: 60% 100%;
   --glow-alpha: 0.6;
 }
-.svc-list {
+.side-projects {
+  --glow-pos: 88% 0%;
+  --glow-size: 55% 95%;
+  --glow-alpha: 0.5;
+}
+.exp-role {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--s-2) var(--s-5);
+  margin-bottom: var(--s-5);
+}
+.exp-role-title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(24px, 2.7vw, 35px);
+  letter-spacing: -0.005em;
+}
+.exp-role-title a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid var(--border-strong);
+}
+.exp-role-title a:hover {
+  border-bottom-color: var(--accent);
+}
+.exp-role-meta {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--fg-3);
+}
+.exp-list {
   list-style: none;
 }
-.svc-row {
+.exp-row {
   display: grid;
   grid-template-columns: 48px minmax(0, 1fr) minmax(0, 1.3fr);
   align-items: baseline;
@@ -1165,67 +1207,39 @@ a.work-row:hover .work-go {
   padding: 26px 4px;
   border-bottom: 1px solid var(--border);
 }
-.svc-list li:first-child .svc-row {
+.exp-list li:first-child .exp-row {
   border-top: 1px solid var(--border);
 }
-.svc-num {
+.exp-num {
   font-family: var(--font-mono);
   font-size: 13px;
   color: var(--fg-3);
   font-feature-settings: "tnum";
 }
-.svc-name {
+.exp-name {
   font-family: var(--font-display);
   font-weight: 400;
-  font-size: clamp(24px, 2.7vw, 35px);
+  font-size: clamp(22px, 2.2vw, 28px);
   letter-spacing: -0.005em;
 }
-.svc-desc {
+.exp-desc {
   font-size: 15px;
   line-height: 1.6;
   color: var(--fg-2);
   max-width: 52ch;
 }
-
-/* =========================================================================
-   PROCESS — 4-step "how it works" strip
-   ========================================================================= */
-.process {
-  padding-top: var(--s-9);
-  padding-bottom: var(--s-9);
-  border-top: 1px solid var(--border);
-  --glow-pos: 88% 0%;
-  --glow-size: 55% 95%;
-  --glow-alpha: 0.5;
+.exp-tags {
+  margin-top: 10px;
 }
-.process-grid {
-  list-style: none;
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: var(--s-5);
-}
-.step {
-  border-top: 1px solid var(--border-strong);
-  padding-top: 18px;
-  height: 100%;
-}
-.step-num {
+.exp-link {
+  display: inline-block;
+  margin-top: 12px;
   font-family: var(--font-mono);
   font-size: 13px;
+  color: var(--fg-3);
+}
+.exp-link:hover {
   color: var(--accent);
-  font-feature-settings: "tnum";
-}
-.step-name {
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-size: clamp(20px, 1.8vw, 24px);
-  letter-spacing: -0.005em;
-  margin: 12px 0 8px;
-}
-.step-desc {
-  font-size: 14px;
-  line-height: 1.6;
-  color: var(--fg-2);
 }
 
 /* =========================================================================
@@ -1359,19 +1373,12 @@ a.work-row:hover .work-go {
   }
 }
 
-/* WhatsApp — co-primary contact channel, accent-tinted so it stands out. */
-.btn-whatsapp {
-  min-height: 44px;
+/* Résumé — the one thing a recruiter is here for, so it sits beside the headline. */
+.contact-intro .btn {
   margin-bottom: var(--s-4);
-  color: var(--accent);
-  border-color: var(--accent-soft);
-}
-.btn-whatsapp:hover {
-  background: color-mix(in oklab, var(--accent) 12%, transparent);
-  border-color: var(--accent);
 }
 @media (max-width: 640px) {
-  .btn-whatsapp {
+  .contact-intro .btn {
     display: flex;
     width: 100%;
     justify-content: center;
@@ -1452,10 +1459,6 @@ a.work-row:hover .work-go {
 .cform-field:focus-within .cform-prompt {
   color: var(--accent);
 }
-.cform-flag {
-  font-size: 11px;
-  color: var(--fg-3);
-}
 
 .cform-input {
   display: block;
@@ -1478,9 +1481,6 @@ a.work-row:hover .work-go {
   min-height: 120px;
   line-height: 1.55;
   padding-top: 8px;
-}
-.cform-select {
-  cursor: pointer;
 }
 
 .cform-error {
@@ -1721,6 +1721,31 @@ a.work-row:hover .work-go {
   color: var(--fg-3);
 }
 
+/* About — certifications + education rows */
+.about-creds {
+  list-style: none;
+}
+.about-cred {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 4px var(--s-4);
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+}
+.about-cred:first-child {
+  border-top: 1px solid var(--border);
+}
+.about-cred-name {
+  font-size: 15px;
+}
+.about-cred-meta {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--fg-3);
+}
+
 .case-back {
   font-family: var(--font-mono);
   font-size: 13px;
@@ -1842,6 +1867,35 @@ a.work-row:hover .work-go {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: var(--s-3);
+}
+/* Long-form features (storiad): numbered rows, no cards */
+.case-feature-rows {
+  border-top: 1px solid var(--border);
+}
+.case-feature-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 2fr;
+  gap: var(--s-8);
+  align-items: start;
+  padding: var(--s-6) 0;
+  border-bottom: 1px solid var(--border);
+}
+.case-feature-row-head {
+  display: grid;
+  grid-template-columns: 36px minmax(0, 1fr);
+  column-gap: var(--s-3);
+  align-items: baseline;
+}
+.case-feature-row-head .case-feature-num {
+  margin-bottom: 0;
+}
+.case-feature-row-head .case-feature-title {
+  margin-bottom: 0;
+  font-size: 22px;
+}
+.case-feature-row .case-feature-desc {
+  font-size: 15px;
+  max-width: 62ch;
 }
 .case-feature {
   border: 1px solid var(--border);
@@ -1980,19 +2034,21 @@ a.work-row:hover .work-go {
   .work-tags {
     display: none;
   }
-  .svc-row {
+  .exp-row {
     grid-template-columns: 36px minmax(0, 1fr);
     row-gap: var(--s-2);
   }
-  .svc-desc {
+  .exp-row > :nth-child(3) {
     grid-column: 2;
-  }
-  .process-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
   .case-section-inner {
     grid-template-columns: 1fr;
     gap: var(--s-5);
+  }
+  .case-feature-row {
+    grid-template-columns: 1fr;
+    gap: var(--s-3);
+    padding: var(--s-5) 0;
   }
 }
 
@@ -2013,22 +2069,6 @@ a.work-row:hover .work-go {
   }
   .case-features {
     grid-template-columns: 1fr;
-  }
-  .process-grid {
-    grid-template-columns: 1fr;
-    gap: var(--s-4);
-  }
-  .step {
-    display: grid;
-    grid-template-columns: auto minmax(0, 1fr);
-    column-gap: 12px;
-    align-items: baseline;
-  }
-  .step-name {
-    margin: 0 0 6px;
-  }
-  .step-desc {
-    grid-column: 2;
   }
 }
 
@@ -2242,5 +2282,3 @@ a.work-row:hover .work-go {
     animation-delay: 0s !important;
   }
 }
-
-

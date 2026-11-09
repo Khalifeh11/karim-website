@@ -14,7 +14,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { EASE } from "./Reveal";
 import { isSoundEnabled, playClick, subscribe, toggleSound } from "./sound";
 import { projects } from "../data/projects";
-import { EMAIL } from "../lib/links";
+import { EMAIL, RESUME } from "../lib/links";
 
 /** Anything outside the palette (e.g. the header hint) opens it with this. */
 export function openPalette() {
@@ -64,7 +64,9 @@ export default function CommandPalette() {
     () => [
       { id: "work", group: "navigate", cmd: "cd ./work", desc: "selected work", href: "/#work", keywords: "projects home" },
       { id: "about", group: "navigate", cmd: "cd ./about", desc: "who i am", href: "/about", keywords: "bio" },
+      { id: "experience", group: "navigate", cmd: "cd ./experience", desc: "storiad, 2022–present", href: "/#experience", keywords: "work history job role" },
       { id: "contact", group: "navigate", cmd: "cd ./contact", desc: "get in touch", href: "/#contact", keywords: "hire email" },
+      { id: "resume", group: "actions", cmd: "open resume.pdf", desc: "résumé / cv", keywords: "cv download pdf" },
       ...projects.map((p) => ({
         id: p.slug,
         group: "projects" as const,
@@ -148,6 +150,12 @@ export default function CommandPalette() {
         if (viaKeyboard) playClick();
         setCopied(true);
         window.setTimeout(close, 900);
+        return;
+      }
+      if (c.id === "resume") {
+        if (viaKeyboard) playClick();
+        window.open(RESUME, "_blank", "noreferrer");
+        close();
         return;
       }
       if (c.id === "sound") {

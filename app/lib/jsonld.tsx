@@ -6,7 +6,7 @@ export const PERSON = {
   "@type": "Person",
   "@id": `${SITE_URL}/#person`,
   name: "Karim Khalifeh",
-  jobTitle: "Full-Stack Web Developer",
+  jobTitle: "Senior Full-Stack Developer",
   url: SITE_URL,
   address: {
     "@type": "PostalAddress",

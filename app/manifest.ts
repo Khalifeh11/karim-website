@@ -2,10 +2,10 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Karim Khalifeh — full-stack developer, Beirut",
+    name: "Karim Khalifeh — senior full-stack developer",
     short_name: "Karim Khalifeh",
     description:
-      "I'm Karim — a freelance full-stack developer based in Beirut. I build fast, well-engineered websites and web apps for businesses around the world.",
+      "Senior full-stack developer in Beirut — Laravel, React, Node, and applied AI. Four years owning the backend of a ~1,000-user publishing platform. Open to remote senior roles.",
     start_url: "/",
     display: "standalone",
     background_color: "#0a0d0a",

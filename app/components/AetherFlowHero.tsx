@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { RESUME } from "../lib/links";
 
 // Character field: a grid of dim mono glyphs that brighten in slow ambient
 // waves and ripple around the cursor — extends the ">_" terminal brand.
@@ -293,26 +294,32 @@ export default function AetherFlowHero() {
           className="hero-headline hero-enter"
           style={{ maxWidth: "20ch", animationDelay: "0.48s" }}
         >
-          <span className="eyebrow">full-stack web developer · beirut</span>
-          Designed, built, and deployed{" "}
-          <span className="accent">by one person.</span>
+          <span className="eyebrow">senior full-stack developer · applied ai · beirut</span>
+          I build and maintain{" "}
+          <span className="accent">production web apps.</span>
         </h1>
 
         <p
           className="hero-sub hero-enter"
           style={{ textAlign: "center", animationDelay: "0.66s" }}
         >
-          I&apos;m Karim. Startups and businesses hand me the whole thing:
-          design, code, infrastructure. And it&apos;s still me maintaining it a
-          year later.
+          I&apos;m Karim. Laravel, React, and Node. Four years at Storiad owning
+          the backend of a ~1,000-user publishing platform, including its AI
+          assistant, Stripe billing, and infrastructure. Open to remote senior
+          roles.
         </p>
 
         <div
           className="hero-actions hero-enter"
           style={{ justifyContent: "center", animationDelay: "0.84s" }}
         >
-          <a className="btn btn-primary" href="#contact">
-            Start a project
+          <a
+            className="btn btn-primary"
+            href={RESUME}
+            target="_blank"
+            rel="noreferrer"
+          >
+            Résumé (PDF)
             <span className="arrow">→</span>
           </a>
           <a className="btn btn-secondary" href="#work">

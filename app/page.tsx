@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import Header from "./components/Header";
 import AetherFlowHero from "./components/AetherFlowHero";
 import ProjectCarousel from "./components/ProjectCarousel";
-import Services from "./components/Services";
-import Process from "./components/Process";
+import Experience from "./components/Experience";
+import SideProjects from "./components/SideProjects";
 import ContactCta from "./components/ContactCta";
 import Footer from "./components/Footer";
 import { JsonLd, PERSON } from "./lib/jsonld";
@@ -28,8 +28,8 @@ export default function Home() {
       <main>
         <AetherFlowHero />
         <ProjectCarousel />
-        <Services />
-        <Process />
+        <Experience />
+        <SideProjects />
         <ContactCta />
       </main>
       <Footer />

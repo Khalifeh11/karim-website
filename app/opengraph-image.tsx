@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "karim khalifeh — full-stack web developer, beirut";
+export const alt = "karim khalifeh — senior full-stack developer · applied ai";
 export const size = {
   width: 1200,
   height: 630,
@@ -53,7 +53,7 @@ export default function Image() {
             color: "#9aa39c",
           }}
         >
-          full-stack web developer · beirut
+          senior full-stack developer · applied ai · beirut
         </div>
       </div>
     ),
